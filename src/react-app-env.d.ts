@@ -10,5 +10,6 @@ declare namespace NodeJS {
     REACT_APP_SKYSCANNER_REFERENCE_URL: string
     REACT_APP_SKYSCANNER_PLACES_URL: string
     REACT_APP_SKYSCANNER_ROUTES_URL: string
+    REACT_APP_GEOLOCATION_URL: string
   }
 }
