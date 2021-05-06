@@ -1,0 +1,18 @@
+.DayPickerInput > input {
+  @apply w-72 p-4 text-center placeholder-blue-900 rounded-full text-blue-900;
+  @apply border-2 border-green-200 bg-green-200 outline-none;
+  @apply hover:border-gray-400 focus:border-blue-500;
+}
+
+.DayPickerInput-Overlay {
+  @apply bg-blue-900 text-center border-2 rounded-3xl text-gray-50 mt-2 w-72;
+}
+
+.DayPicker:not(.DayPicker--interactionDisabled)
+  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+  @apply bg-blue-400;
+}
+
+.DayPicker-Day--outside:hover {
+  @apply bg-blue-400 text-gray-50;
+}
