@@ -3,6 +3,7 @@ import Logo from "components/Logo"
 import PlaceDropdown from "components/PlaceDropdown"
 import { useCountryCode } from "hooks/useCountryCode"
 import SingleDatePicker from "components/SingleDatePicker"
+import RangeDatePicker from "components/RangeDatePicker"
 
 function App() {
   const country = useCountryCode()
@@ -35,6 +36,14 @@ function App() {
               placeholder="Departure Date"
               date={outwardDate}
               setDate={setOutwardDate}
+            />
+            <RangeDatePicker
+              from={outwardDate}
+              to={returnDate}
+              fromPlaceholder="Departure Date"
+              toPlaceholder="Return Date"
+              setFrom={setOutwardDate}
+              setTo={setReturnDate}
             />
           </div>
         </section>

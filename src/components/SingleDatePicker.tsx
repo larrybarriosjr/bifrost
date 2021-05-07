@@ -13,6 +13,8 @@ const SingleDatePicker = ({
   setDate,
   ...props
 }: SingleDatePickerProps) => {
+  const dateNow = new Date()
+
   const DATE_FORMAT_INPUT = "dd MMMM y"
   const DATE_FORMAT_STATE = "yyyy-MM-dd"
 
@@ -28,20 +30,21 @@ const SingleDatePicker = ({
   }
 
   const parseDate = (str: string, format: string) => {
-    const parsedDate = dateFnsParse(str, format, new Date())
+    const parsedDate = dateFnsParse(str, format, dateNow)
     if (DateUtils.isDate(parsedDate)) {
       return parsedDate
     }
   }
 
   const modifiers = {
-    days: { before: new Date(), after: new Date() }
+    days: { before: dateNow, after: dateNow }
   }
 
   const modifiersStyles = {
-    outside: { cursor: "pointer" },
+    outside: { cursor: "default" },
     today: { width: "2.5rem", lineHeight: "1.25rem" },
-    days: { width: "2.5rem", lineHeight: "1.25rem" }
+    days: { width: "2.5rem", lineHeight: "1.25rem" },
+    disabled: { color: "#9CA3AF" }
   }
 
   return (
@@ -57,9 +60,8 @@ const SingleDatePicker = ({
       dayPickerProps={{
         modifiers,
         modifiersStyles,
-        fromMonth: new Date(),
-        showOutsideDays: true,
-        enableOutsideDaysClick: true
+        fromMonth: dateNow,
+        disabledDays: { before: dateNow }
       }}
       {...props}
     />
