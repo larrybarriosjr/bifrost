@@ -1,5 +1,5 @@
 .DayPickerInput > input {
-  @apply w-72 p-4 text-center placeholder-blue-900 rounded-full text-blue-900;
+  @apply w-72 h-14 text-center placeholder-blue-900 rounded-full text-blue-900;
   @apply border-2 border-green-200 bg-green-200 outline-none;
   @apply hover:border-gray-400 focus:border-blue-500;
 }
