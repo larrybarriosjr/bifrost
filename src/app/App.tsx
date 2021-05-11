@@ -6,26 +6,25 @@ import RangeDatePicker from "components/RangeDatePicker"
 import FlightTypeRadio from "components/FlightTypeRadio"
 import CurrencyDropdown from "components/CurrencyDropdown"
 import PassengerInput from "components/PassengerInput"
+import { useLocalStorage } from "hooks/useLocalStorage"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
-import { useFlightType } from "hooks/useFlightType"
 import { usePassengers } from "hooks/usePassengers"
 
 function App() {
   const country = useCountryCode()
   const currency = useCurrencyCode()
-  const flightType = useFlightType()
   const passengers = usePassengers()
 
   const [origin, setOrigin] = useState<string>("")
   const [destination, setDestination] = useState<string>("")
+  const [flightType, setFlightType] = useLocalStorage<string>("flight_type", "")
   const [flightDate, setFlightDate] = useState<string>("")
   const [outwardDate, setOutwardDate] = useState<string>("")
   const [returnDate, setReturnDate] = useState<string>("")
 
   if (!country) return null
   if (!currency) return null
-  if (!flightType) return null
   if (!passengers) return null
 
   return (
@@ -46,7 +45,7 @@ function App() {
             />
           </div>
           <div className="flex m-6 gap-4">
-            <FlightTypeRadio />
+            <FlightTypeRadio type={flightType} setType={setFlightType} />
             <CurrencyDropdown />
             <PassengerInput />
           </div>

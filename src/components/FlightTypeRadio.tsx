@@ -1,12 +1,20 @@
 import { useFlightTypes } from "hooks/useFlightTypes"
-import { useLocalStorage } from "hooks/useLocalStorage"
+import { useEffect } from "react"
 
-const FlightTypeRadio = () => {
+type FlightTypeRadioProps = {
+  type: string
+  setType: React.Dispatch<React.SetStateAction<string>>
+}
+
+const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
   const flightTypes = useFlightTypes()
-  const [flightType, setFlightType] = useLocalStorage("flight-type", "")
+
+  useEffect(() => {
+    if (!type) setType("one-way")
+  }, [type, setType])
 
   const handleClick = (value: string) => {
-    setFlightType(value)
+    setType(value)
   }
 
   return (
@@ -15,9 +23,9 @@ const FlightTypeRadio = () => {
         <div
           key={idx}
           className={`flex items-center justify-center text-blue-900 ${
-            item.value !== flightType ? "hover:bg-blue-200" : ""
+            item.value !== type ? "hover:bg-blue-200" : ""
           } cursor-pointer rounded-full h-12 w-48 ${
-            item.value === flightType ? "bg-green-100 font-bold" : ""
+            item.value === type ? "bg-green-100 font-bold" : ""
           }`}
           onClick={() => handleClick(item.value)}
         >
@@ -25,10 +33,10 @@ const FlightTypeRadio = () => {
           <input
             id={item.value}
             type="radio"
-            name="flight-type"
+            name="flight_type"
             value={item.value}
             title={item.label}
-            defaultChecked={item.value === flightType}
+            defaultChecked={item.value === type}
             hidden
           />
         </div>
