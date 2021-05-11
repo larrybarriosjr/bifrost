@@ -4,24 +4,27 @@ import PlaceDropdown from "components/PlaceDropdown"
 import { useCountryCode } from "hooks/useCountryCode"
 import SingleDatePicker from "components/SingleDatePicker"
 import RangeDatePicker from "components/RangeDatePicker"
-import RadioGroup from "components/RadioGroup"
+import FlightTypeRadio from "components/FlightTypeRadio"
 import NumberInput from "components/NumberInput"
 import CurrencyDropdown from "components/CurrencyDropdown"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
+import { useFlightType } from "hooks/useFlightType"
 
 function App() {
   const country = useCountryCode()
   const currency = useCurrencyCode()
+  const flightType = useFlightType()
+
   const [origin, setOrigin] = useState<string>("")
   const [destination, setDestination] = useState<string>("")
-  const [passengers, setPassengers] = useState(1)
-  const [flightType, setFlightType] = useState<string>("one-way")
+  const [passengers, setPassengers] = useState<number>(1)
   const [flightDate, setFlightDate] = useState<string>("")
   const [outwardDate, setOutwardDate] = useState<string>("")
   const [returnDate, setReturnDate] = useState<string>("")
 
   if (!country) return null
   if (!currency) return null
+  if (!flightType) return null
 
   return (
     <div className="flex flex-col items-center h-screen w-screen bg-blue-400">
@@ -41,15 +44,7 @@ function App() {
             />
           </div>
           <div className="flex m-6 gap-4">
-            <RadioGroup
-              name="flight_type"
-              items={[
-                { value: "one-way", label: "One-Way" },
-                { value: "round-trip", label: "Round Trip" }
-              ]}
-              selected={flightType}
-              setSelected={setFlightType}
-            />
+            <FlightTypeRadio />
             <CurrencyDropdown />
             <NumberInput
               value={passengers}

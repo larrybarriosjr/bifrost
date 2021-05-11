@@ -1,29 +1,23 @@
-type RadioGroupProps = {
-  name: string
-  items: { value: string; label: string }[]
-  selected: string
-  setSelected: React.Dispatch<React.SetStateAction<string>>
-}
+import { useFlightTypes } from "hooks/useFlightTypes"
+import { useLocalStorage } from "hooks/useLocalStorage"
 
-const RadioGroup = ({
-  name,
-  items,
-  selected,
-  setSelected
-}: RadioGroupProps) => {
+const FlightTypeRadio = () => {
+  const flightTypes = useFlightTypes()
+  const [flightType, setFlightType] = useLocalStorage("flight-type", "")
+
   const handleClick = (value: string) => {
-    setSelected(value)
+    setFlightType(value)
   }
 
   return (
     <div className="flex gap-1 p-1 bg-green-200 rounded-full">
-      {items.map((item, idx) => (
+      {flightTypes.map((item, idx) => (
         <div
           key={idx}
           className={`flex items-center justify-center text-blue-900 ${
-            item.value !== selected ? "hover:bg-blue-200" : ""
+            item.value !== flightType ? "hover:bg-blue-200" : ""
           } cursor-pointer rounded-full h-12 w-48 ${
-            item.value === selected ? "bg-green-100 font-bold" : ""
+            item.value === flightType ? "bg-green-100 font-bold" : ""
           }`}
           onClick={() => handleClick(item.value)}
         >
@@ -31,10 +25,10 @@ const RadioGroup = ({
           <input
             id={item.value}
             type="radio"
-            name={name}
+            name="flight-type"
             value={item.value}
             title={item.label}
-            defaultChecked={item.value === selected}
+            defaultChecked={item.value === flightType}
             hidden
           />
         </div>
@@ -43,4 +37,4 @@ const RadioGroup = ({
   )
 }
 
-export default RadioGroup
+export default FlightTypeRadio

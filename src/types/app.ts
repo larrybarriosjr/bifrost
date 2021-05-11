@@ -1,5 +1,10 @@
 import { GroupTypeBase } from "react-select"
 
+export type InputValue<T> = {
+  value: T
+  label: string
+}
+
 export type ReactSelectCallback<T> = (
   options: readonly (T | GroupTypeBase<T>)[]
 ) => void
