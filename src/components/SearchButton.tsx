@@ -1,9 +1,20 @@
-const SearchButton = () => {
+type SearchButtonProps = {
+  disabled?: boolean
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+const SearchButton = ({ disabled, onClick }: SearchButtonProps) => {
   return (
     <button
       type="button"
-      className={`bg-blue-900 border-blue-900 border-2 rounded-full h-14 w-48 text-gray-50 font-bold ml-auto
-        focus:outline-none hover:border-gray-400 focus:border-blue-500`}
+      className={`focus:outline-none focus:border-blue-500
+      border-2 rounded-full h-14 w-48 font-bold ml-auto ${
+        disabled
+          ? "bg-gray-300 text-gray-400 border-gray-300"
+          : "bg-blue-900 text-gray-50 border-blue-900 hover:border-gray-400"
+      }`}
+      disabled={disabled}
+      onClick={onClick}
     >
       Search
     </button>

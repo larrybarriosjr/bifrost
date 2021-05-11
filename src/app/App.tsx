@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Logo from "components/Logo"
 import PlaceDropdown from "components/PlaceDropdown"
 import SingleDatePicker from "components/SingleDatePicker"
@@ -11,6 +11,8 @@ import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { usePassengers } from "hooks/usePassengers"
 import SearchButton from "components/SearchButton"
+import { useQuery } from "react-query"
+import { getRoutes } from "services/skyscanner"
 
 function App() {
   const country = useCountryCode()
@@ -23,6 +25,33 @@ function App() {
   const [flightDate, setFlightDate] = useState<string>("")
   const [outwardDate, setOutwardDate] = useState<string>("")
   const [returnDate, setReturnDate] = useState<string>("")
+
+  const { data: flights, refetch: fetchFlights } = useQuery(
+    "flights",
+    () =>
+      getRoutes({
+        origin,
+        destination,
+        outward_date: flightDate || outwardDate,
+        return_date: returnDate
+      }),
+    { enabled: false }
+  )
+
+  const commonInputsDisabled =
+    !country || !currency || !passengers || !origin || !destination
+  const oneWayDisabled = commonInputsDisabled || !flightDate
+  const roundTripDisabled = commonInputsDisabled || !outwardDate || !returnDate
+  const searchButtonDisabled =
+    flightType === "one-way" ? oneWayDisabled : roundTripDisabled
+
+  const handleFlightSearch = () => {
+    if (!searchButtonDisabled) fetchFlights()
+  }
+
+  useEffect(() => {
+    console.log(flights)
+  }, [flights])
 
   if (!country) return null
   if (!currency) return null
@@ -59,7 +88,10 @@ function App() {
                 setTo={setReturnDate}
               />
             )}
-            <SearchButton />
+            <SearchButton
+              disabled={searchButtonDisabled}
+              onClick={handleFlightSearch}
+            />
           </div>
         </section>
       </main>

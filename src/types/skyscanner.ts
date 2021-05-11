@@ -78,6 +78,4 @@ export type GetRoutesForm = {
   destination: QueryPlace["PlaceId"]
   outward_date: string
   return_date?: string
-  country: Country["Code"]
-  currency: Currency["Code"]
 }
