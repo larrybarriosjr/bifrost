@@ -1,23 +1,24 @@
 import { useState } from "react"
 import Logo from "components/Logo"
 import PlaceDropdown from "components/PlaceDropdown"
-import { useCountryCode } from "hooks/useCountryCode"
 import SingleDatePicker from "components/SingleDatePicker"
 import RangeDatePicker from "components/RangeDatePicker"
 import FlightTypeRadio from "components/FlightTypeRadio"
-import NumberInput from "components/NumberInput"
 import CurrencyDropdown from "components/CurrencyDropdown"
+import PassengerInput from "components/PassengerInput"
+import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { useFlightType } from "hooks/useFlightType"
+import { usePassengers } from "hooks/usePassengers"
 
 function App() {
   const country = useCountryCode()
   const currency = useCurrencyCode()
   const flightType = useFlightType()
+  const passengers = usePassengers()
 
   const [origin, setOrigin] = useState<string>("")
   const [destination, setDestination] = useState<string>("")
-  const [passengers, setPassengers] = useState<number>(1)
   const [flightDate, setFlightDate] = useState<string>("")
   const [outwardDate, setOutwardDate] = useState<string>("")
   const [returnDate, setReturnDate] = useState<string>("")
@@ -25,6 +26,7 @@ function App() {
   if (!country) return null
   if (!currency) return null
   if (!flightType) return null
+  if (!passengers) return null
 
   return (
     <div className="flex flex-col items-center h-screen w-screen bg-blue-400">
@@ -46,11 +48,7 @@ function App() {
           <div className="flex m-6 gap-4">
             <FlightTypeRadio />
             <CurrencyDropdown />
-            <NumberInput
-              value={passengers}
-              setValue={setPassengers}
-              label="Passenger/s"
-            />
+            <PassengerInput />
           </div>
           <div className="flex m-6 gap-4">
             {flightType === "one-way" ? (

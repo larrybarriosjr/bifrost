@@ -1,18 +1,14 @@
+import { useLocalStorage } from "hooks/useLocalStorage"
 import { useState } from "react"
 
-type NumberInputProps = {
-  value: number
-  setValue: React.Dispatch<React.SetStateAction<number>>
-  label: string
-}
-
-const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
-  const [inputValue, setInputValue] = useState(1)
+const PassengerInput = () => {
+  const [passengers, setPassengers] = useLocalStorage<number>("passengers", 0)
+  const [inputValue, setInputValue] = useState(passengers)
   const [ignoreBlur, setIgnoreBlur] = useState(false)
   const [inputDisplay, setInputDisplay] = useState(false)
 
   const handleShowInput = () => {
-    setInputValue(value)
+    setInputValue(passengers)
     setInputDisplay(true)
   }
 
@@ -35,7 +31,7 @@ const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
   }
 
   const handleSetValue = () => {
-    if (inputValue) setValue(inputValue)
+    if (inputValue) setPassengers(inputValue)
     setInputDisplay(false)
   }
 
@@ -50,10 +46,9 @@ const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
         type="button"
         onClick={handleShowInput}
         className={`bg-green-200 border-green-200 border-2 rounded-full h-14 w-48 text-blue-900
-            focus:outline-none hover:border-gray-400 focus:border-blue-500
-            ${value < 1 ? "font-normal" : "font-bold"}`}
+            focus:outline-none hover:border-gray-400 focus:border-blue-500 font-bold`}
       >
-        {value} {label}
+        {passengers} {passengers === 1 ? "Passenger" : "Passengers"}
       </button>
       {inputDisplay ? (
         <div className="absolute flex flex-row w-48 mt-16 bg-white rounded shadow-md border border-gray-300">
@@ -78,4 +73,4 @@ const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
   )
 }
 
-export default NumberInput
+export default PassengerInput

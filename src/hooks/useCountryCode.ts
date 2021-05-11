@@ -3,7 +3,7 @@ import { getCountryCode } from "services/geolocation"
 import { useLocalStorage } from "./useLocalStorage"
 
 export const useCountryCode = (): string => {
-  const [country, setCountry] = useLocalStorage("country", "")
+  const [country, setCountry] = useLocalStorage<string>("country", "")
 
   useEffect(() => {
     const fetchCountryCode = async () => {
