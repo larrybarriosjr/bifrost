@@ -1,25 +1,11 @@
+import { useCurrencies } from "hooks/useCurrencies"
 import { useLocalStorage } from "hooks/useLocalStorage"
-import { useEffect } from "react"
-import { useQuery } from "react-query"
 import Select, { ActionMeta } from "react-select"
-import { getCurrencies } from "services/skyscanner"
 import { Currency } from "types/skyscanner"
 
 const CurrencyDropdown = () => {
+  const currencies = useCurrencies()
   const [currency, setCurrency] = useLocalStorage("currency", "")
-  const { data: currencies, refetch: fetchCurrencies } = useQuery(
-    "currencies",
-    getCurrencies,
-    { enabled: false }
-  )
-
-  useEffect(() => {
-    if (!currency) setCurrency("USD")
-  }, [currency, setCurrency])
-
-  useEffect(() => {
-    if (!currencies) fetchCurrencies()
-  }, [currencies, fetchCurrencies])
 
   const formatOptionLabel = (c: Currency) => {
     return `${c.Code} - ${c.Symbol}`

@@ -7,9 +7,11 @@ import RangeDatePicker from "components/RangeDatePicker"
 import RadioGroup from "components/RadioGroup"
 import NumberInput from "components/NumberInput"
 import CurrencyDropdown from "components/CurrencyDropdown"
+import { useCurrencyCode } from "hooks/useCurrencyCode"
 
 function App() {
   const country = useCountryCode()
+  const currency = useCurrencyCode()
   const [origin, setOrigin] = useState<string>("")
   const [destination, setDestination] = useState<string>("")
   const [passengers, setPassengers] = useState(1)
@@ -19,6 +21,7 @@ function App() {
   const [returnDate, setReturnDate] = useState<string>("")
 
   if (!country) return null
+  if (!currency) return null
 
   return (
     <div className="flex flex-col items-center h-screen w-screen bg-blue-400">
@@ -54,7 +57,7 @@ function App() {
               label="Passenger/s"
             />
           </div>
-          <div className="flex flex-row m-6 gap-4">
+          <div className="flex m-6 gap-4">
             {flightType === "one-way" ? (
               <SingleDatePicker
                 placeholder="Departure Date"
