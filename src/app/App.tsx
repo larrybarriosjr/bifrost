@@ -5,11 +5,13 @@ import { useCountryCode } from "hooks/useCountryCode"
 import SingleDatePicker from "components/SingleDatePicker"
 import RangeDatePicker from "components/RangeDatePicker"
 import RadioGroup from "components/RadioGroup"
+import NumberInput from "components/NumberInput"
 
 function App() {
   const country = useCountryCode()
   const [origin, setOrigin] = useState<string>("")
   const [destination, setDestination] = useState<string>("")
+  const [passengers, setPassengers] = useState(1)
   const [flightType, setFlightType] = useState<string>("one-way")
   const [flightDate, setFlightDate] = useState<string>("")
   const [outwardDate, setOutwardDate] = useState<string>("")
@@ -18,11 +20,11 @@ function App() {
   if (!country) return null
 
   return (
-    <div className="flex flex-col items-center h-screen bg-blue-400">
+    <div className="flex flex-col items-center h-screen w-screen bg-blue-400">
       <Logo className="h-10" />
-      <main className="flex flex-col items-center h-5/6 bg-green-200 w-8/12 rounded-3xl">
-        <section className="h-72 bg-gray-50 w-11/12 rounded-3xl my-8">
-          <div className="flex m-6 gap-20">
+      <main className="flex flex-col items-center h-5/6 bg-green-200 w-screen max-w-screen-lg rounded-3xl">
+        <section className="h-72 bg-gray-50 w-max rounded-3xl my-8">
+          <div className="flex m-6 gap-4">
             <PlaceDropdown
               placeholder="Select Origin..."
               setValue={setOrigin}
@@ -33,8 +35,13 @@ function App() {
               setValue={setDestination}
               className="w-full"
             />
+            <NumberInput
+              value={passengers}
+              setValue={setPassengers}
+              label="Passenger/s"
+            />
           </div>
-          <div className="flex m-6 gap-20">
+          <div className="flex m-6 gap-4">
             <RadioGroup
               name="flight_type"
               items={[
@@ -44,14 +51,15 @@ function App() {
               selected={flightType}
               setSelected={setFlightType}
             />
-          </div>
-          <div className="flex m-6 gap-20">
             {flightType === "one-way" ? (
-              <SingleDatePicker
-                placeholder="Departure Date"
-                date={flightDate}
-                setDate={setFlightDate}
-              />
+              <>
+                <SingleDatePicker
+                  placeholder="Departure Date"
+                  date={flightDate}
+                  setDate={setFlightDate}
+                />
+                <div className="w-72" />
+              </>
             ) : (
               <RangeDatePicker
                 from={outwardDate}
@@ -63,6 +71,7 @@ function App() {
               />
             )}
           </div>
+          <div className="flex m-6 gap-4"></div>
         </section>
       </main>
     </div>

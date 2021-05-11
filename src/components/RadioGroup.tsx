@@ -16,13 +16,13 @@ const RadioGroup = ({
   }
 
   return (
-    <div className="flex gap-1 p-1 bg-green-200 rounded-full">
+    <div className="flex flex-grow max-w-max gap-1 p-1 bg-green-200 rounded-full">
       {items.map((item, idx) => (
         <div
           key={idx}
           className={`flex items-center justify-center ${
             item.value !== selected ? "hover:bg-blue-200" : ""
-          } cursor-pointer rounded-full h-12 w-48 ${
+          } cursor-pointer rounded-full h-12 w-36 ${
             item.value === selected ? "bg-blue-900 text-gray-50" : ""
           }`}
           onClick={() => handleClick(item.value)}

@@ -54,6 +54,10 @@ const RangeDatePicker = ({
     setMovingTo(day)
   }
 
+  const handleResetMovingTo = () => {
+    setMovingTo(null)
+  }
+
   useEffect(() => {
     if (toRef.current !== null && from && !to) {
       toRef.current.getInput().focus()
@@ -113,6 +117,7 @@ const RangeDatePicker = ({
         ref={toRef}
         placeholder={toPlaceholder}
         onDayChange={handleToChange}
+        onDayPickerHide={handleResetMovingTo}
         format={DATE_FORMAT_INPUT}
         formatDate={formatDate}
         parseDate={parseDate}
@@ -125,8 +130,8 @@ const RangeDatePicker = ({
           modifiersStyles,
           fromMonth: from ? dateFrom : dateNow,
           month: from ? dateFrom : dateNow,
-          disabledDays: { before: dateFrom },
-          selectedDays: [dateFrom, { from: dateFrom, to: movingTo }],
+          disabledDays: { before: from ? dateFrom : dateNow },
+          selectedDays: [dateFrom, { from: dateFrom, to: movingTo || dateTo }],
           onDayMouseEnter: handleMovingTo
         }}
       />
