@@ -7,8 +7,6 @@ import { useEffect, useRef, useState } from "react"
 type RangeDatePickerProps = {
   from: string
   to: string
-  fromPlaceholder: string
-  toPlaceholder: string
   setFrom: React.Dispatch<React.SetStateAction<string>>
   setTo: React.Dispatch<React.SetStateAction<string>>
 }
@@ -16,8 +14,6 @@ type RangeDatePickerProps = {
 const RangeDatePicker = ({
   from,
   to,
-  fromPlaceholder,
-  toPlaceholder,
   setFrom,
   setTo
 }: RangeDatePickerProps) => {
@@ -91,7 +87,7 @@ const RangeDatePicker = ({
   return (
     <>
       <DayPickerInput
-        placeholder={fromPlaceholder}
+        placeholder="Departure Date"
         onDayChange={handleFromChange}
         format={DATE_FORMAT_INPUT}
         formatDate={formatDate}
@@ -115,7 +111,7 @@ const RangeDatePicker = ({
       />
       <DayPickerInput
         ref={toRef}
-        placeholder={toPlaceholder}
+        placeholder="Return Date"
         onDayChange={handleToChange}
         onDayPickerHide={handleResetMovingTo}
         format={DATE_FORMAT_INPUT}

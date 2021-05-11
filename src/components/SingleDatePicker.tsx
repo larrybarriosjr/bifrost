@@ -1,18 +1,14 @@
 import DayPickerInput from "react-day-picker/DayPickerInput"
-import { DateUtils, DayPickerInputProps } from "react-day-picker"
+import { DateUtils } from "react-day-picker"
 import dateFnsFormat from "date-fns/format"
 import dateFnsParse from "date-fns/parse"
 
-type SingleDatePickerProps = DayPickerInputProps & {
+type SingleDatePickerProps = {
   date: string
   setDate: React.Dispatch<React.SetStateAction<string>>
 }
 
-const SingleDatePicker = ({
-  date,
-  setDate,
-  ...props
-}: SingleDatePickerProps) => {
+const SingleDatePicker = ({ date, setDate }: SingleDatePickerProps) => {
   const dateNow = new Date()
 
   const DATE_FORMAT_INPUT = "dd MMMM y"
@@ -49,6 +45,7 @@ const SingleDatePicker = ({
 
   return (
     <DayPickerInput
+      placeholder="Departure Date"
       onDayChange={handleDayChange}
       format={DATE_FORMAT_INPUT}
       formatDate={formatDate}
@@ -63,7 +60,6 @@ const SingleDatePicker = ({
         fromMonth: dateNow,
         disabledDays: { before: dateNow }
       }}
-      {...props}
     />
   )
 }

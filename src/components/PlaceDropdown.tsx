@@ -1,23 +1,18 @@
 import { Dispatch, SetStateAction } from "react"
 import AsyncSelect from "react-select/async"
 import { Option } from "react-select/src/filters"
-import { SelectComponentsProps } from "react-select/src/Select"
 import { ActionMeta } from "react-select/src/types"
 import { getPlaces } from "services/skyscanner"
 import { ReactSelectCallback, ReactSelectReturn } from "types/app"
 import { QueryPlace } from "types/skyscanner"
 import debounce from "lodash.debounce"
 
-type PlaceDropdownProps = SelectComponentsProps & {
-  placeholder?: string
+type PlaceDropdownProps = {
+  placeholder: string
   setValue: Dispatch<SetStateAction<string>>
 }
 
-const PlaceDropdown = ({
-  placeholder = "Select...",
-  setValue,
-  ...props
-}: PlaceDropdownProps) => {
+const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {
   const debouncedOptions = debounce(async (input, callback) => {
     callback(await getPlaces(input))
   }, 500)
@@ -62,6 +57,10 @@ const PlaceDropdown = ({
       placeholder={placeholder}
       isClearable
       styles={{
+        container: base => ({
+          ...base,
+          width: "100%"
+        }),
         control: base => ({
           ...base,
           backgroundColor: "#A7F3D0",
@@ -96,7 +95,6 @@ const PlaceDropdown = ({
           color: "#4B5563"
         })
       }}
-      {...props}
     />
   )
 }

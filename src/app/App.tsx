@@ -10,6 +10,7 @@ import { useLocalStorage } from "hooks/useLocalStorage"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { usePassengers } from "hooks/usePassengers"
+import SearchButton from "components/SearchButton"
 
 function App() {
   const country = useCountryCode()
@@ -36,12 +37,10 @@ function App() {
             <PlaceDropdown
               placeholder="Select Origin..."
               setValue={setOrigin}
-              className="w-full"
             />
             <PlaceDropdown
               placeholder="Select Destination..."
               setValue={setDestination}
-              className="w-full"
             />
           </div>
           <div className="flex m-6 gap-4">
@@ -51,28 +50,16 @@ function App() {
           </div>
           <div className="flex m-6 gap-4">
             {flightType === "one-way" ? (
-              <SingleDatePicker
-                placeholder="Departure Date"
-                date={flightDate}
-                setDate={setFlightDate}
-              />
+              <SingleDatePicker date={flightDate} setDate={setFlightDate} />
             ) : (
               <RangeDatePicker
                 from={outwardDate}
                 to={returnDate}
-                fromPlaceholder="Departure Date"
-                toPlaceholder="Return Date"
                 setFrom={setOutwardDate}
                 setTo={setReturnDate}
               />
             )}
-            <button
-              type="button"
-              className={`bg-blue-900 border-blue-900 border-2 rounded-full h-14 w-48 text-gray-50 font-bold ml-auto
-            focus:outline-none hover:border-gray-400 focus:border-blue-500`}
-            >
-              Search
-            </button>
+            <SearchButton />
           </div>
         </section>
       </main>
