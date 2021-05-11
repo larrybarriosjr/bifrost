@@ -37,7 +37,7 @@ const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
     <div className="flex flex-col items-center">
       <button
         onClick={handleShowInput}
-        className={`bg-green-200 border-green-200 border-2 rounded-full h-14 w-40 text-blue-900
+        className={`bg-green-200 border-green-200 border-2 rounded-full h-14 w-48 text-blue-900
             focus:outline-none hover:border-gray-400 focus:border-blue-500
             ${value < 1 ? "font-normal" : "font-bold"}`}
       >

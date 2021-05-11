@@ -23,8 +23,8 @@ function App() {
   return (
     <div className="flex flex-col items-center h-screen w-screen bg-blue-400">
       <Logo className="h-10" />
-      <main className="flex flex-col items-center h-5/6 bg-green-200 w-screen max-w-screen-lg rounded-3xl">
-        <section className="h-72 bg-gray-50 w-max rounded-3xl my-8">
+      <main className="flex flex-col items-center h-5/6 bg-green-200 w-screen max-w-screen-lg lg:rounded-3xl">
+        <section className="bg-gray-50 w-max rounded-3xl my-8">
           <div className="flex m-6 gap-4">
             <PlaceDropdown
               placeholder="Select Origin..."
@@ -35,11 +35,6 @@ function App() {
               placeholder="Select Destination..."
               setValue={setDestination}
               className="w-full"
-            />
-            <NumberInput
-              value={passengers}
-              setValue={setPassengers}
-              label="Passenger/s"
             />
           </div>
           <div className="flex m-6 gap-4">
@@ -52,15 +47,20 @@ function App() {
               selected={flightType}
               setSelected={setFlightType}
             />
+            <CurrencyDropdown />
+            <NumberInput
+              value={passengers}
+              setValue={setPassengers}
+              label="Passenger/s"
+            />
+          </div>
+          <div className="flex flex-row m-6 gap-4 justify-between">
             {flightType === "one-way" ? (
-              <>
-                <SingleDatePicker
-                  placeholder="Departure Date"
-                  date={flightDate}
-                  setDate={setFlightDate}
-                />
-                <div className="w-72" />
-              </>
+              <SingleDatePicker
+                placeholder="Departure Date"
+                date={flightDate}
+                setDate={setFlightDate}
+              />
             ) : (
               <RangeDatePicker
                 from={outwardDate}
