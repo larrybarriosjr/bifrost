@@ -6,6 +6,7 @@ import SingleDatePicker from "components/SingleDatePicker"
 import RangeDatePicker from "components/RangeDatePicker"
 import RadioGroup from "components/RadioGroup"
 import NumberInput from "components/NumberInput"
+import CurrencyDropdown from "components/CurrencyDropdown"
 
 function App() {
   const country = useCountryCode()
@@ -71,7 +72,9 @@ function App() {
               />
             )}
           </div>
-          <div className="flex m-6 gap-4"></div>
+          <div className="flex flex-row m-6 justify-between">
+            <CurrencyDropdown />
+          </div>
         </section>
       </main>
     </div>
