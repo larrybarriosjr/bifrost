@@ -8,10 +8,15 @@ type NumberInputProps = {
 
 const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
   const [inputValue, setInputValue] = useState(1)
+  const [ignoreBlur, setIgnoreBlur] = useState(false)
   const [inputDisplay, setInputDisplay] = useState(false)
 
   const handleShowInput = () => {
     setInputDisplay(true)
+  }
+
+  const handleHideInput = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (!ignoreBlur) setInputDisplay(false)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,8 +39,14 @@ const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div
+      className="flex flex-col items-center"
+      onMouseDown={() => setIgnoreBlur(true)}
+      onMouseUp={() => setIgnoreBlur(false)}
+      onBlur={handleHideInput}
+    >
       <button
+        type="button"
         onClick={handleShowInput}
         className={`bg-green-200 border-green-200 border-2 rounded-full h-14 w-48 text-blue-900
             focus:outline-none hover:border-gray-400 focus:border-blue-500
@@ -54,6 +65,7 @@ const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
             min="0"
           />
           <button
+            type="button"
             onClick={handleSetValue}
             className="rounded-r p-3 font-bold text-gray-50 bg-blue-900 border-2 focus:outline-none hover:border-gray-400 focus:border-blue-500"
           >
