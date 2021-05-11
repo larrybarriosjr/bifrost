@@ -12,6 +12,7 @@ const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
   const [inputDisplay, setInputDisplay] = useState(false)
 
   const handleShowInput = () => {
+    setInputValue(value)
     setInputDisplay(true)
   }
 
@@ -34,7 +35,7 @@ const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
   }
 
   const handleSetValue = () => {
-    setValue(inputValue)
+    if (inputValue) setValue(inputValue)
     setInputDisplay(false)
   }
 
@@ -55,19 +56,19 @@ const NumberInput = ({ value, setValue, label }: NumberInputProps) => {
         {value} {label}
       </button>
       {inputDisplay ? (
-        <div className="absolute flex flex-row mt-16 bg-white rounded shadow-md border border-gray-300">
+        <div className="absolute flex flex-row w-48 mt-16 bg-white rounded shadow-md border border-gray-300">
           <input
-            className="w-16 bg-transparent pl-4 py-3"
+            className="w-36 bg-transparent pl-4 py-3"
             type="number"
             value={inputValue.toString()}
             onChange={handleChange}
             onKeyDown={handleInput}
-            min="0"
+            min="1"
           />
           <button
             type="button"
             onClick={handleSetValue}
-            className="rounded-r p-3 font-bold text-gray-50 bg-blue-900 border-2 focus:outline-none hover:border-gray-400 focus:border-blue-500"
+            className="rounded-r w-12 font-bold text-gray-50 bg-blue-900 border-2 focus:outline-none hover:border-gray-400 focus:border-blue-500"
           >
             ✓
           </button>

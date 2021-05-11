@@ -54,7 +54,7 @@ function App() {
               label="Passenger/s"
             />
           </div>
-          <div className="flex flex-row m-6 gap-4 justify-between">
+          <div className="flex flex-row m-6 gap-4">
             {flightType === "one-way" ? (
               <SingleDatePicker
                 placeholder="Departure Date"
@@ -73,7 +73,7 @@ function App() {
             )}
             <button
               type="button"
-              className={`bg-blue-900 border-blue-900 border-2 rounded-full h-14 w-48 text-gray-50 font-bold
+              className={`bg-blue-900 border-blue-900 border-2 rounded-full h-14 w-48 text-gray-50 font-bold ml-auto
             focus:outline-none hover:border-gray-400 focus:border-blue-500`}
             >
               Search
