@@ -2,9 +2,9 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios"
 import {
   Countries,
   Currencies,
+  GetRoutesForm,
   QueryPlaces,
-  QueryRoutes,
-  GetRoutesForm
+  QueryRoutes
 } from "types/skyscanner"
 
 const LOCALE = "en-US"

@@ -1,7 +1,7 @@
-import DayPickerInput from "react-day-picker/DayPickerInput"
-import { DateUtils } from "react-day-picker"
 import dateFnsFormat from "date-fns/format"
 import dateFnsParse from "date-fns/parse"
+import { DateUtils } from "react-day-picker"
+import DayPickerInput from "react-day-picker/DayPickerInput"
 
 type SingleDatePickerProps = {
   date: string

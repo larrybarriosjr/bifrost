@@ -1,11 +1,11 @@
+import App from "app/App"
 import React from "react"
+import "react-day-picker/lib/style.css"
 import ReactDOM from "react-dom"
 import { QueryClient, QueryClientProvider } from "react-query"
-import App from "app/App"
-import reportWebVitals from "./reportWebVitals"
-import "react-day-picker/lib/style.css"
 import "styles/datepicker.css"
 import "./index.css"
+import reportWebVitals from "./reportWebVitals"
 
 const queryClient = new QueryClient()
 
