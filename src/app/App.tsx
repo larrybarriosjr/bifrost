@@ -58,10 +58,10 @@ function App() {
   if (!passengers) return null
 
   return (
-    <div className="flex flex-col items-center h-screen w-screen bg-blue-400">
+    <div className="flex flex-col items-center h-screen w-screen bg-gray-100">
       <Logo className="h-10" />
-      <main className="flex flex-col items-center h-5/6 bg-green-200 w-screen max-w-screen-lg lg:rounded-3xl">
-        <section className="bg-gray-50 w-max rounded-3xl my-8">
+      <main className="flex flex-col items-center h-5/6 bg-blue-200 w-screen max-w-screen-lg lg:rounded-3xl">
+        <section className="bg-gray-50 shadow-sm w-max rounded-3xl my-16">
           <div className="flex m-6 gap-4">
             <PlaceDropdown
               placeholder="Select Origin..."
