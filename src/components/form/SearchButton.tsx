@@ -8,7 +8,7 @@ const SearchButton = ({ disabled, onClick }: SearchButtonProps) => {
     <button
       type="button"
       className={`focus:outline-none focus:border-blue-500
-      border-2 rounded-full h-14 w-48 font-bold ml-auto ${
+      border-2 rounded-full h-14 w-48 font-bold ${
         disabled
           ? "bg-gray-300 text-gray-400 border-gray-300"
           : "bg-blue-900 text-gray-50 border-blue-900 hover:border-gray-400"
