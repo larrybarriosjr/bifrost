@@ -4,7 +4,9 @@ type SectionProps = {
 
 const Section = ({ children }: SectionProps) => {
   return (
-    <section className="bg-gray-50 shadow-sm rounded-3xl">{children}</section>
+    <section className="bg-gray-50 w-full shadow-sm rounded-3xl">
+      {children}
+    </section>
   )
 }
 

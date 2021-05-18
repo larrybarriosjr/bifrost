@@ -11,6 +11,7 @@ import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { useLocalStorage } from "hooks/useLocalStorage"
 import { usePassengers } from "hooks/usePassengers"
+import { useRoutes } from "hooks/useRoutes"
 import { useEffect, useState } from "react"
 import { useQuery } from "react-query"
 import { getRoutes } from "services/skyscanner"
@@ -26,9 +27,10 @@ const FlightForm = () => {
   const [flightDate, setFlightDate] = useState<string>("")
   const [outwardDate, setOutwardDate] = useState<string>("")
   const [returnDate, setReturnDate] = useState<string>("")
+  const { setRoutes, setLoading } = useRoutes()
 
-  const { data: flights, refetch: fetchFlights } = useQuery(
-    "flights",
+  const { data, refetch, isLoading } = useQuery(
+    "routes",
     () =>
       getRoutes({
         origin,
@@ -49,12 +51,16 @@ const FlightForm = () => {
     flightType === "one-way" ? oneWayDisabled : roundTripDisabled
 
   const handleFlightSearch = () => {
-    if (!searchButtonDisabled) fetchFlights()
+    if (!searchButtonDisabled) refetch()
   }
 
   useEffect(() => {
-    console.log(flights)
-  }, [flights])
+    if (data) setRoutes(data)
+  }, [data, setRoutes])
+
+  useEffect(() => {
+    setLoading(isLoading)
+  }, [isLoading, setLoading])
 
   return (
     <Section>
