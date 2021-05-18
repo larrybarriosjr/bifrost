@@ -29,7 +29,7 @@ const FlightForm = () => {
   const [returnDate, setReturnDate] = useState<string>("")
   const { setRoutes, setLoading } = useRoutes()
 
-  const { data, refetch, isLoading } = useQuery(
+  const { data, refetch, isFetching } = useQuery(
     "routes",
     () =>
       getRoutes({
@@ -59,8 +59,8 @@ const FlightForm = () => {
   }, [data, setRoutes])
 
   useEffect(() => {
-    setLoading(isLoading)
-  }, [isLoading, setLoading])
+    setLoading(isFetching)
+  }, [isFetching, setLoading])
 
   return (
     <Section>
