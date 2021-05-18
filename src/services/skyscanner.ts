@@ -2,16 +2,13 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios"
 import {
   Countries,
   Currencies,
+  GetPlacesForm,
   GetRoutesForm,
   QueryPlaces,
   QueryRoutes
 } from "types/skyscanner"
 
 const LOCALE = "en-US"
-const country = localStorage.getItem("country")
-const COUNTRY = country ? JSON.parse(country) : ""
-const currency = localStorage.getItem("currency")
-const CURRENCY = currency ? JSON.parse(currency) : ""
 
 const API_URL = process.env.REACT_APP_SKYSCANNER_API_URL
 const RAPIDAPI_KEY = process.env.REACT_APP_RAPIDAPI_KEY
@@ -48,14 +45,22 @@ export const getCurrencies = async () => {
   return data.Currencies
 }
 
-export const getPlaces = async (query: string) => {
-  const url = `${PLACES_URL}/${COUNTRY}/${CURRENCY}/${LOCALE}/?query=${query}`
+export const getPlaces = async (form: GetPlacesForm) => {
+  const { query, country, currency } = form
+  const url = `${PLACES_URL}/${country}/${currency}/${LOCALE}/?query=${query}`
   const data = await get<QueryPlaces>(url)
   return data.Places
 }
 
 export const getRoutes = async (form: GetRoutesForm) => {
-  const { origin, destination, outward_date, return_date = "" } = form
-  const url = `${ROUTES_URL}/${COUNTRY}/${CURRENCY}/${LOCALE}/${origin}/${destination}/${outward_date}/${return_date}`
+  const {
+    origin,
+    destination,
+    outward_date,
+    return_date = "",
+    country,
+    currency
+  } = form
+  const url = `${ROUTES_URL}/${country}/${currency}/${LOCALE}/${origin}/${destination}/${outward_date}/${return_date}`
   return await get<QueryRoutes>(url)
 }

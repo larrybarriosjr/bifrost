@@ -1,8 +1,8 @@
 import { GroupTypeBase } from "react-select"
 
 export type InputValue<T> = {
-  value: T
   label: string
+  value: T
 }
 
 export type ReactSelectCallback<T> = (
@@ -10,6 +10,6 @@ export type ReactSelectCallback<T> = (
 ) => void
 
 export type ReactSelectReturn<T> =
-  | void
   | Promise<readonly (T | GroupTypeBase<T>)[]>
   | undefined
+  | void

@@ -34,7 +34,9 @@ const FlightForm = () => {
         origin,
         destination,
         outward_date: flightDate || outwardDate,
-        return_date: returnDate
+        return_date: returnDate,
+        country,
+        currency
       }),
     { enabled: false }
   )

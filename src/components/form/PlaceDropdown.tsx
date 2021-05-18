@@ -1,3 +1,5 @@
+import { useCountryCode } from "hooks/useCountryCode"
+import { useCurrencyCode } from "hooks/useCurrencyCode"
 import debounce from "lodash.debounce"
 import { Dispatch, SetStateAction } from "react"
 import AsyncSelect from "react-select/async"
@@ -13,9 +15,15 @@ type PlaceDropdownProps = {
 }
 
 const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {
-  const debouncedOptions = debounce(async (input, callback) => {
-    callback(await getPlaces(input))
-  }, 500)
+  const country = useCountryCode()
+  const currency = useCurrencyCode()
+
+  const debouncedOptions = debounce(
+    async (input: string, callback: ReactSelectCallback<QueryPlace>) => {
+      callback(await getPlaces({ query: input, country, currency }))
+    },
+    500
+  )
 
   const fetchOptions = (
     input: string,

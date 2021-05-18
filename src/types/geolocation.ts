@@ -1,8 +1,8 @@
 export type GeoLocation = {
-  ipAddress: string
+  city: string
   continentCode: string
   continentName: string
   countryCode: string
   countryName: string
-  city: string
+  ipAddress: string
 }
