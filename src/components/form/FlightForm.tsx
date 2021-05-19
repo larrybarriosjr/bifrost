@@ -5,13 +5,13 @@ import PlaceDropdown from "components/form/PlaceDropdown"
 import RangeDatePicker from "components/form/RangeDatePicker"
 import SearchButton from "components/form/SearchButton"
 import SingleDatePicker from "components/form/SingleDatePicker"
-import FormRow from "containers/FormRow"
+import Row from "containers/Row"
 import Section from "containers/Section"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { useLocalStorage } from "hooks/useLocalStorage"
 import { usePassengers } from "hooks/usePassengers"
-import { useRoutes } from "hooks/useRoutes"
+import { useResults } from "hooks/useResults"
 import { useEffect, useState } from "react"
 import { useQuery } from "react-query"
 import { getRoutes } from "services/skyscanner"
@@ -27,7 +27,7 @@ const FlightForm = () => {
   const [flightDate, setFlightDate] = useState<string>("")
   const [outwardDate, setOutwardDate] = useState<string>("")
   const [returnDate, setReturnDate] = useState<string>("")
-  const { setRoutes, setLoading } = useRoutes()
+  const { setResults, setLoading } = useResults()
 
   const { data, refetch, isFetching } = useQuery(
     "routes",
@@ -55,8 +55,8 @@ const FlightForm = () => {
   }
 
   useEffect(() => {
-    if (data) setRoutes(data)
-  }, [data, setRoutes])
+    if (data) setResults(data)
+  }, [data, setResults])
 
   useEffect(() => {
     setLoading(isFetching)
@@ -64,19 +64,19 @@ const FlightForm = () => {
 
   return (
     <Section>
-      <FormRow>
+      <Row>
         <PlaceDropdown placeholder="Select Origin..." setValue={setOrigin} />
         <PlaceDropdown
           placeholder="Select Destination..."
           setValue={setDestination}
         />
-      </FormRow>
-      <FormRow>
+      </Row>
+      <Row>
         <FlightTypeRadio type={flightType} setType={setFlightType} />
         <CurrencyDropdown />
         <PassengerInput />
-      </FormRow>
-      <FormRow>
+      </Row>
+      <Row>
         {flightType === "one-way" ? (
           <SingleDatePicker date={flightDate} setDate={setFlightDate} />
         ) : (
@@ -91,7 +91,7 @@ const FlightForm = () => {
           disabled={searchButtonDisabled}
           onClick={handleFlightSearch}
         />
-      </FormRow>
+      </Row>
     </Section>
   )
 }

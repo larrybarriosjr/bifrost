@@ -34,7 +34,7 @@ const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {
   }
 
   const formatOptionLabel = (opt: QueryPlace) => {
-    return `${opt.PlaceName} (${opt.PlaceId.replaceAll("-sky", "")})`
+    return `${opt.PlaceName} (${opt.PlaceId.slice(0, 3)})`
   }
 
   const filterOption = (opt: Option) => {
