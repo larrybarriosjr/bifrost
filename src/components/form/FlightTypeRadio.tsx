@@ -1,3 +1,4 @@
+import { FlightType } from "defaults/flight"
 import { useFlightTypes } from "hooks/useFlightTypes"
 import { useEffect } from "react"
 
@@ -10,7 +11,7 @@ const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
   const flightTypes = useFlightTypes()
 
   useEffect(() => {
-    if (!type) setType("one-way")
+    if (!type) setType(FlightType.ONE_WAY)
   }, [type, setType])
 
   const handleClick = (value: string) => {

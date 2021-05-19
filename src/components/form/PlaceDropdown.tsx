@@ -1,3 +1,6 @@
+import { LoadingText } from "defaults/flight"
+import { ReactSelectAction } from "defaults/lib"
+import { Color } from "defaults/style"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import debounce from "lodash.debounce"
@@ -42,14 +45,14 @@ const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {
   }
 
   const loadingMessage = () => {
-    return "Searching..."
+    return LoadingText.PLACE
   }
 
   const handleChange = (
     value: QueryPlace | null,
     action: ActionMeta<QueryPlace>
   ) => {
-    if (value && action.action === "select-option") {
+    if (value && action.action === ReactSelectAction.SELECT) {
       return setValue(value.PlaceId)
     }
     setValue("")
@@ -71,36 +74,36 @@ const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {
         }),
         control: base => ({
           ...base,
-          backgroundColor: "#A7F3D0",
+          backgroundColor: Color.GREEN_200,
           borderRadius: "50px",
-          borderColor: "#A7F3D0",
+          borderColor: Color.GREEN_200,
           borderWidth: "2px",
           padding: "0.5rem"
         }),
         input: base => ({
           ...base,
-          color: "#1E3A8A"
+          color: Color.BLUE_900
         }),
         singleValue: base => ({
           ...base,
-          color: "#1E3A8A",
+          color: Color.BLUE_900,
           fontWeight: "bold"
         }),
         placeholder: base => ({
           ...base,
-          color: "#1E3A8A"
+          color: Color.BLUE_900
         }),
         clearIndicator: base => ({
           ...base,
-          color: "#4B5563"
+          color: Color.GRAY_600
         }),
         indicatorSeparator: base => ({
           ...base,
-          backgroundColor: "#4B5563"
+          backgroundColor: Color.GRAY_600
         }),
         dropdownIndicator: base => ({
           ...base,
-          color: "#4B5563"
+          color: Color.GRAY_600
         })
       }}
     />

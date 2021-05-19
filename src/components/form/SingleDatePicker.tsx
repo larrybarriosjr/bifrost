@@ -1,5 +1,7 @@
 import dateFnsFormat from "date-fns/format"
 import dateFnsParse from "date-fns/parse"
+import { DateFormat, PlaceholderText } from "defaults/flight"
+import { Color } from "defaults/style"
 import { DateUtils } from "react-day-picker"
 import DayPickerInput from "react-day-picker/DayPickerInput"
 
@@ -11,12 +13,9 @@ type SingleDatePickerProps = {
 const SingleDatePicker = ({ date, setDate }: SingleDatePickerProps) => {
   const dateNow = new Date()
 
-  const DATE_FORMAT_INPUT = "dd MMMM y"
-  const DATE_FORMAT_STATE = "yyyy-MM-dd"
-
   const handleDayChange = (day: Date) => {
     if (day instanceof Date) {
-      const formattedDate = dateFnsFormat(day, DATE_FORMAT_STATE)
+      const formattedDate = dateFnsFormat(day, DateFormat.META)
       setDate(formattedDate)
     }
   }
@@ -40,14 +39,14 @@ const SingleDatePicker = ({ date, setDate }: SingleDatePickerProps) => {
     outside: { cursor: "default" },
     today: { width: "2.5rem", lineHeight: "1.25rem" },
     days: { width: "2.5rem", lineHeight: "1.25rem" },
-    disabled: { color: "#9CA3AF" }
+    disabled: { color: Color.GRAY_400 }
   }
 
   return (
     <DayPickerInput
-      placeholder="Departure Date"
+      placeholder={PlaceholderText.DEPARTURE}
       onDayChange={handleDayChange}
-      format={DATE_FORMAT_INPUT}
+      format={DateFormat.DISPLAY}
       formatDate={formatDate}
       parseDate={parseDate}
       inputProps={{

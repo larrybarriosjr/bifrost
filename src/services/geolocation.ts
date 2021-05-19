@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from "axios"
+import { GEOLOCATION_URL } from "defaults/env"
 import { GeoLocation } from "types/geolocation"
-
-const GEOLOCATION_URL = process.env.REACT_APP_GEOLOCATION_URL
 
 export const getCountryCode = async () => {
   const { data }: AxiosResponse<GeoLocation> = await axios.get(GEOLOCATION_URL)

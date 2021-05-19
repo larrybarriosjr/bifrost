@@ -1,5 +1,14 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios"
 import {
+  API_URL,
+  PLACES_URL,
+  RAPIDAPI_HOST,
+  RAPIDAPI_KEY,
+  REFERENCE_URL,
+  ROUTES_URL
+} from "defaults/env"
+import { FlightDefaults } from "defaults/flight"
+import {
   Countries,
   Currencies,
   GetPlacesForm,
@@ -8,15 +17,7 @@ import {
   QueryRoutes
 } from "types/skyscanner"
 
-const LOCALE = "en-US"
-
-const API_URL = process.env.REACT_APP_SKYSCANNER_API_URL
-const RAPIDAPI_KEY = process.env.REACT_APP_RAPIDAPI_KEY
-const RAPIDAPI_HOST = process.env.REACT_APP_RAPIDAPI_HOST
-
-const REFERENCE_URL = process.env.REACT_APP_SKYSCANNER_REFERENCE_URL
-const PLACES_URL = process.env.REACT_APP_SKYSCANNER_PLACES_URL
-const ROUTES_URL = process.env.REACT_APP_SKYSCANNER_ROUTES_URL
+const { LOCALE } = FlightDefaults
 
 const config: AxiosRequestConfig = {
   baseURL: API_URL,

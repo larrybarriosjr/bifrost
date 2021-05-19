@@ -1,5 +1,7 @@
 import dateFnsFormat from "date-fns/format"
 import dateFnsParse from "date-fns/parse"
+import { DateFormat, PlaceholderText } from "defaults/flight"
+import { Color } from "defaults/style"
 import { useEffect, useRef, useState } from "react"
 import { DateUtils } from "react-day-picker"
 import DayPickerInput from "react-day-picker/DayPickerInput"
@@ -25,19 +27,16 @@ const RangeDatePicker = ({
   const [movingTo, setMovingTo] = useState<Date | null>(null)
   const toRef = useRef<DayPickerInput>(null)
 
-  const DATE_FORMAT_INPUT = "dd MMMM y"
-  const DATE_FORMAT_STATE = "yyyy-MM-dd"
-
   const handleFromChange = (day: Date) => {
     if (day instanceof Date) {
-      const formattedDate = dateFnsFormat(day, DATE_FORMAT_STATE)
+      const formattedDate = dateFnsFormat(day, DateFormat.META)
       setFrom(formattedDate)
     }
   }
 
   const handleToChange = (day: Date) => {
     if (day instanceof Date) {
-      const formattedDate = dateFnsFormat(day, DATE_FORMAT_STATE)
+      const formattedDate = dateFnsFormat(day, DateFormat.META)
       setTo(formattedDate)
     }
   }
@@ -81,15 +80,15 @@ const RangeDatePicker = ({
     outside: { cursor: "default" },
     today: { width: "2.5rem", lineHeight: "1.25rem" },
     days: { width: "2.5rem", lineHeight: "1.25rem" },
-    disabled: { color: "#9CA3AF" }
+    disabled: { color: Color.GRAY_400 }
   }
 
   return (
     <>
       <DayPickerInput
-        placeholder="Departure Date"
+        placeholder={PlaceholderText.DEPARTURE}
         onDayChange={handleFromChange}
-        format={DATE_FORMAT_INPUT}
+        format={DateFormat.DISPLAY}
         formatDate={formatDate}
         parseDate={parseDate}
         inputProps={{
@@ -111,10 +110,10 @@ const RangeDatePicker = ({
       />
       <DayPickerInput
         ref={toRef}
-        placeholder="Return Date"
+        placeholder={PlaceholderText.RETURN}
         onDayChange={handleToChange}
         onDayPickerHide={handleResetMovingTo}
-        format={DATE_FORMAT_INPUT}
+        format={DateFormat.DISPLAY}
         formatDate={formatDate}
         parseDate={parseDate}
         inputProps={{

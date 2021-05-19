@@ -1,10 +1,11 @@
+import { ReactQueryKey } from "defaults/lib"
 import { useEffect } from "react"
 import { useQuery } from "react-query"
 import { getCurrencies } from "services/skyscanner"
 import { Currency } from "types/skyscanner"
 
 export const useCurrencies = (): Currency[] | undefined => {
-  const { data, refetch } = useQuery("currencies", getCurrencies, {
+  const { data, refetch } = useQuery(ReactQueryKey.CURRENCIES, getCurrencies, {
     enabled: false
   })
 

@@ -7,6 +7,9 @@ import SearchButton from "components/form/SearchButton"
 import SingleDatePicker from "components/form/SingleDatePicker"
 import Row from "containers/Row"
 import Section from "containers/Section"
+import { FlightType, PlaceholderText } from "defaults/flight"
+import { ReactQueryKey } from "defaults/lib"
+import { LocalStorage } from "defaults/web"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { useLocalStorage } from "hooks/useLocalStorage"
@@ -23,14 +26,17 @@ const FlightForm = () => {
 
   const [origin, setOrigin] = useState<string>("")
   const [destination, setDestination] = useState<string>("")
-  const [flightType, setFlightType] = useLocalStorage<string>("flight_type", "")
+  const [flightType, setFlightType] = useLocalStorage<string>(
+    LocalStorage.FLIGHT_TYPE,
+    ""
+  )
   const [flightDate, setFlightDate] = useState<string>("")
   const [outwardDate, setOutwardDate] = useState<string>("")
   const [returnDate, setReturnDate] = useState<string>("")
   const { setResults, setLoading } = useResults()
 
   const { data, refetch, isFetching } = useQuery(
-    "routes",
+    ReactQueryKey.ROUTES,
     () =>
       getRoutes({
         origin,
@@ -48,7 +54,7 @@ const FlightForm = () => {
   const oneWayDisabled = commonInputsDisabled || !flightDate
   const roundTripDisabled = commonInputsDisabled || !outwardDate || !returnDate
   const searchButtonDisabled =
-    flightType === "one-way" ? oneWayDisabled : roundTripDisabled
+    flightType === FlightType.ONE_WAY ? oneWayDisabled : roundTripDisabled
 
   const handleFlightSearch = () => {
     if (!searchButtonDisabled) refetch()
@@ -65,9 +71,12 @@ const FlightForm = () => {
   return (
     <Section>
       <Row>
-        <PlaceDropdown placeholder="Select Origin..." setValue={setOrigin} />
         <PlaceDropdown
-          placeholder="Select Destination..."
+          placeholder={PlaceholderText.ORIGIN}
+          setValue={setOrigin}
+        />
+        <PlaceDropdown
+          placeholder={PlaceholderText.DESTINATION}
           setValue={setDestination}
         />
       </Row>
@@ -77,7 +86,7 @@ const FlightForm = () => {
         <PassengerInput />
       </Row>
       <Row>
-        {flightType === "one-way" ? (
+        {flightType === FlightType.ONE_WAY ? (
           <SingleDatePicker date={flightDate} setDate={setFlightDate} />
         ) : (
           <RangeDatePicker

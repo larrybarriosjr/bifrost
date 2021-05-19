@@ -1,3 +1,6 @@
+import { ReactSelectAction } from "defaults/lib"
+import { Color } from "defaults/style"
+import { LocalStorage } from "defaults/web"
 import { useCurrencies } from "hooks/useCurrencies"
 import { useLocalStorage } from "hooks/useLocalStorage"
 import Select, { ActionMeta } from "react-select"
@@ -5,7 +8,7 @@ import { Currency } from "types/skyscanner"
 
 const CurrencyDropdown = () => {
   const currencies = useCurrencies()
-  const [currency, setCurrency] = useLocalStorage("currency", "")
+  const [currency, setCurrency] = useLocalStorage(LocalStorage.CURRENCY, "")
 
   const formatOptionLabel = (c: Currency) => {
     return `${c.Code} - ${c.Symbol}`
@@ -15,7 +18,7 @@ const CurrencyDropdown = () => {
     value: Currency | null,
     action: ActionMeta<Currency>
   ) => {
-    if (value && action.action === "select-option") {
+    if (value && action.action === ReactSelectAction.SELECT) {
       return setCurrency(value.Code)
     }
     setCurrency("")
@@ -32,24 +35,24 @@ const CurrencyDropdown = () => {
       styles={{
         control: base => ({
           ...base,
-          backgroundColor: "#A7F3D0",
+          backgroundColor: Color.GREEN_200,
           borderRadius: "50px",
-          borderColor: "#A7F3D0",
+          borderColor: Color.GREEN_200,
           borderWidth: "2px",
           padding: "0.5rem"
         }),
         singleValue: base => ({
           ...base,
-          color: "#1E3A8A",
+          color: Color.BLUE_900,
           fontWeight: "bold"
         }),
         indicatorSeparator: base => ({
           ...base,
-          backgroundColor: "#4B5563"
+          backgroundColor: Color.GRAY_600
         }),
         dropdownIndicator: base => ({
           ...base,
-          color: "#4B5563"
+          color: Color.GRAY_600
         })
       }}
     />

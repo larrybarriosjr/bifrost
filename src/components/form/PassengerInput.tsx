@@ -1,8 +1,12 @@
+import { LocalStorage } from "defaults/web"
 import { useLocalStorage } from "hooks/useLocalStorage"
 import { useState } from "react"
 
 const PassengerInput = () => {
-  const [passengers, setPassengers] = useLocalStorage<number>("passengers", 0)
+  const [passengers, setPassengers] = useLocalStorage<number>(
+    LocalStorage.PASSENGERS,
+    0
+  )
   const [inputValue, setInputValue] = useState(passengers)
   const [ignoreBlur, setIgnoreBlur] = useState(false)
   const [inputDisplay, setInputDisplay] = useState(false)
