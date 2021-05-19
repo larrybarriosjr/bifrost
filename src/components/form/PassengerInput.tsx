@@ -1,6 +1,7 @@
 import { LocalStorage } from "defaults/web"
 import { useLocalStorage } from "hooks/useLocalStorage"
 import { useState } from "react"
+import { pluralize } from "utils/string"
 
 const PassengerInput = () => {
   const [passengers, setPassengers] = useLocalStorage<number>(
@@ -52,7 +53,7 @@ const PassengerInput = () => {
         className={`bg-green-200 border-green-200 border-2 rounded-full h-14 w-48 text-blue-900
             focus:outline-none hover:border-gray-400 focus:border-blue-500 font-bold`}
       >
-        {passengers} {passengers === 1 ? "Passenger" : "Passengers"}
+        {passengers} {pluralize("Passenger", passengers)}
       </button>
       {inputDisplay ? (
         <div className="absolute flex flex-row w-48 mt-16 bg-white rounded shadow-md border border-gray-300">

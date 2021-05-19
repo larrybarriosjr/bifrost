@@ -6,7 +6,8 @@ export enum DateFormat {
 export enum FlightDefaults {
   CURRENCY = "USD",
   LOCALE = "en-US",
-  PASSENGERS = 1
+  PASSENGERS = 1,
+  RESULTS = 0
 }
 
 export enum FlightType {

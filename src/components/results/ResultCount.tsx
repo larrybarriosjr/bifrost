@@ -1,11 +1,14 @@
+import { FlightDefaults } from "defaults/flight"
+import { pluralize } from "utils/string"
+
 type ResultCountProps = {
   amount: number
 }
 
-const ResultCount = ({ amount = 0 }: ResultCountProps) => {
+const ResultCount = ({ amount = FlightDefaults.RESULTS }: ResultCountProps) => {
   return (
     <p className="font-bold text-blue-900">
-      {amount <= 1 ? "Result" : "Results"} ({amount})
+      {pluralize("Result", amount)} ({amount})
     </p>
   )
 }
