@@ -1,7 +1,7 @@
 import { RoutesContext } from "context/RoutesContext"
 import { useContext } from "react"
-import { ReactContextRoutes } from "types/app"
+import { ReactContextResults } from "types/app"
 
-export const useRoutes = (): ReactContextRoutes => {
+export const useResults = (): ReactContextResults => {
   return useContext(RoutesContext)
 }

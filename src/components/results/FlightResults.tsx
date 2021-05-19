@@ -1,21 +1,19 @@
-import FormRow from "containers/FormRow"
+import Row from "containers/Row"
 import Section from "containers/Section"
-import { useRoutes } from "hooks/useRoutes"
+import { useResults } from "hooks/useResults"
 import ResultCount from "./ResultCount"
 
 const FlightResults = () => {
-  const { routes, loading } = useRoutes()
+  const { quotes, loading } = useResults()
 
-  if (!routes) return null
+  if (!quotes) return null
   if (loading) return <p className="text-blue-900">Loading results...</p>
-
-  const { Quotes } = routes
 
   return (
     <Section>
-      <FormRow>
-        <ResultCount amount={Quotes.length} />
-      </FormRow>
+      <Row>
+        <ResultCount amount={quotes.length} />
+      </Row>
     </Section>
   )
 }

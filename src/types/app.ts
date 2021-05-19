@@ -6,11 +6,15 @@ export type InputValue<T> = {
   value: T
 }
 
-export type ReactContextRoutes = {
-  routes: QueryRoutes | undefined
-  setRoutes: React.Dispatch<React.SetStateAction<QueryRoutes | undefined>>
+export type ReactContextResults = {
+  carriers: QueryRoutes["Carriers"]
+  currencies: QueryRoutes["Currencies"]
   loading: boolean
+  places: QueryRoutes["Places"]
+  quotes: QueryRoutes["Quotes"]
+  routes: QueryRoutes["Routes"]
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setResults: React.Dispatch<React.SetStateAction<QueryRoutes>>
 }
 
 export type ReactSelectCallback<T> = (
