@@ -3,6 +3,7 @@ import Section from "containers/Section"
 import { LoadingText } from "defaults/flight"
 import { useResults } from "hooks/useResults"
 import ResultCount from "./ResultCount"
+import RouteItem from "./RouteItem"
 
 const FlightResults = () => {
   const { quotes, loading } = useResults()
@@ -15,6 +16,11 @@ const FlightResults = () => {
       <Row>
         <ResultCount amount={quotes.length} />
       </Row>
+      {quotes.map(item => (
+        <Row key={item.QuoteId}>
+          <RouteItem item={item} />
+        </Row>
+      ))}
     </Section>
   )
 }
