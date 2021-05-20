@@ -1,5 +1,6 @@
 import Col from "containers/Col"
 import { FlightType } from "defaults/flight"
+import { usePassengers } from "hooks/usePassengers"
 import { useResults } from "hooks/useResults"
 import { useEffect, useState } from "react"
 import { Carrier, Place, Quote } from "types/skyscanner"
@@ -10,6 +11,7 @@ type RouteItemProps = {
 }
 
 const RouteItem = ({ item }: RouteItemProps) => {
+  const passengers = usePassengers()
   const { carriers, currencies, places } = useResults()
 
   const [carrier, setCarrier] = useState<Carrier | undefined>(undefined)
@@ -54,8 +56,13 @@ const RouteItem = ({ item }: RouteItemProps) => {
         <p>{destination?.Name}</p>
       </Col>
       <Col w="2/12">
+        {passengers > 1 ? (
+          <p className="mr-2 text-sm">
+            {monetize(item.MinPrice, currencies[0])} × {passengers}
+          </p>
+        ) : null}
         <p className="font-bold text-2xl mb-2 mr-2 whitespace-nowrap">
-          {monetize(item.MinPrice, currencies[0])}
+          {monetize(item.MinPrice * passengers, currencies[0])}
         </p>
         <button
           type="button"

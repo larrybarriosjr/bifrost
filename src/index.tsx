@@ -1,5 +1,5 @@
 import App from "app/App"
-import { RoutesProvider } from "context/RoutesContext"
+import { ResultsProvider } from "context/ResultsContext"
 import React from "react"
 import "react-day-picker/lib/style.css"
 import ReactDOM from "react-dom"
@@ -13,9 +13,9 @@ const queryClient = new QueryClient()
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RoutesProvider>
+      <ResultsProvider>
         <App />
-      </RoutesProvider>
+      </ResultsProvider>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")

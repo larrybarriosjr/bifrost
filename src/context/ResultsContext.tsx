@@ -2,13 +2,13 @@ import { createContext, useState } from "react"
 import { ReactContextResults } from "types/app"
 import { QueryRoutes } from "types/skyscanner"
 
-type RoutesProviderProps = {
+type ResultsProviderProps = {
   children: React.ReactNode
 }
 
-export const RoutesContext = createContext<ReactContextResults>(undefined!)
+export const ResultsContext = createContext<ReactContextResults>(undefined!)
 
-export const RoutesProvider = ({ children }: RoutesProviderProps) => {
+export const ResultsProvider = ({ children }: ResultsProviderProps) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [results, setResults] = useState<QueryRoutes>(undefined!)
   const initialValues = {
@@ -23,8 +23,8 @@ export const RoutesProvider = ({ children }: RoutesProviderProps) => {
   }
 
   return (
-    <RoutesContext.Provider value={initialValues}>
+    <ResultsContext.Provider value={initialValues}>
       {children}
-    </RoutesContext.Provider>
+    </ResultsContext.Provider>
   )
 }
