@@ -1,15 +1,25 @@
 import Row from "containers/Row"
 import Section from "containers/Section"
-import { LoadingText } from "defaults/flight"
+import { LoadingText, PlaceholderText } from "defaults/flight"
 import { useResults } from "hooks/useResults"
 import ResultCount from "./ResultCount"
+import ResultText from "./ResultText"
 import RouteItem from "./RouteItem"
 
 const FlightResults = () => {
   const { quotes, loading } = useResults()
 
-  if (!quotes) return null
-  if (loading) return <p className="text-blue-900">{LoadingText.RESULTS}</p>
+  if (loading) {
+    return <ResultText>{LoadingText.RESULTS}</ResultText>
+  }
+
+  if (!quotes) {
+    return <ResultText>{PlaceholderText.RESULTS}</ResultText>
+  }
+
+  if (!quotes.length) {
+    return <ResultText>{PlaceholderText.NO_RESULT}</ResultText>
+  }
 
   return (
     <Section>
