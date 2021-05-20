@@ -21,8 +21,8 @@ import { getRoutes } from "services/skyscanner"
 
 const FlightForm = () => {
   const country = useCountryCode()
-  const currency = useCurrencyCode()
   const passengers = usePassengers()
+  const [currency, setCurrency] = useCurrencyCode()
 
   const [origin, setOrigin] = useState<string>("")
   const [destination, setDestination] = useState<string>("")
@@ -82,7 +82,7 @@ const FlightForm = () => {
       </Row>
       <Row>
         <FlightTypeRadio type={flightType} setType={setFlightType} />
-        <CurrencyDropdown />
+        <CurrencyDropdown currency={currency} setCurrency={setCurrency} />
         <PassengerInput />
       </Row>
       <Row>

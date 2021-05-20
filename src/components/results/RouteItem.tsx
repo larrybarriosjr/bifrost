@@ -37,7 +37,7 @@ const RouteItem = ({ item }: RouteItemProps) => {
   }, [places, setOrigin, setDestination, item.OutboundLeg])
 
   return (
-    <div className="flex w-full justify-between items-center p-4 rounded-3xl bg-green-50 text-blue-900">
+    <div className="flex w-full justify-between items-center p-4 rounded-3xl border shadow border-green-200 bg-green-50 text-blue-900">
       <Col w="4/12">
         <p className="text-4xl">{origin?.IataCode}</p>
         <p>{origin?.Name}</p>

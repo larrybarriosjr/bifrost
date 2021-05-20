@@ -27,7 +27,7 @@ const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
             item.value !== type ? "hover:bg-blue-200" : ""
           } cursor-pointer rounded-full h-12 w-48 ${
             item.value === type ? "bg-green-100 font-bold" : ""
-          }`}
+          } transition-colors`}
           onClick={() => handleClick(item.value)}
         >
           <label htmlFor={item.value}>{item.label}</label>

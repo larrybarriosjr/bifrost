@@ -1,14 +1,16 @@
 import { ReactSelectAction } from "defaults/lib"
 import { Color } from "defaults/style"
-import { LocalStorage } from "defaults/web"
 import { useCurrencies } from "hooks/useCurrencies"
-import { useLocalStorage } from "hooks/useLocalStorage"
 import Select, { ActionMeta } from "react-select"
 import { Currency } from "types/skyscanner"
 
-const CurrencyDropdown = () => {
+type CurrencyDropdownProps = {
+  currency: string
+  setCurrency: React.Dispatch<React.SetStateAction<string>>
+}
+
+const CurrencyDropdown = ({ currency, setCurrency }: CurrencyDropdownProps) => {
   const currencies = useCurrencies()
-  const [currency, setCurrency] = useLocalStorage(LocalStorage.CURRENCY, "")
 
   const formatOptionLabel = (c: Currency) => {
     return `${c.Code} - ${c.Symbol}`

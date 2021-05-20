@@ -7,8 +7,8 @@ import { usePassengers } from "hooks/usePassengers"
 
 function App() {
   const country = useCountryCode()
-  const currency = useCurrencyCode()
   const passengers = usePassengers()
+  const [currency] = useCurrencyCode()
 
   if (!country) return null
   if (!currency) return null

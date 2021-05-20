@@ -19,7 +19,7 @@ type PlaceDropdownProps = {
 
 const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {
   const country = useCountryCode()
-  const currency = useCurrencyCode()
+  const [currency] = useCurrencyCode()
 
   const debouncedOptions = debounce(
     async (input: string, callback: ReactSelectCallback<QueryPlace>) => {
