@@ -9,7 +9,7 @@ const ResultText = ({ children }: ResultTextProps) => {
   return (
     <Section>
       <Row>
-        <p className="text-lg text-blue-900 text-center p-20 w-full">
+        <p className="text-lg text-blue-900 text-center py-40 w-full">
           {children}
         </p>
       </Row>

@@ -19,13 +19,13 @@ const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
   }
 
   return (
-    <div className="flex gap-1 p-1 bg-green-200 rounded-full">
+    <div className="flex gap-1 p-1 w-2/4 bg-green-200 rounded-full">
       {flightTypes.map((item, idx) => (
         <div
           key={idx}
           className={`flex items-center justify-center text-blue-900 ${
             item.value !== type ? "hover:bg-blue-200" : ""
-          } cursor-pointer rounded-full h-12 w-48 ${
+          } cursor-pointer rounded-full h-12 w-1/2 ${
             item.value === type ? "bg-green-100 font-bold" : ""
           } transition-colors`}
           onClick={() => handleClick(item.value)}

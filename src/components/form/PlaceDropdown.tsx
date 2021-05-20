@@ -6,7 +6,6 @@ import { useCurrencyCode } from "hooks/useCurrencyCode"
 import debounce from "lodash.debounce"
 import { Dispatch, SetStateAction } from "react"
 import AsyncSelect from "react-select/async"
-import { Option } from "react-select/src/filters"
 import { ActionMeta } from "react-select/src/types"
 import { getPlaces } from "services/skyscanner"
 import { ReactSelectCallback, ReactSelectReturn } from "types/app"
@@ -37,11 +36,7 @@ const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {
   }
 
   const formatOptionLabel = (opt: QueryPlace) => {
-    return `${opt.PlaceName} (${opt.PlaceId.slice(0, 3)})`
-  }
-
-  const filterOption = (opt: Option) => {
-    return opt.data.CityId !== "-sky"
+    return opt.PlaceName
   }
 
   const loadingMessage = () => {
@@ -62,7 +57,6 @@ const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {
     <AsyncSelect
       loadOptions={fetchOptions}
       formatOptionLabel={formatOptionLabel}
-      filterOption={filterOption}
       loadingMessage={loadingMessage}
       onChange={handleChange}
       placeholder={placeholder}
