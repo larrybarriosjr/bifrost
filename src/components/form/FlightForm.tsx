@@ -68,6 +68,11 @@ const FlightForm = () => {
     setLoading(isFetching)
   }, [isFetching, setLoading])
 
+  useEffect(() => {
+    setOutwardDate("")
+    setReturnDate("")
+  }, [flightType])
+
   return (
     <Section>
       <Row>

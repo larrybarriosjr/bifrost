@@ -46,7 +46,7 @@ const RouteItem = ({ item }: RouteItemProps) => {
         <p className="text-xs">{"Thru".toUpperCase()}</p>
         <p className="text-lg font-bold">{carrier?.Name}</p>
         <p className="text-xs">
-          {item.InboundLeg.DepartureDate
+          {item.InboundLeg
             ? FlightType.ROUND_TRIP.toUpperCase()
             : FlightType.ONE_WAY.toUpperCase()}
         </p>
