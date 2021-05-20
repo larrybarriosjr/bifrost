@@ -3,13 +3,14 @@ import { FlightType } from "defaults/flight"
 import { useResults } from "hooks/useResults"
 import { useEffect, useState } from "react"
 import { Carrier, Place, Quote } from "types/skyscanner"
+import { monetize } from "utils/number"
 
 type RouteItemProps = {
   item: Quote
 }
 
 const RouteItem = ({ item }: RouteItemProps) => {
-  const { carriers, places } = useResults()
+  const { carriers, currencies, places } = useResults()
 
   const [carrier, setCarrier] = useState<Carrier | undefined>(undefined)
   const [origin, setOrigin] = useState<Place | undefined>(undefined)
@@ -34,7 +35,7 @@ const RouteItem = ({ item }: RouteItemProps) => {
   }, [places, setOrigin, setDestination, item.OutboundLeg])
 
   return (
-    <div className="flex w-full justify-between items-center p-4 rounded-3xl bg-green-100 text-blue-900">
+    <div className="flex w-full justify-between items-center p-4 rounded-3xl bg-green-50 text-blue-900">
       <Col w="4/12">
         <p className="text-4xl">{origin?.IataCode}</p>
         <p>{origin?.Name}</p>
@@ -53,7 +54,9 @@ const RouteItem = ({ item }: RouteItemProps) => {
         <p>{destination?.Name}</p>
       </Col>
       <Col w="2/12">
-        <p className="font-bold text-2xl mb-2 mr-2">{item.MinPrice}</p>
+        <p className="font-bold text-2xl mb-2 mr-2 whitespace-nowrap">
+          {monetize(item.MinPrice, currencies[0])}
+        </p>
         <button
           type="button"
           className={`border-2 rounded-full h-10 mr-2 font-bold bg-blue-900 text-gray-50 border-blue-900 
