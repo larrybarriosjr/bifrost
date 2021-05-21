@@ -25,6 +25,10 @@ export type ReactContextResults = {
   setResults: React.Dispatch<React.SetStateAction<QueryRoutes>>
 }
 
+export type ReactRouterState = {
+  data: FlightData
+}
+
 export type ReactSelectCallback<T> = (
   options: readonly (T | GroupTypeBase<T>)[]
 ) => void

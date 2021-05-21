@@ -2,6 +2,7 @@ import Logo from "components/Logo"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { usePassengers } from "hooks/usePassengers"
+import BookingPage from "pages/BookingPage"
 import HomePage from "pages/HomePage"
 import { Route, Switch } from "react-router"
 
@@ -20,6 +21,7 @@ function App() {
         <Logo className="h-10" />
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/booking" component={BookingPage} />
         </Switch>
       </main>
     </div>
