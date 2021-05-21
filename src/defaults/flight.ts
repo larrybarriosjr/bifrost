@@ -1,3 +1,15 @@
+export enum AgeGroup {
+  ADULT = "adult",
+  CHILD = "child",
+  INFANT = "infant"
+}
+
+export enum AgeGroupDisplay {
+  ADULT = "Adult (Above 12 years old)",
+  CHILD = "Child (2-12 years old)",
+  INFANT = "Infant (0-1 year old )"
+}
+
 export enum DateFormat {
   DISPLAY = "dd MMMM y",
   META = "yyyy-MM-dd"
