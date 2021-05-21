@@ -3,14 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^6.1.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
     "axios": "^0.21.1",
     "date-fns": "^2.21.2",
     "lodash.debounce": "^4.0.8",
@@ -18,9 +10,8 @@
     "react-day-picker": "^7.4.10",
     "react-dom": "^17.0.2",
     "react-query": "^3.15.2",
-    "react-scripts": "4.0.3",
+    "react-router-dom": "^5.2.0",
     "react-select": "^4.3.0",
-    "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -48,10 +39,21 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^6.1.2",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^13.1.9",
+    "@types/jest": "^26.0.23",
     "@types/lodash.debounce": "^4.0.6",
+    "@types/node": "^15.3.1",
+    "@types/react": "^17.0.6",
+    "@types/react-dom": "^17.0.5",
+    "@types/react-router-dom": "^5.1.7",
     "@types/react-select": "^4.0.15",
     "autoprefixer": "^9",
     "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "react-scripts": "^4.0.3",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "typescript": "^4.2.4"
   }
 }
