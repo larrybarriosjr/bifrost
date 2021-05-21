@@ -6,22 +6,23 @@ import { monetize } from "utils/number"
 type FlightPriceProps = {
   item: Quote
   currency?: Currency
+  booking?: boolean
 }
 
-const FlightPrice = ({ item, currency }: FlightPriceProps) => {
+const FlightPrice = ({ item, currency, booking }: FlightPriceProps) => {
   const passengers = usePassengers()
 
   if (!currency) return null
 
   return (
     <Fragment>
-      {passengers > 1 ? (
-        <p className="mr-2 text-sm">
-          {monetize(item.MinPrice, currency)} × {passengers}
-        </p>
-      ) : null}
-      <p className="font-bold text-2xl mb-2 mr-2 whitespace-nowrap">
-        {monetize(item.MinPrice * passengers, currency)}
+      <p className="mr-2 text-sm">
+        {passengers > 1 && !booking
+          ? monetize(item.MinPrice, currency) + " × " + { passengers }
+          : "Ticket Price"}
+      </p>
+      <p className="font-bold text-2xl mr-2 whitespace-nowrap">
+        {monetize(item.MinPrice * (booking ? 1 : passengers), currency)}
       </p>
     </Fragment>
   )
