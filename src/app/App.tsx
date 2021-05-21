@@ -2,7 +2,7 @@ import Logo from "components/Logo"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { usePassengers } from "hooks/usePassengers"
-import Home from "pages/Home"
+import HomePage from "pages/HomePage"
 import { Route, Switch } from "react-router"
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       <main className="flex flex-col items-center m-6 p-8 gap-6 bg-blue-200 w-screen max-w-screen-lg lg:rounded-3xl">
         <Logo className="h-10" />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={HomePage} />
         </Switch>
       </main>
     </div>

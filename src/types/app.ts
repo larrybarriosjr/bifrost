@@ -1,5 +1,13 @@
 import { GroupTypeBase } from "react-select"
-import { QueryRoutes } from "./skyscanner"
+import { Carrier, Currency, Place, QueryRoutes, Quote } from "./skyscanner"
+
+export type FlightData = {
+  item: Quote
+  carrier: Carrier
+  currency: Currency
+  origin: Place
+  destination: Place
+}
 
 export type InputValue<T> = {
   label: string

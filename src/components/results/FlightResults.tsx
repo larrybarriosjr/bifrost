@@ -2,11 +2,9 @@ import Row from "containers/Row"
 import Section from "containers/Section"
 import { LoadingText, PlaceholderText } from "defaults/flight"
 import { useResults } from "hooks/useResults"
-import FlightCarrier from "./FlightCarrier"
-import FlightPrice from "./FlightPrice"
-import FlightRoute from "./FlightRoute"
 import ResultCount from "./ResultCount"
 import ResultText from "./ResultText"
+import RouteItem from "./RouteItem"
 
 const FlightResults = () => {
   const { quotes, loading } = useResults()
@@ -29,16 +27,7 @@ const FlightResults = () => {
         <ResultCount amount={quotes.length} />
       </Row>
       {quotes.map(item => (
-        <div
-          key={item.QuoteId}
-          className={`flex justify-between items-center p-4 m-6 rounded-3xl
-            shadow border border-green-200 bg-green-50 text-blue-900`}
-        >
-          <FlightRoute item={item} type="origin" />
-          <FlightCarrier item={item} />
-          <FlightRoute item={item} type="destination" />
-          <FlightPrice item={item} />
-        </div>
+        <RouteItem key={item.QuoteId} item={item} />
       ))}
     </Section>
   )
