@@ -19,7 +19,7 @@ const FlightPrice = ({ item, currency, booking }: FlightPriceProps) => {
       <p className="mr-2 text-sm">
         {passengers > 1 && !booking
           ? monetize(item.MinPrice, currency) + " × " + { passengers }
-          : "Ticket Price"}
+          : "Price per Passenger"}
       </p>
       <p className="font-bold text-2xl mr-2 whitespace-nowrap">
         {monetize(item.MinPrice * (booking ? 1 : passengers), currency)}
