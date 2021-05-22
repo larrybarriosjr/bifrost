@@ -1,27 +1,30 @@
-import { AgeGroup } from "defaults/passenger"
+import { Honorific } from "defaults/passenger"
 import { Color } from "defaults/style"
-import { useAgeGroups } from "hooks/useAgeGroups"
+import { useHonorifics } from "hooks/useHonorifics"
 import Select from "react-select"
 import { InputValue } from "types/app"
 
-type AgeGroupDropdownProps = {
-  ageGroup: AgeGroup
-  setAgeGroup: React.Dispatch<React.SetStateAction<AgeGroup>>
+type HonorificDropdownProps = {
+  honorific: Honorific
+  setHonorific: React.Dispatch<React.SetStateAction<Honorific>>
 }
 
-const AgeGroupDropdown = ({ ageGroup, setAgeGroup }: AgeGroupDropdownProps) => {
-  const ageGroups = useAgeGroups()
+const HonorificDropdown = ({
+  honorific,
+  setHonorific
+}: HonorificDropdownProps) => {
+  const honorifics = useHonorifics()
 
-  const handleChange = (value: InputValue<AgeGroup> | null) => {
-    if (value) setAgeGroup(value.value)
+  const handleChange = (value: InputValue<Honorific> | null) => {
+    if (value) setHonorific(value.value)
   }
 
   return (
     <Select
-      options={ageGroups}
+      options={honorifics}
       onChange={handleChange}
-      value={ageGroups?.find(a => a.value === ageGroup)}
-      className="w-3/12"
+      value={honorifics?.find(a => a.value === honorific)}
+      className="w-2/12"
       styles={{
         control: base => ({
           ...base,
@@ -49,4 +52,4 @@ const AgeGroupDropdown = ({ ageGroup, setAgeGroup }: AgeGroupDropdownProps) => {
   )
 }
 
-export default AgeGroupDropdown
+export default HonorificDropdown

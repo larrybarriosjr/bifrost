@@ -1,4 +1,4 @@
-import { AgeGroup, AgeGroupDisplay } from "defaults/flight"
+import { AgeGroup, AgeGroupDisplay } from "defaults/passenger"
 import { InputValue } from "types/app"
 
 export const useAgeGroups = (): InputValue<AgeGroup>[] => {
