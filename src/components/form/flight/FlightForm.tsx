@@ -8,10 +8,8 @@ import SingleDatePicker from "components/form/flight/SingleDatePicker"
 import Row from "containers/Row"
 import Section from "containers/Section"
 import { FlightType, InitialFlightData, PlaceholderText } from "defaults/flight"
-import { LocalStorageKey } from "defaults/web"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
-import { useLocalStorage } from "hooks/useLocalStorage"
 import { usePassengers } from "hooks/usePassengers"
 import { useResults } from "hooks/useResults"
 import { useEffect, useState } from "react"
@@ -24,8 +22,7 @@ const FlightForm = () => {
 
   const [origin, setOrigin] = useState<string>("")
   const [destination, setDestination] = useState<string>("")
-  const [flightType, setFlightType] = useLocalStorage<FlightType>(
-    LocalStorageKey.FLIGHT_TYPE,
+  const [flightType, setFlightType] = useState<FlightType>(
     InitialFlightData.FLIGHT_TYPE
   )
   const [flightDate, setFlightDate] = useState<string>("")

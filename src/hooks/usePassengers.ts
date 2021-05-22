@@ -6,7 +6,7 @@ import { useLocalStorage } from "./useLocalStorage"
 export const usePassengers = (): number => {
   const [passengers, setPassengers] = useLocalStorage<number>(
     LocalStorageKey.PASSENGERS,
-    InitialFlightData.PASSENGERS
+    0
   )
 
   useEffect(() => {

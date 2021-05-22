@@ -9,7 +9,7 @@ export const useCurrencyCode = (): [
 ] => {
   const [currency, setCurrency] = useLocalStorage<string>(
     LocalStorageKey.CURRENCY,
-    InitialFlightData.CURRENCY
+    ""
   )
 
   useEffect(() => {
