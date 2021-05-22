@@ -1,5 +1,5 @@
 import App from "app/App"
-import { ResultsProvider } from "context/ResultsContext"
+import { ReactQueryDefaultOptions } from "defaults/lib"
 import React from "react"
 import "react-day-picker/lib/style.css"
 import ReactDOM from "react-dom"
@@ -9,15 +9,13 @@ import "styles/datepicker.css"
 import "./index.css"
 import reportWebVitals from "./reportWebVitals"
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient(ReactQueryDefaultOptions)
 
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <ResultsProvider>
-          <App />
-        </ResultsProvider>
+        <App />
       </BrowserRouter>
     </QueryClientProvider>
   </React.StrictMode>,

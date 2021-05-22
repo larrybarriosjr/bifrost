@@ -8,7 +8,6 @@ import SingleDatePicker from "components/form/flight/SingleDatePicker"
 import Row from "containers/Row"
 import Section from "containers/Section"
 import { FlightType, PlaceholderText } from "defaults/flight"
-import { ReactQueryKey } from "defaults/lib"
 import { LocalStorage } from "defaults/web"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
@@ -16,8 +15,7 @@ import { useLocalStorage } from "hooks/useLocalStorage"
 import { usePassengers } from "hooks/usePassengers"
 import { useResults } from "hooks/useResults"
 import { useEffect, useState } from "react"
-import { useQuery } from "react-query"
-import { getRoutes } from "services/skyscanner"
+import { GetResultsForm } from "types/skyscanner"
 
 const FlightForm = () => {
   const country = useCountryCode()
@@ -33,21 +31,17 @@ const FlightForm = () => {
   const [flightDate, setFlightDate] = useState<string>("")
   const [outwardDate, setOutwardDate] = useState<string>("")
   const [returnDate, setReturnDate] = useState<string>("")
-  const { setResults, setLoading } = useResults()
 
-  const { data, refetch, isFetching } = useQuery(
-    ReactQueryKey.ROUTES,
-    () =>
-      getRoutes({
-        origin,
-        destination,
-        outward_date: flightDate || outwardDate,
-        return_date: returnDate,
-        country,
-        currency
-      }),
-    { enabled: false }
-  )
+  const form: GetResultsForm = {
+    origin,
+    destination,
+    outward_date: flightDate || outwardDate,
+    return_date: returnDate,
+    country,
+    currency
+  }
+
+  const { refetch } = useResults(form)
 
   const commonInputsDisabled =
     !country || !currency || !passengers || !origin || !destination
@@ -59,14 +53,6 @@ const FlightForm = () => {
   const handleFlightSearch = () => {
     if (!searchButtonDisabled) refetch()
   }
-
-  useEffect(() => {
-    if (data) setResults(data)
-  }, [data, setResults])
-
-  useEffect(() => {
-    setLoading(isFetching)
-  }, [isFetching, setLoading])
 
   useEffect(() => {
     setOutwardDate("")

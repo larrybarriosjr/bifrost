@@ -13,7 +13,7 @@ type RouteItemProps = {
 }
 
 const RouteItem = ({ item }: RouteItemProps) => {
-  const { carriers, currencies, places } = useResults()
+  const { data } = useResults()
 
   const [carrier, setCarrier] = useState<Carrier | undefined>(undefined)
   const [currency, setCurrency] = useState<Currency | undefined>(undefined)
@@ -23,24 +23,28 @@ const RouteItem = ({ item }: RouteItemProps) => {
     useState<FlightData | undefined>(undefined)
 
   useEffect(() => {
-    if (!carriers) return
-    const c = carriers.find(c => c.CarrierId === item.OutboundLeg.CarrierIds[0])
+    if (!data?.Carriers) return
+    const c = data?.Carriers.find(
+      c => c.CarrierId === item.OutboundLeg.CarrierIds[0]
+    )
     setCarrier(c)
-  }, [carriers, setCarrier, item.OutboundLeg.CarrierIds])
+  }, [data?.Carriers, setCarrier, item.OutboundLeg.CarrierIds])
 
   useEffect(() => {
-    if (!currencies) return
-    const c = currencies[0]
+    if (!data?.Currencies) return
+    const c = data?.Currencies[0]
     setCurrency(c)
-  }, [currencies, setCurrency, item.OutboundLeg.CarrierIds])
+  }, [data?.Currencies, setCurrency, item.OutboundLeg.CarrierIds])
 
   useEffect(() => {
-    if (!places) return
-    const o = places.find(p => p.PlaceId === item.OutboundLeg.OriginId)
-    const d = places.find(p => p.PlaceId === item.OutboundLeg.DestinationId)
+    if (!data?.Places) return
+    const o = data?.Places.find(p => p.PlaceId === item.OutboundLeg.OriginId)
+    const d = data?.Places.find(
+      p => p.PlaceId === item.OutboundLeg.DestinationId
+    )
     setOrigin(o)
     setDestination(d)
-  }, [places, setOrigin, setDestination, item.OutboundLeg])
+  }, [data?.Places, setOrigin, setDestination, item.OutboundLeg])
 
   useEffect(() => {
     if (!item || !carrier || !currency || !origin || !destination) return

@@ -5,9 +5,10 @@ import { getCurrencies } from "services/skyscanner"
 import { Currency } from "types/skyscanner"
 
 export const useCurrencies = (): Currency[] | undefined => {
-  const { data, refetch } = useQuery(ReactQueryKey.CURRENCIES, getCurrencies, {
-    enabled: false
-  })
+  const { data, refetch } = useQuery<Currency[]>(
+    ReactQueryKey.CURRENCIES,
+    getCurrencies
+  )
 
   useEffect(() => {
     if (!data) refetch()

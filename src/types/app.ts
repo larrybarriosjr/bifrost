@@ -1,5 +1,5 @@
 import { GroupTypeBase } from "react-select"
-import { Carrier, Currency, Place, QueryRoutes, Quote } from "./skyscanner"
+import { Carrier, Currency, Place, QueryResults, Quote } from "./skyscanner"
 
 export type FlightData = {
   item: Quote
@@ -15,14 +15,14 @@ export type InputValue<T> = {
 }
 
 export type ReactContextResults = {
-  carriers: QueryRoutes["Carriers"]
-  currencies: QueryRoutes["Currencies"]
+  carriers: QueryResults["Carriers"]
+  currencies: QueryResults["Currencies"]
   loading: boolean
-  places: QueryRoutes["Places"]
-  quotes: QueryRoutes["Quotes"]
-  routes: QueryRoutes["Routes"]
+  places: QueryResults["Places"]
+  quotes: QueryResults["Quotes"]
+  routes: QueryResults["Routes"]
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
-  setResults: React.Dispatch<React.SetStateAction<QueryRoutes>>
+  setResults: React.Dispatch<React.SetStateAction<QueryResults>>
 }
 
 export type ReactRouterState = {

@@ -7,7 +7,11 @@ export enum ReactSelectAction {
   SELECT = "select-option"
 }
 
+export const ReactQueryDefaultOptions = {
+  defaultOptions: { queries: { enabled: false } }
+}
+
 export enum ReactQueryKey {
   CURRENCIES = "currencies",
-  ROUTES = "routes"
+  RESULTS = "results"
 }

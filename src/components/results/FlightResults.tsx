@@ -7,26 +7,26 @@ import ResultText from "./ResultText"
 import RouteItem from "./RouteItem"
 
 const FlightResults = () => {
-  const { quotes, loading } = useResults()
+  const { data, isFetching } = useResults()
 
-  if (loading) {
+  if (isFetching) {
     return <ResultText>{LoadingText.RESULTS}</ResultText>
   }
 
-  if (!quotes) {
+  if (!data?.Quotes) {
     return <ResultText>{PlaceholderText.RESULTS}</ResultText>
   }
 
-  if (!quotes.length) {
+  if (!data.Quotes.length) {
     return <ResultText>{PlaceholderText.NO_RESULT}</ResultText>
   }
 
   return (
     <Section>
       <Row>
-        <ResultCount amount={quotes.length} />
+        <ResultCount amount={data.Quotes.length} />
       </Row>
-      {quotes.map(item => (
+      {data.Quotes.map(item => (
         <RouteItem key={item.QuoteId} item={item} />
       ))}
     </Section>

@@ -71,7 +71,7 @@ export type QueryPlaces = { Places: QueryPlace[] }
 export type Quotes = { Quotes: Quote[] }
 export type Routes = { Routes: Route[] }
 
-export type QueryRoutes = Quotes & Carriers & Places & Currencies & Routes
+export type QueryResults = Quotes & Carriers & Places & Currencies & Routes
 
 export type GetPlacesForm = {
   query: string
@@ -79,7 +79,7 @@ export type GetPlacesForm = {
   currency: Currency["Code"]
 }
 
-export type GetRoutesForm = {
+export type GetResultsForm = {
   country: Country["Code"]
   currency: Currency["Code"]
   destination: QueryPlace["PlaceId"]

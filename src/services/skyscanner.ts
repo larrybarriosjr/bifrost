@@ -12,9 +12,9 @@ import {
   Countries,
   Currencies,
   GetPlacesForm,
-  GetRoutesForm,
+  GetResultsForm,
   QueryPlaces,
-  QueryRoutes
+  QueryResults
 } from "types/skyscanner"
 
 const { LOCALE } = FlightDefaults
@@ -53,7 +53,7 @@ export const getPlaces = async (form: GetPlacesForm) => {
   return data.Places
 }
 
-export const getRoutes = async (form: GetRoutesForm) => {
+export const getResults = async (form: GetResultsForm) => {
   const {
     origin,
     destination,
@@ -63,5 +63,5 @@ export const getRoutes = async (form: GetRoutesForm) => {
     currency
   } = form
   const url = `${ROUTES_URL}/${country}/${currency}/${LOCALE}/${origin}/${destination}/${outward_date}/${return_date}`
-  return await get<QueryRoutes>(url)
+  return await get<QueryResults>(url)
 }
