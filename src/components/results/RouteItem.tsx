@@ -1,4 +1,5 @@
 import Col from "containers/Col"
+import { usePassengers } from "hooks/usePassengers"
 import { useResults } from "hooks/useResults"
 import { useEffect, useState } from "react"
 import { FlightData } from "types/app"
@@ -14,6 +15,7 @@ type RouteItemProps = {
 
 const RouteItem = ({ item }: RouteItemProps) => {
   const { data } = useResults()
+  const passengers = usePassengers()
 
   const [carrier, setCarrier] = useState<Carrier | undefined>(undefined)
   const [currency, setCurrency] = useState<Currency | undefined>(undefined)
@@ -48,8 +50,8 @@ const RouteItem = ({ item }: RouteItemProps) => {
 
   useEffect(() => {
     if (!item || !carrier || !currency || !origin || !destination) return
-    setFlightData({ item, carrier, currency, origin, destination })
-  }, [item, carrier, currency, origin, destination])
+    setFlightData({ item, carrier, currency, origin, destination, passengers })
+  }, [item, carrier, currency, origin, destination, passengers])
 
   return (
     <div

@@ -8,6 +8,7 @@ export type FlightData = {
   currency: Currency
   origin: Place
   destination: Place
+  passengers: number
 }
 
 export type FlightForm = {
