@@ -1,6 +1,7 @@
 import { FlightType } from "defaults/flight"
 import { Fragment } from "react"
 import { Carrier, Quote } from "types/skyscanner"
+import { isOneWay } from "utils/boolean"
 
 type FlightCarrierProps = {
   item: Quote
@@ -15,9 +16,9 @@ const FlightCarrier = ({ item, carrier }: FlightCarrierProps) => {
       <p className="text-xs">{"Thru".toUpperCase()}</p>
       <p className="text-lg font-bold">{carrier.Name}</p>
       <p className="text-xs">
-        {item.InboundLeg
-          ? FlightType.ROUND_TRIP.toUpperCase()
-          : FlightType.ONE_WAY.toUpperCase()}
+        {isOneWay(item)
+          ? FlightType.ONE_WAY.toUpperCase()
+          : FlightType.ROUND_TRIP.toUpperCase()}
       </p>
     </Fragment>
   )

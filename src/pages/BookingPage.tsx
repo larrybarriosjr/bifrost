@@ -8,6 +8,7 @@ import { times } from "lodash"
 import { Fragment } from "react"
 import { useLocation } from "react-router"
 import { ReactRouterState } from "types/app"
+import { isRoundTrip } from "utils/boolean"
 
 const BookingPage = () => {
   const passengers = usePassengers()
@@ -21,7 +22,7 @@ const BookingPage = () => {
           <FlightDate
             departureDate={new Date(data.item.OutboundLeg.DepartureDate)}
             returnDate={
-              data.item.InboundLeg
+              isRoundTrip(data.item)
                 ? new Date(data.item.InboundLeg.DepartureDate)
                 : undefined
             }
