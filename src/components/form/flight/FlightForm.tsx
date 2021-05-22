@@ -7,8 +7,8 @@ import SearchButton from "components/form/flight/SearchButton"
 import SingleDatePicker from "components/form/flight/SingleDatePicker"
 import Row from "containers/Row"
 import Section from "containers/Section"
-import { FlightType, PlaceholderText } from "defaults/flight"
-import { LocalStorage } from "defaults/web"
+import { FlightType, InitialFlightData, PlaceholderText } from "defaults/flight"
+import { LocalStorageKey } from "defaults/web"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { useLocalStorage } from "hooks/useLocalStorage"
@@ -24,9 +24,9 @@ const FlightForm = () => {
 
   const [origin, setOrigin] = useState<string>("")
   const [destination, setDestination] = useState<string>("")
-  const [flightType, setFlightType] = useLocalStorage<string>(
-    LocalStorage.FLIGHT_TYPE,
-    ""
+  const [flightType, setFlightType] = useLocalStorage<FlightType>(
+    LocalStorageKey.FLIGHT_TYPE,
+    InitialFlightData.FLIGHT_TYPE
   )
   const [flightDate, setFlightDate] = useState<string>("")
   const [outwardDate, setOutwardDate] = useState<string>("")

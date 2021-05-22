@@ -1,5 +1,5 @@
-import { FlightDefaults } from "defaults/flight"
-import { LocalStorage } from "defaults/web"
+import { InitialFlightData } from "defaults/flight"
+import { LocalStorageKey } from "defaults/web"
 import React, { useEffect } from "react"
 import { useLocalStorage } from "./useLocalStorage"
 
@@ -8,12 +8,12 @@ export const useCurrencyCode = (): [
   React.Dispatch<React.SetStateAction<string>>
 ] => {
   const [currency, setCurrency] = useLocalStorage<string>(
-    LocalStorage.CURRENCY,
-    ""
+    LocalStorageKey.CURRENCY,
+    InitialFlightData.CURRENCY
   )
 
   useEffect(() => {
-    if (!currency) setCurrency(FlightDefaults.CURRENCY)
+    if (!currency) setCurrency(InitialFlightData.CURRENCY)
   }, [currency, setCurrency])
 
   return [currency, setCurrency]

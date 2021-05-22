@@ -1,3 +1,4 @@
+import { FlightType } from "defaults/flight"
 import { GroupTypeBase } from "react-select"
 import { Carrier, Currency, Place, QueryResults, Quote } from "./skyscanner"
 
@@ -7,6 +8,15 @@ export type FlightData = {
   currency: Currency
   origin: Place
   destination: Place
+}
+
+export type FlightForm = {
+  COUNTRY: string
+  CURRENCY: string
+  LOCALE: string
+  PASSENGERS: number
+  RESULTS: number
+  FLIGHT_TYPE: FlightType
 }
 
 export type InputValue<T> = {

@@ -1,3 +1,5 @@
+import { FlightForm } from "types/app"
+
 export enum AgeGroup {
   ADULT = "adult",
   CHILD = "child",
@@ -13,13 +15,6 @@ export enum AgeGroupDisplay {
 export enum DateFormat {
   DISPLAY = "dd MMMM y",
   META = "yyyy-MM-dd"
-}
-
-export enum FlightDefaults {
-  CURRENCY = "USD",
-  LOCALE = "en-US",
-  PASSENGERS = 1,
-  RESULTS = 0
 }
 
 export enum FlightType {
@@ -44,4 +39,13 @@ export enum PlaceholderText {
   ORIGIN = "Select Origin...",
   RESULTS = "Please fill in the inputs and search for a flight.",
   RETURN = "Return Date"
+}
+
+export const InitialFlightData: FlightForm = {
+  COUNTRY: "US",
+  CURRENCY: "USD",
+  LOCALE: "en-US",
+  PASSENGERS: 1,
+  RESULTS: 0,
+  FLIGHT_TYPE: FlightType.ONE_WAY
 }

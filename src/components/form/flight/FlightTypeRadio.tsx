@@ -3,8 +3,8 @@ import { useFlightTypes } from "hooks/useFlightTypes"
 import { useEffect } from "react"
 
 type FlightTypeRadioProps = {
-  type: string
-  setType: React.Dispatch<React.SetStateAction<string>>
+  type: FlightType
+  setType: React.Dispatch<React.SetStateAction<FlightType>>
 }
 
 const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
@@ -14,7 +14,7 @@ const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
     if (!type) setType(FlightType.ONE_WAY)
   }, [type, setType])
 
-  const handleClick = (value: string) => {
+  const handleClick = (value: FlightType) => {
     setType(value)
   }
 

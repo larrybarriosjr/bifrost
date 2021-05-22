@@ -1,13 +1,15 @@
-import { LocalStorage } from "defaults/web"
+import { InitialFlightData } from "defaults/flight"
+import { LocalStorageKey } from "defaults/web"
 import { useLocalStorage } from "hooks/useLocalStorage"
 import { useState } from "react"
 import { pluralize } from "utils/string"
 
 const PassengerInput = () => {
   const [passengers, setPassengers] = useLocalStorage<number>(
-    LocalStorage.PASSENGERS,
-    0
+    LocalStorageKey.PASSENGERS,
+    InitialFlightData.PASSENGERS
   )
+
   const [inputValue, setInputValue] = useState(passengers)
   const [ignoreBlur, setIgnoreBlur] = useState(false)
   const [inputDisplay, setInputDisplay] = useState(false)

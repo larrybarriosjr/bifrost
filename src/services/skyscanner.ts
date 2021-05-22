@@ -7,7 +7,7 @@ import {
   REFERENCE_URL,
   ROUTES_URL
 } from "defaults/env"
-import { FlightDefaults } from "defaults/flight"
+import { InitialFlightData } from "defaults/flight"
 import {
   Countries,
   Currencies,
@@ -17,7 +17,7 @@ import {
   QueryResults
 } from "types/skyscanner"
 
-const { LOCALE } = FlightDefaults
+const { LOCALE } = InitialFlightData
 
 const config: AxiosRequestConfig = {
   baseURL: API_URL,

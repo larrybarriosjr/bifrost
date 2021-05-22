@@ -1,16 +1,16 @@
-import { FlightDefaults } from "defaults/flight"
-import { LocalStorage } from "defaults/web"
+import { InitialFlightData } from "defaults/flight"
+import { LocalStorageKey } from "defaults/web"
 import { useEffect } from "react"
 import { useLocalStorage } from "./useLocalStorage"
 
 export const usePassengers = (): number => {
   const [passengers, setPassengers] = useLocalStorage<number>(
-    LocalStorage.PASSENGERS,
-    0
+    LocalStorageKey.PASSENGERS,
+    InitialFlightData.PASSENGERS
   )
 
   useEffect(() => {
-    if (!passengers) setPassengers(FlightDefaults.PASSENGERS)
+    if (!passengers) setPassengers(InitialFlightData.PASSENGERS)
   }, [passengers, setPassengers])
 
   return passengers
