@@ -6,12 +6,13 @@ import { InitialPassengerData } from "defaults/passenger"
 import { LocalStorageKey } from "defaults/web"
 import { times } from "lodash"
 import { Fragment, useEffect, useState } from "react"
-import { useLocation } from "react-router"
+import { useHistory, useLocation } from "react-router"
 import { PassengerData, ReactRouterState } from "types/app"
 
 const BookingPage = () => {
+  const history = useHistory()
   const location = useLocation<ReactRouterState>()
-  const { data } = location.state
+  const { flight } = location.state
 
   const [email, setEmail] = useState<string>("")
   const [passengerData, setPassengerData] = useState<PassengerData[]>([])
@@ -21,20 +22,20 @@ const BookingPage = () => {
   }, [])
 
   useEffect(() => {
-    if (!data.passengers) return
-    const p = times(data.passengers, idx => InitialPassengerData(idx + 1))
+    if (!flight.passengers) return
+    const p = times(flight.passengers, idx => InitialPassengerData(idx + 1))
     setPassengerData(p)
-  }, [data.passengers])
+  }, [flight.passengers])
 
   const disableButton = !email || !passengerData.every(p => p.fullName)
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log({ ...data, email, passengerData })
+    history.replace("/ticket", { booking: { ...flight, email, passengerData } })
   }
 
   return (
     <Fragment>
-      <FlightDetails data={data} />
+      <FlightDetails data={flight} />
       {passengerData.length
         ? passengerData
             .sort((a, b) => a.id - b.id)
@@ -50,7 +51,7 @@ const BookingPage = () => {
       <div className="flex gap-6 w-full">
         <ContactDetails email={email} setEmail={setEmail} />
         <TotalPrice
-          data={data}
+          data={flight}
           disabled={disableButton}
           onSubmit={handleSubmit}
         />

@@ -4,6 +4,7 @@ import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { usePassengers } from "hooks/usePassengers"
 import BookingPage from "pages/BookingPage"
 import HomePage from "pages/HomePage"
+import TicketPage from "pages/TicketPage"
 import { Route, Switch } from "react-router"
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/booking" component={BookingPage} />
+          <Route exact path="/ticket" component={TicketPage} />
         </Switch>
       </main>
     </div>

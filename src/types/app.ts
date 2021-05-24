@@ -3,6 +3,11 @@ import { AgeGroup, Honorific } from "defaults/passenger"
 import { GroupTypeBase } from "react-select"
 import { Carrier, Currency, Place, QueryResults, Quote } from "./skyscanner"
 
+export type BookingData = FlightData & {
+  email: string
+  passengerData: PassengerData[]
+}
+
 export type FlightData = {
   item: Quote
   carrier: Carrier
@@ -45,7 +50,8 @@ export type ReactContextResults = {
 }
 
 export type ReactRouterState = {
-  data: FlightData
+  flight: FlightData
+  booking: BookingData
 }
 
 export type ReactSelectCallback<T> = (
