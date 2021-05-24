@@ -1,4 +1,4 @@
-import FlightForm from "components/form/flight/FlightForm"
+import FlightForm from "components/form/search/FlightForm"
 import FlightResults from "components/results/FlightResults"
 import { Fragment } from "react"
 
