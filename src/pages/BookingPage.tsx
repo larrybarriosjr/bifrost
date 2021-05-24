@@ -2,29 +2,47 @@ import BookingForm from "components/form/booking/BookingForm"
 import ContactDetails from "components/form/booking/ContactDetails"
 import FlightDetails from "components/form/booking/FlightDetails"
 import TotalPrice from "components/form/booking/TotalPrice"
+import { InitialPassengerData } from "defaults/passenger"
 import { LocalStorageKey } from "defaults/web"
 import { times } from "lodash"
-import { Fragment, useEffect } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { useLocation } from "react-router"
-import { ReactRouterState } from "types/app"
+import { PassengerData, ReactRouterState } from "types/app"
 
 const BookingPage = () => {
   const location = useLocation<ReactRouterState>()
   const { data } = location.state
 
+  const [email, setEmail] = useState<string>("")
+  const [passengerData, setPassengerData] = useState<PassengerData[]>([])
+
   useEffect(() => {
     localStorage.removeItem(LocalStorageKey.PASSENGERS)
   }, [])
 
+  useEffect(() => {
+    if (!data.passengers) return
+    const p = times(data.passengers, idx => InitialPassengerData(idx + 1))
+    setPassengerData(p)
+  }, [data.passengers])
+
   return (
     <Fragment>
       <FlightDetails data={data} />
-      {times(data.passengers, idx => (
-        <BookingForm key={idx} id={idx + 1} />
-      ))}
+      {passengerData.length
+        ? passengerData
+            .sort((a, b) => a.id - b.id)
+            .map(p => (
+              <BookingForm
+                key={p.id}
+                id={p.id}
+                data={passengerData.find(d => d.id === p.id)}
+                setData={setPassengerData}
+              />
+            ))
+        : null}
       <div className="flex gap-6 w-full">
-        <ContactDetails />
-        <TotalPrice data={data} />
+        <ContactDetails email={email} setEmail={setEmail} />
       </div>
     </Fragment>
   )

@@ -2,21 +2,30 @@ import { Honorific } from "defaults/passenger"
 import { Color } from "defaults/style"
 import { useHonorifics } from "hooks/useHonorifics"
 import Select from "react-select"
-import { InputValue } from "types/app"
+import { InputValue, PassengerData } from "types/app"
 
 type HonorificDropdownProps = {
+  id: number
   honorific: Honorific
-  setHonorific: React.Dispatch<React.SetStateAction<Honorific>>
+  setHonorific: React.Dispatch<React.SetStateAction<PassengerData[]>>
 }
 
 const HonorificDropdown = ({
+  id,
   honorific,
   setHonorific
 }: HonorificDropdownProps) => {
   const honorifics = useHonorifics()
 
+  const otherData = (arr: PassengerData[]) => arr.filter(p => p.id !== id)
+  const thisData = (arr: PassengerData[]) => arr.filter(p => p.id === id)[0]
+
   const handleChange = (value: InputValue<Honorific> | null) => {
-    if (value) setHonorific(value.value)
+    if (value)
+      setHonorific(prev => [
+        ...otherData(prev),
+        { ...thisData(prev), honorific: value.value }
+      ])
   }
 
   return (

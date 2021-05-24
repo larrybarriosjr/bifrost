@@ -1,4 +1,5 @@
 import { FlightType } from "defaults/flight"
+import { AgeGroup, Honorific } from "defaults/passenger"
 import { GroupTypeBase } from "react-select"
 import { Carrier, Currency, Place, QueryResults, Quote } from "./skyscanner"
 
@@ -23,6 +24,13 @@ export type FlightForm = {
 export type InputValue<T> = {
   label: string
   value: T
+}
+
+export type PassengerData = {
+  id: number
+  honorific: Honorific
+  fullName: string
+  ageGroup: AgeGroup
 }
 
 export type ReactContextResults = {

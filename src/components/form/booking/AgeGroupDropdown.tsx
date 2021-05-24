@@ -2,18 +2,30 @@ import { AgeGroup } from "defaults/passenger"
 import { Color } from "defaults/style"
 import { useAgeGroups } from "hooks/useAgeGroups"
 import Select from "react-select"
-import { InputValue } from "types/app"
+import { InputValue, PassengerData } from "types/app"
 
 type AgeGroupDropdownProps = {
+  id: number
   ageGroup: AgeGroup
-  setAgeGroup: React.Dispatch<React.SetStateAction<AgeGroup>>
+  setAgeGroup: React.Dispatch<React.SetStateAction<PassengerData[]>>
 }
 
-const AgeGroupDropdown = ({ ageGroup, setAgeGroup }: AgeGroupDropdownProps) => {
+const AgeGroupDropdown = ({
+  id,
+  ageGroup,
+  setAgeGroup
+}: AgeGroupDropdownProps) => {
   const ageGroups = useAgeGroups()
 
+  const otherData = (arr: PassengerData[]) => arr.filter(p => p.id !== id)
+  const thisData = (arr: PassengerData[]) => arr.filter(p => p.id === id)[0]
+
   const handleChange = (value: InputValue<AgeGroup> | null) => {
-    if (value) setAgeGroup(value.value)
+    if (value)
+      setAgeGroup(prev => [
+        ...otherData(prev),
+        { ...thisData(prev), ageGroup: value.value }
+      ])
   }
 
   return (

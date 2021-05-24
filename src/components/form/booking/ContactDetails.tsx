@@ -1,11 +1,13 @@
 import Row from "containers/Row"
 import Section from "containers/Section"
-import { useState } from "react"
 import EmailInput from "./EmailInput"
 
-const ContactDetails = () => {
-  const [email, setEmail] = useState("")
+type ContactDetailsProps = {
+  email: string
+  setEmail: React.Dispatch<React.SetStateAction<string>>
+}
 
+const ContactDetails = ({ email, setEmail }: ContactDetailsProps) => {
   return (
     <Section>
       <Row>

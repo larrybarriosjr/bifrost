@@ -1,3 +1,5 @@
+import { PassengerData } from "types/app"
+
 export enum AgeGroup {
   ADULT = "adult",
   CHILD = "child",
@@ -21,3 +23,10 @@ export enum HonorificDisplay {
   MS = "Ms.",
   MRS = "Mrs."
 }
+
+export const InitialPassengerData = (id: number): PassengerData => ({
+  id,
+  honorific: Honorific.MR,
+  fullName: "",
+  ageGroup: AgeGroup.ADULT
+})
