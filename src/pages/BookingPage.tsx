@@ -1,6 +1,7 @@
 import BookingForm from "components/form/booking/BookingForm"
 import ContactDetails from "components/form/booking/ContactDetails"
 import FlightDetails from "components/form/booking/FlightDetails"
+import TotalPrice from "components/form/booking/TotalPrice"
 import { LocalStorageKey } from "defaults/web"
 import { times } from "lodash"
 import { Fragment, useEffect } from "react"
@@ -23,6 +24,7 @@ const BookingPage = () => {
       ))}
       <div className="flex gap-6 w-full">
         <ContactDetails />
+        <TotalPrice data={data} />
       </div>
     </Fragment>
   )
