@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import StatusHeader from "components/results/ticket/StatusHeader"
 import { useLocation } from "react-router"
 import { ReactRouterState } from "types/app"
 
@@ -10,7 +10,11 @@ const TicketPage = () => {
     console.log(booking)
   }, [booking])
 
-  return <div></div>
+  return (
+    <Fragment>
+      <StatusHeader />
+    </Fragment>
+  )
 }
 
 export default TicketPage

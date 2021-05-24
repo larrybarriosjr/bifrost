@@ -1,9 +1,9 @@
 import { PassengerData } from "types/app"
 
 export enum AgeGroup {
-  ADULT = "adult",
-  CHILD = "child",
-  INFANT = "infant"
+  ADULT = "Adult",
+  CHILD = "Child",
+  INFANT = "Infant"
 }
 
 export enum AgeGroupDisplay {
@@ -13,9 +13,9 @@ export enum AgeGroupDisplay {
 }
 
 export enum Honorific {
-  MR = "mr",
-  MS = "ms",
-  MRS = "mrs"
+  MR = "Mr",
+  MS = "Ms",
+  MRS = "Mrs"
 }
 
 export enum HonorificDisplay {
