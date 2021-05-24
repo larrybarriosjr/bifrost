@@ -3,6 +3,7 @@ import ContactDetails from "components/form/booking/ContactDetails"
 import FlightDetails from "components/form/booking/FlightDetails"
 import TotalPrice from "components/form/booking/TotalPrice"
 import { InitialPassengerData } from "defaults/passenger"
+import { BifrostRoute } from "defaults/route"
 import { LocalStorageKey } from "defaults/web"
 import { times } from "lodash"
 import { Fragment, useEffect, useState } from "react"
@@ -30,7 +31,9 @@ const BookingPage = () => {
   const disableButton = !email || !passengerData.every(p => p.fullName)
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    history.replace("/ticket", { booking: { ...flight, email, passengerData } })
+    history.replace(BifrostRoute.TICKET, {
+      booking: { ...flight, email, passengerData }
+    })
   }
 
   return (

@@ -1,4 +1,5 @@
 import Logo from "components/Logo"
+import { BifrostRoute } from "defaults/route"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { usePassengers } from "hooks/usePassengers"
@@ -21,9 +22,9 @@ function App() {
       <main className="flex flex-col items-center m-6 p-8 gap-6 bg-blue-200 w-screen max-w-screen-lg lg:rounded-3xl">
         <Logo className="h-10" />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/booking" component={BookingPage} />
-          <Route exact path="/ticket" component={TicketPage} />
+          <Route exact path={BifrostRoute.HOME} component={HomePage} />
+          <Route exact path={BifrostRoute.BOOKING} component={BookingPage} />
+          <Route exact path={BifrostRoute.TICKET} component={TicketPage} />
         </Switch>
       </main>
     </div>

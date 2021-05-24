@@ -1,3 +1,4 @@
+import { BifrostRoute } from "defaults/route"
 import { Link } from "react-router-dom"
 import { FlightData } from "types/app"
 
@@ -10,7 +11,7 @@ const BookNowButton = ({ data }: BookNowButtonProps) => {
 
   return (
     <Link
-      to={{ pathname: "/booking", state: { flight: data } }}
+      to={{ pathname: BifrostRoute.BOOKING, state: { flight: data } }}
       className={`flex justify-center items-center border-2 rounded-full h-10 mr-2 mt-2
               bg-blue-900 text-gray-50 border-blue-900 text-sm font-bold
                 focus:outline-none focus:border-blue-500 hover:border-gray-400`}
