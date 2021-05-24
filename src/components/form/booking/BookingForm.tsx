@@ -3,7 +3,6 @@ import Section from "containers/Section"
 import { AgeGroup, Honorific } from "defaults/passenger"
 import { useState } from "react"
 import AgeGroupDropdown from "./AgeGroupDropdown"
-import BookingHeader from "./BookingHeader"
 import FullNameInput from "./FullNameInput"
 import HonorificDropdown from "./HonorificDropdown"
 
@@ -19,7 +18,9 @@ const BookingForm = ({ id }: BookingFormProps) => {
   return (
     <Section>
       <Row>
-        <BookingHeader number={id} />
+        <p className="font-bold text-blue-900">
+          Booking Form for Passenger #{id}
+        </p>
       </Row>
       <Row>
         <HonorificDropdown honorific={honorific} setHonorific={setHonorific} />

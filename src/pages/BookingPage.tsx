@@ -1,4 +1,5 @@
 import BookingForm from "components/form/booking/BookingForm"
+import ContactDetails from "components/form/booking/ContactDetails"
 import FlightDetails from "components/form/booking/FlightDetails"
 import { LocalStorageKey } from "defaults/web"
 import { times } from "lodash"
@@ -20,6 +21,9 @@ const BookingPage = () => {
       {times(data.passengers, idx => (
         <BookingForm key={idx} id={idx + 1} />
       ))}
+      <div className="flex gap-6 w-full">
+        <ContactDetails />
+      </div>
     </Fragment>
   )
 }
