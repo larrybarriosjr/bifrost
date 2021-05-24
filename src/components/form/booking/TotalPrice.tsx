@@ -4,12 +4,15 @@ import Section from "containers/Section"
 import { FlightData } from "types/app"
 import { monetize } from "utils/number"
 import { pluralize } from "utils/string"
+import ConfirmBookingButton from "./ConfirmBookingButton"
 
 type TotalPriceProps = {
   data: FlightData
+  disabled?: boolean
+  onSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const TotalPrice = ({ data }: TotalPriceProps) => {
+const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
   const { item, passengers, currency } = data
 
   return (
@@ -26,6 +29,9 @@ const TotalPrice = ({ data }: TotalPriceProps) => {
           <p className="text-blue-900 font-bold text-4xl whitespace-nowrap self-start">
             {monetize(item.MinPrice * passengers, currency)}
           </p>
+        </Col>
+        <Col w="1/2">
+          <ConfirmBookingButton disabled={disabled} onSubmit={onSubmit} />
         </Col>
       </Row>
     </Section>

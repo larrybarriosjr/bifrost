@@ -26,6 +26,12 @@ const BookingPage = () => {
     setPassengerData(p)
   }, [data.passengers])
 
+  const disableButton = !email || !passengerData.every(p => p.fullName)
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log({ ...data, email, passengerData })
+  }
+
   return (
     <Fragment>
       <FlightDetails data={data} />
@@ -43,6 +49,11 @@ const BookingPage = () => {
         : null}
       <div className="flex gap-6 w-full">
         <ContactDetails email={email} setEmail={setEmail} />
+        <TotalPrice
+          data={data}
+          disabled={disableButton}
+          onSubmit={handleSubmit}
+        />
       </div>
     </Fragment>
   )
