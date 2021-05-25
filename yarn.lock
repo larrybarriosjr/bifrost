@@ -1758,6 +1758,13 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/email-validator@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@types/email-validator/-/email-validator-1.0.6.tgz#d555e53c826ac75e0205305f33ff47fc46930cd3"
+  integrity sha512-6DAeWG+gKRlAWz7iczV8WPeD4KZzmevffrOW5c6WKqn8lvlWzOqGeKMcKZ0ggVvI2W4jNKdyEWBwuVfdD2haWg==
+  dependencies:
+    email-validator "*"
+
 "@types/eslint@^7.2.6":
   version "7.2.6"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.2.6.tgz#5e9aff555a975596c03a98b59ecd103decc70c3c"
@@ -4485,6 +4492,11 @@ elliptic@^6.5.3:
     inherits "^2.0.4"
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
+
+email-validator@*:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/email-validator/-/email-validator-2.0.4.tgz#b8dfaa5d0dae28f1b03c95881d904d4e40bfe7ed"
+  integrity sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==
 
 emittery@^0.7.1:
   version "0.7.2"
@@ -9478,6 +9490,11 @@ react-dom@^17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     scheduler "^0.20.2"
+
+react-email-validator@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-email-validator/-/react-email-validator-1.0.2.tgz#d1b432516f71f19bd355946b4db6a1a898b488b5"
+  integrity sha512-ibFollRgI3LbyNyQTlig2JHiNz8Yrk+CT73MbhROdcGU8qvjXc3OXYsvkMOgqxtLEXPS/e8YWSFSS+xpUx0LCg==
 
 react-error-overlay@^6.0.9:
   version "6.0.9"

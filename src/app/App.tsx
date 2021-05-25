@@ -3,6 +3,7 @@ import { BifrostRoute } from "defaults/route"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import { usePassengers } from "hooks/usePassengers"
+import { useReferenceCode } from "hooks/useReferenceCode"
 import BookingPage from "pages/BookingPage"
 import HomePage from "pages/HomePage"
 import TicketPage from "pages/TicketPage"
@@ -12,10 +13,12 @@ function App() {
   const country = useCountryCode()
   const passengers = usePassengers()
   const [currency] = useCurrencyCode()
+  const reference = useReferenceCode()
 
   if (!country) return null
   if (!currency) return null
   if (!passengers) return null
+  if (!reference) return null
 
   return (
     <div className="flex flex-col items-center h-full w-full min-h-screen bg-gray-100">

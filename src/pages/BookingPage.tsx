@@ -4,6 +4,7 @@ import FlightDetails from "components/form/booking/FlightDetails"
 import TotalPrice from "components/form/booking/TotalPrice"
 import { InitialPassengerData } from "defaults/passenger"
 import { BifrostRoute } from "defaults/route"
+import { validate } from "email-validator"
 import { useReferenceCode } from "hooks/useReferenceCode"
 import { times } from "lodash"
 import { Fragment, useEffect, useState } from "react"
@@ -29,7 +30,8 @@ const BookingPage = () => {
     setPassengerData(p)
   }, [flight.passengers])
 
-  const disableButton = !email || !passengerData.every(p => p.fullName)
+  const disableButton =
+    !validate(email) || !passengerData.every(p => p.fullName)
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     history.replace(BifrostRoute.TICKET, {
@@ -37,7 +39,6 @@ const BookingPage = () => {
     })
   }
 
-  if (!reference) return null
   if (!passengerData.length) return null
 
   return (
