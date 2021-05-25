@@ -1,4 +1,7 @@
+import { Elements } from "@stripe/react-stripe-js"
+import { loadStripe } from "@stripe/stripe-js"
 import App from "app/App"
+import { STRIPE_PK } from "defaults/env"
 import { ReactQueryDefaultOptions } from "defaults/lib"
 import React from "react"
 import "react-day-picker/lib/style.css"
@@ -10,12 +13,15 @@ import "./index.css"
 import reportWebVitals from "./reportWebVitals"
 
 const queryClient = new QueryClient(ReactQueryDefaultOptions)
+const stripePromise = loadStripe(STRIPE_PK)
 
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <App />
+        <Elements stripe={stripePromise}>
+          <App />
+        </Elements>
       </BrowserRouter>
     </QueryClientProvider>
   </React.StrictMode>,

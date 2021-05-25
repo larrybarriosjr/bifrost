@@ -6,3 +6,4 @@ export const RAPIDAPI_HOST = process.env.REACT_APP_RAPIDAPI_HOST
 export const RAPIDAPI_KEY = process.env.REACT_APP_RAPIDAPI_KEY
 export const REFERENCE_URL = process.env.REACT_APP_SKYSCANNER_REFERENCE_URL
 export const ROUTES_URL = process.env.REACT_APP_SKYSCANNER_ROUTES_URL
+export const STRIPE_PK = process.env.REACT_APP_STRIPE_PK

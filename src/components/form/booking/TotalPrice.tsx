@@ -1,3 +1,4 @@
+import { CardElement } from "@stripe/react-stripe-js"
 import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
@@ -19,6 +20,9 @@ const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
     <Section>
       <Row>
         <p className="text-blue-900 font-bold">Total Price</p>
+      </Row>
+      <Row>
+        <CardElement className="w-full" />
       </Row>
       <Row>
         <Col w="1/2">

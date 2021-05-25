@@ -1,3 +1,4 @@
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import BookingForm from "components/form/booking/BookingForm"
 import ContactDetails from "components/form/booking/ContactDetails"
 import FlightDetails from "components/form/booking/FlightDetails"
@@ -12,6 +13,8 @@ import { useHistory, useLocation } from "react-router"
 import { PassengerData, ReactRouterState } from "types/app"
 
 const BookingPage = () => {
+  const stripe = useStripe()
+  const elements = useElements()
   const reference = useReferenceCode()
   const history = useHistory()
   const location = useLocation<ReactRouterState>()
@@ -33,10 +36,27 @@ const BookingPage = () => {
   const disableButton =
     !validate(email) || !passengerData.every(p => p.fullName)
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    history.replace(BifrostRoute.TICKET, {
-      booking: { ...flight, email, passengerData, reference }
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+
+    if (!elements) return
+    const cardElement = elements.getElement(CardElement)
+
+    if (!stripe || !cardElement) return
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: cardElement
     })
+
+    if (error) {
+      console.log(error)
+    }
+
+    if (paymentMethod?.created) {
+      history.replace(BifrostRoute.TICKET, {
+        booking: { ...flight, email, passengerData, reference }
+      })
+    }
   }
 
   if (!passengerData.length) return null
