@@ -5,12 +5,14 @@ import TotalPrice from "components/form/booking/TotalPrice"
 import { InitialPassengerData } from "defaults/passenger"
 import { BifrostRoute } from "defaults/route"
 import { LocalStorageKey } from "defaults/web"
+import { useReferenceCode } from "hooks/useReferenceCode"
 import { times } from "lodash"
 import { Fragment, useEffect, useState } from "react"
 import { useHistory, useLocation } from "react-router"
 import { PassengerData, ReactRouterState } from "types/app"
 
 const BookingPage = () => {
+  const reference = useReferenceCode()
   const history = useHistory()
   const location = useLocation<ReactRouterState>()
   const { flight } = location.state
@@ -32,25 +34,26 @@ const BookingPage = () => {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     history.replace(BifrostRoute.TICKET, {
-      booking: { ...flight, email, passengerData }
+      booking: { ...flight, email, passengerData, reference }
     })
   }
+
+  if (!reference) return null
+  if (!passengerData.length) return null
 
   return (
     <Fragment>
       <FlightDetails data={flight} />
-      {passengerData.length
-        ? passengerData
-            .sort((a, b) => a.id - b.id)
-            .map(p => (
-              <BookingForm
-                key={p.id}
-                id={p.id}
-                data={passengerData.find(d => d.id === p.id)}
-                setData={setPassengerData}
-              />
-            ))
-        : null}
+      {passengerData
+        .sort((a, b) => a.id - b.id)
+        .map(p => (
+          <BookingForm
+            key={p.id}
+            id={p.id}
+            data={passengerData.find(d => d.id === p.id)}
+            setData={setPassengerData}
+          />
+        ))}
       <div className="flex gap-6 w-full">
         <ContactDetails email={email} setEmail={setEmail} />
         <TotalPrice
