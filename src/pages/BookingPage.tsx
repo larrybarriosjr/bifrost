@@ -4,7 +4,6 @@ import FlightDetails from "components/form/booking/FlightDetails"
 import TotalPrice from "components/form/booking/TotalPrice"
 import { InitialPassengerData } from "defaults/passenger"
 import { BifrostRoute } from "defaults/route"
-import { LocalStorageKey } from "defaults/web"
 import { useReferenceCode } from "hooks/useReferenceCode"
 import { times } from "lodash"
 import { Fragment, useEffect, useState } from "react"
@@ -21,7 +20,7 @@ const BookingPage = () => {
   const [passengerData, setPassengerData] = useState<PassengerData[]>([])
 
   useEffect(() => {
-    localStorage.removeItem(LocalStorageKey.PASSENGERS)
+    localStorage.clear()
   }, [])
 
   useEffect(() => {
