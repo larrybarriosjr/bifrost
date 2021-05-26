@@ -2,9 +2,12 @@ import { CardElement } from "@stripe/react-stripe-js"
 import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
+import { Color } from "defaults/style"
+import { useState } from "react"
 import { FlightData } from "types/app"
 import { monetize } from "utils/number"
 import { pluralize } from "utils/string"
+import CardSampleModal from "./CardSampleModal"
 import ConfirmBookingButton from "./ConfirmBookingButton"
 
 type TotalPriceProps = {
@@ -16,13 +19,40 @@ type TotalPriceProps = {
 const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
   const { item, passengers, currency } = data
 
+  const [modalDisplay, setModalDisplay] = useState<boolean>(false)
+
+  const handleOpenModal = () => {
+    setModalDisplay(true)
+  }
+
+  const handleCloseModal = () => {
+    setModalDisplay(false)
+  }
+
   return (
     <Section>
+      <CardSampleModal show={modalDisplay} onClose={handleCloseModal} />
       <Row>
         <p className="text-blue-900 font-bold">Total Price</p>
+        <button
+          type="button"
+          onClick={handleOpenModal}
+          className="text-xs underline text-blue-400 focus:outline-none"
+        >
+          Card number for testing
+        </button>
       </Row>
       <Row>
-        <CardElement className="w-full" />
+        <CardElement
+          className={`bg-green-200 border-green-200 border-2 rounded-full h-14 w-full p-4
+            focus:outline-none hover:border-gray-400 focus:border-blue-500`}
+          options={{
+            style: {
+              base: { color: Color.BLUE_900, fontWeight: "bold" },
+              empty: { fontWeight: "normal" }
+            }
+          }}
+        />
       </Row>
       <Row>
         <Col w="1/2">
