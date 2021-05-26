@@ -1,6 +1,6 @@
 import { InitialFlightData } from "defaults/flight"
 import { LocalStorageKey } from "defaults/web"
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import { useLocalStorage } from "./useLocalStorage"
 
 export const useCurrencyCode = (): [

@@ -1,5 +1,3 @@
-import React from "react"
-
 type ConfirmBookingButtonProps = {
   disabled?: boolean
   onSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void

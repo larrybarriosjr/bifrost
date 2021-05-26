@@ -1,6 +1,5 @@
 import Row from "containers/Row"
 import Section from "containers/Section"
-import React from "react"
 import { PassengerData } from "types/app"
 import AgeGroupDropdown from "./AgeGroupDropdown"
 import FullNameInput from "./FullNameInput"
