@@ -5,6 +5,7 @@ import { Carrier, Currency, Place, QueryResults, Quote } from "./skyscanner"
 
 export type BookingData = FlightData & {
   email: string
+  booker: string
   passengerData: PassengerData[]
   reference: string
 }

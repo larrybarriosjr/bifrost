@@ -21,6 +21,7 @@ const BookingPage = () => {
   const { flight } = location.state
 
   const [email, setEmail] = useState<string>("")
+  const [booker, setBooker] = useState<string>("")
   const [passengerData, setPassengerData] = useState<PassengerData[]>([])
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const BookingPage = () => {
   }, [flight.passengers])
 
   const disableButton =
-    !validate(email) || !passengerData.every(p => p.fullName)
+    !booker || !validate(email) || !passengerData.every(p => p.fullName)
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -54,7 +55,7 @@ const BookingPage = () => {
 
     if (paymentMethod?.created) {
       history.replace(BifrostRoute.TICKET, {
-        booking: { ...flight, email, passengerData, reference }
+        booking: { ...flight, email, booker, passengerData, reference }
       })
     }
   }
@@ -75,7 +76,12 @@ const BookingPage = () => {
           />
         ))}
       <div className="flex gap-6 w-full">
-        <ContactDetails email={email} setEmail={setEmail} />
+        <ContactDetails
+          email={email}
+          setEmail={setEmail}
+          booker={booker}
+          setBooker={setBooker}
+        />
         <TotalPrice
           data={flight}
           disabled={disableButton}
