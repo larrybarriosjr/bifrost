@@ -2,7 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import BookingForm from "components/form/booking/BookingForm"
 import ContactDetails from "components/form/booking/ContactDetails"
 import FlightDetails from "components/form/booking/FlightDetails"
-import TotalPrice from "components/form/booking/TotalPrice"
+import PaymentDetails from "components/form/booking/PaymentDetails"
 import { InitialPassengerData } from "defaults/passenger"
 import { BifrostRoute } from "defaults/route"
 import { validate } from "email-validator"
@@ -82,7 +82,7 @@ const BookingPage = () => {
           booker={booker}
           setBooker={setBooker}
         />
-        <TotalPrice
+        <PaymentDetails
           data={flight}
           disabled={disableButton}
           onSubmit={handleSubmit}

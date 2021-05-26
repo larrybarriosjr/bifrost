@@ -33,7 +33,7 @@ const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
     <Section>
       <CardSampleModal show={modalDisplay} onClose={handleCloseModal} />
       <Row>
-        <p className="text-blue-900 font-bold">Total Price</p>
+        <p className="text-blue-900 font-bold">Payment Details</p>
         <button
           type="button"
           onClick={handleOpenModal}
@@ -61,6 +61,7 @@ const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
             {pluralize("passenger", passengers)}
           </p>
           <p className="text-blue-900 font-bold text-4xl whitespace-nowrap self-start">
+            <span className="text-sm align-middle">Total:</span>{" "}
             {monetize(item.MinPrice * passengers, currency)}
           </p>
         </Col>
