@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Remove margin when printing. [larry]
+ */
+
+@page {
+  margin: 0;
+}
+
 /* Document
  * ========================================================================== */
 
