@@ -24,7 +24,9 @@ const StatusHeader = ({ reference }: StatusHeaderProps) => {
           <p className="font-semibold text-green-600 text-4xl mb-2">
             Booking Successful!
           </p>
-          <p className="mb-1 text-md font-mono">REFERENCE CODE: {reference}</p>
+          <p className="mb-1 text-md font-mono print:hidden">
+            REFERENCE CODE: {reference}
+          </p>
           <p className="text-lg">Thanks for booking with BIFROST.</p>
           <p className="text-sm">
             Please check your email for the details of your booking.
