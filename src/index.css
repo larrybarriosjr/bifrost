@@ -34,7 +34,8 @@
       * 5. Prevent adjustments of font size after orientation changes in
       *    IE on Windows Phone and in iOS.
       * 6. Breaks words to prevent overflow in all browsers (opinionated).
-      * 7. Use Raleway as the default font. [larry]
+      * 7. Use exact color including background graphics when printing. [larry]
+      * 8. Use Raleway as the default font. [larry]
       */
 
 html {
@@ -46,8 +47,10 @@ html {
   -ms-text-size-adjust: 100%; /* 5 */
   -webkit-text-size-adjust: 100%; /* 5 */
   word-break: break-word; /* 6 */
+  color-adjust: exact; /* 7 */
+  -webkit-print-color-adjust: exact; /* 7 */
   font-family: "Raleway", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
-    Arial, sans-serif; /* 7 */
+    Arial, sans-serif; /* 8 */
 }
 
 /* Sections

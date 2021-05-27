@@ -7,6 +7,10 @@ type StatusHeaderProps = {
 }
 
 const StatusHeader = ({ reference }: StatusHeaderProps) => {
+  const handlePrint = () => {
+    window.print()
+  }
+
   return (
     <Section>
       <Row>
@@ -15,12 +19,21 @@ const StatusHeader = ({ reference }: StatusHeaderProps) => {
             Booking Successful!
           </p>
           <p className="mb-1 text-md font-mono">REFERENCE CODE: {reference}</p>
-          <p className="text-lg">
+          <p className="text-lg">Thanks for booking with BIFROST.</p>
+          <p className="text-sm">
             Please check your email for the details of your booking.
           </p>
-          <p className="text-sm">
-            You can also download the tickets below by clicking on the
-            corresponding download icon.
+          <button
+            type="button"
+            onClick={handlePrint}
+            className="flex justify-center items-center h-10 w-40 mx-auto mb-2 mt-4
+              font-bold bg-blue-900 text-gray-50 border-2 border-blue-900 rounded-full
+              focus:outline-none focus:border-blue-500 hover:border-gray-400 print:hidden"
+          >
+            Print
+          </button>
+          <p className="text-xs print:hidden">
+            You can also download this ticket by clicking this button.
           </p>
         </Col>
       </Row>

@@ -33,8 +33,8 @@ const FlightDetails = ({ data }: FlightDetailsProps) => {
         </p>
       </Row>
       <div
-        className={`flex justify-between items-center p-4 m-6 rounded-3xl
-            shadow border border-green-200 bg-green-50 text-blue-900`}
+        className="flex justify-between items-center p-4 m-6 rounded-3xl
+          shadow border border-green-200 bg-green-50 text-blue-900"
       >
         <Col w="4/12">
           <FlightRoute route={origin} />

@@ -52,8 +52,8 @@ const PassengerInput = () => {
       <button
         type="button"
         onClick={handleShowInput}
-        className={`bg-green-200 border-green-200 border-2 rounded-full h-14 w-full text-blue-900
-            focus:outline-none hover:border-gray-400 focus:border-blue-500 font-bold`}
+        className="bg-green-200 border-green-200 border-2 rounded-full h-14 w-full text-blue-900
+          focus:outline-none hover:border-gray-400 focus:border-blue-500 font-bold"
       >
         {passengers} {pluralize("Passenger", passengers)}
       </button>

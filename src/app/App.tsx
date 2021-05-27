@@ -21,8 +21,14 @@ function App() {
   if (!reference) return null
 
   return (
-    <div className="flex flex-col items-center h-full w-full min-h-screen bg-gray-100">
-      <main className="flex flex-col items-center m-6 p-8 gap-6 bg-blue-200 w-screen max-w-screen-lg lg:rounded-3xl">
+    <div
+      className="flex flex-col items-center bg-gray-100
+        h-full w-full min-h-screen print:bg-blue-200"
+    >
+      <main
+        className="flex flex-col items-center m-6 p-8 gap-6 bg-blue-200
+          w-screen max-w-screen-lg lg:rounded-3xl print:pt-0"
+      >
         <Logo className="h-10" />
         <Switch>
           <Route exact path={BifrostRoute.HOME} component={HomePage} />

@@ -44,8 +44,8 @@ const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
       </Row>
       <Row>
         <CardElement
-          className={`bg-green-200 border-green-200 border-2 rounded-full h-14 w-full p-4
-            focus:outline-none hover:border-gray-400 focus:border-blue-500`}
+          className="bg-green-200 border-green-200 border-2 rounded-full h-14 w-full p-4
+            focus:outline-none hover:border-gray-400 focus:border-blue-500"
           options={{
             style: {
               base: { color: Color.BLUE_900, fontWeight: "bold" },
