@@ -1,3 +1,4 @@
+import PassengerDetails from "components/results/ticket/PassengerDetails"
 import StatusHeader from "components/results/ticket/StatusHeader"
 import { Fragment, useEffect } from "react"
 import { useLocation } from "react-router"
@@ -14,6 +15,7 @@ const TicketPage = () => {
   return (
     <Fragment>
       <StatusHeader reference={reference} />
+      <PassengerDetails passengers={passengerData} />
     </Fragment>
   )
 }
