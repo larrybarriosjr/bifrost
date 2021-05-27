@@ -1,3 +1,4 @@
+import FlightDetails from "components/form/booking/FlightDetails"
 import PassengerDetails from "components/results/ticket/PassengerDetails"
 import StatusHeader from "components/results/ticket/StatusHeader"
 import { Fragment, useEffect } from "react"
@@ -6,7 +7,8 @@ import { ReactRouterState } from "types/app"
 
 const TicketPage = () => {
   const location = useLocation<ReactRouterState>()
-  const { reference, passengerData } = location.state.booking
+  const { booking } = location.state
+  const { reference, passengerData } = booking
 
   useEffect(() => {
     localStorage.clear()
@@ -16,6 +18,7 @@ const TicketPage = () => {
     <Fragment>
       <StatusHeader reference={reference} />
       <PassengerDetails passengers={passengerData} />
+      <FlightDetails data={booking} ticket />
     </Fragment>
   )
 }

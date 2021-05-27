@@ -11,9 +11,10 @@ import { isRoundTrip } from "utils/boolean"
 
 type FlightDetailsProps = {
   data: FlightData
+  ticket?: boolean
 }
 
-const FlightDetails = ({ data }: FlightDetailsProps) => {
+const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
   const { carrier, currency, destination, item, origin } = data
 
   const departureDate = new Date(data.item.OutboundLeg.DepartureDate)
@@ -25,29 +26,61 @@ const FlightDetails = ({ data }: FlightDetailsProps) => {
     <Section>
       <Row>
         <p className="text-blue-900 font-bold">
-          Flight Details{" "}
-          <span className="font-normal">
-            ({format(departureDate, DateFormat.DISPLAY)}
-            {returnDate ? " to " + format(returnDate, DateFormat.DISPLAY) : ""})
-          </span>
+          Flight Details
+          {!ticket ? (
+            <span className="font-normal">
+              {" "}
+              ({format(departureDate, DateFormat.DISPLAY)}
+              {returnDate
+                ? " to " + format(returnDate, DateFormat.DISPLAY)
+                : ""}
+              )
+            </span>
+          ) : null}
         </p>
       </Row>
       <div
         className="flex justify-between items-center p-4 m-6 rounded-3xl
           shadow border border-green-200 bg-green-50 text-blue-900"
       >
+        {ticket ? (
+          <Col w="3/12">
+            <p>
+              <span className="font-bold print:block">Departure: </span>
+              {format(departureDate, DateFormat.DISPLAY)}
+            </p>
+            {returnDate ? (
+              <p>
+                <span className="font-bold mt-2 print:block">Return: </span>
+                {format(returnDate, DateFormat.DISPLAY)}
+              </p>
+            ) : null}
+          </Col>
+        ) : null}
         <Col w="4/12">
           <FlightRoute route={origin} />
+          {ticket ? (
+            <p>
+              {origin.CityName}, {origin.CountryName}
+            </p>
+          ) : null}
         </Col>
         <Col w="2/12">
           <FlightCarrier item={item} carrier={carrier} />
         </Col>
         <Col w="4/12">
           <FlightRoute route={destination} />
+          {ticket ? (
+            <p>
+              {destination.CityName}, {destination.CountryName}
+            </p>
+          ) : null}
         </Col>
-        <Col w="2/12">
-          <FlightPrice item={item} currency={currency} booking />
-        </Col>
+        {!ticket ? (
+          <Col w="2/12">
+            <FlightPrice item={item} currency={currency} booking />
+          </Col>
+        ) : null}
       </div>
     </Section>
   )
