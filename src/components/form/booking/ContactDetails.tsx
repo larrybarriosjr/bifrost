@@ -1,3 +1,4 @@
+import SectionTitle from "components/SectionTitle"
 import Row from "containers/Row"
 import Section from "containers/Section"
 import EmailInput from "./EmailInput"
@@ -19,7 +20,7 @@ const ContactDetails = ({
   return (
     <Section>
       <Row>
-        <p className="text-blue-900 font-bold">Contact Details</p>
+        <SectionTitle text="Contact Details" />
       </Row>
       <Row>
         <FirstNameInput value={booker} setValue={setBooker} />

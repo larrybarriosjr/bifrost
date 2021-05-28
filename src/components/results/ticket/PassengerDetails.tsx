@@ -1,3 +1,4 @@
+import SectionTitle from "components/SectionTitle"
 import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
@@ -11,7 +12,7 @@ const PassengerDetails = ({ passengers }: PassengerDetailsProps) => {
   return (
     <Section>
       <Row>
-        <p className="font-bold text-blue-900">Passenger Details</p>
+        <SectionTitle text="Passenger Details" />
       </Row>
       <Row>
         <ol className="w-full">

@@ -1,5 +1,6 @@
 import { CardElement } from "@stripe/react-stripe-js"
 import Button from "components/Button"
+import SectionTitle from "components/SectionTitle"
 import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
@@ -33,7 +34,7 @@ const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
     <Section>
       <CardSampleModal show={modalDisplay} onClose={handleCloseModal} />
       <Row>
-        <p className="text-blue-900 font-bold">Payment Details</p>
+        <SectionTitle text="Payment Details" />
         <button
           type="button"
           onClick={handleOpenModal}

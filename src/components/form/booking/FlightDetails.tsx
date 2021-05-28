@@ -1,6 +1,7 @@
 import FlightCarrier from "components/results/flight/FlightCarrier"
 import FlightPrice from "components/results/flight/FlightPrice"
 import FlightRoute from "components/results/flight/FlightRoute"
+import SectionTitle from "components/SectionTitle"
 import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
@@ -25,19 +26,19 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
   return (
     <Section>
       <Row>
-        <p className="text-blue-900 font-bold">
-          Flight Details
-          {!ticket ? (
-            <span className="font-normal">
-              {" "}
-              ({format(departureDate, DateFormat.DISPLAY)}
-              {returnDate
-                ? " to " + format(returnDate, DateFormat.DISPLAY)
-                : ""}
-              )
-            </span>
-          ) : null}
-        </p>
+        <SectionTitle
+          text="Flight Details"
+          subtext={
+            !ticket
+              ? `${format(departureDate, DateFormat.DISPLAY)}
+                ${
+                  returnDate
+                    ? " to " + format(returnDate, DateFormat.DISPLAY)
+                    : ""
+                }`
+              : undefined
+          }
+        />
       </Row>
       <div
         className="flex justify-between items-center p-4 m-6 rounded-3xl
