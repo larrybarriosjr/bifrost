@@ -1,9 +1,10 @@
 import SectionTitle from "components/SectionTitle"
+import TextInput from "components/TextInput"
+import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
 import { PassengerData } from "types/app"
 import AgeGroupDropdown from "./AgeGroupDropdown"
-import FullNameInput from "./FullNameInput"
 import HonorificDropdown from "./HonorificDropdown"
 
 type BookingFormProps = {
@@ -13,6 +14,17 @@ type BookingFormProps = {
 }
 
 const BookingForm = ({ id, data, setData }: BookingFormProps) => {
+  const otherData = (arr: PassengerData[]) => arr.filter(p => p.id !== id)
+  const thisData = (arr: PassengerData[]) => arr.filter(p => p.id === id)[0]
+
+  const handleChange =
+    (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setData(prev => [
+        ...otherData(prev),
+        { ...thisData(prev), [key]: e.target.value }
+      ])
+    }
+
   if (!data) return null
 
   return (
@@ -26,7 +38,13 @@ const BookingForm = ({ id, data, setData }: BookingFormProps) => {
           honorific={data.honorific}
           setHonorific={setData}
         />
-        <FullNameInput id={id} fullName={data.fullName} setFullName={setData} />
+        <Col w="7/12">
+          <TextInput
+            name="Full Name"
+            value={data.fullName}
+            onChange={handleChange("fullName")}
+          />
+        </Col>
         <AgeGroupDropdown
           id={id}
           ageGroup={data.ageGroup}

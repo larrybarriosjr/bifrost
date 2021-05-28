@@ -1,8 +1,7 @@
 import SectionTitle from "components/SectionTitle"
 import Row from "containers/Row"
 import Section from "containers/Section"
-import EmailInput from "./EmailInput"
-import FirstNameInput from "./FirstNameInput"
+import TextInput from "../../TextInput"
 
 type ContactDetailsProps = {
   booker: string
@@ -23,10 +22,10 @@ const ContactDetails = ({
         <SectionTitle text="Contact Details" />
       </Row>
       <Row>
-        <FirstNameInput value={booker} setValue={setBooker} />
+        <TextInput name="First Name" value={booker} setValue={setBooker} />
       </Row>
       <Row>
-        <EmailInput value={email} setValue={setEmail} />
+        <TextInput name="Email" value={email} setValue={setEmail} />
       </Row>
     </Section>
   )

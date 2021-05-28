@@ -1,24 +1,27 @@
-type FirstNameInputProps = {
+type TextInputProps = {
+  name: string
   value: string
-  setValue: React.Dispatch<React.SetStateAction<string>>
+  setValue?: React.Dispatch<React.SetStateAction<string>>
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const FirstNameInput = ({ value, setValue }: FirstNameInputProps) => {
+const TextInput = ({ name, value, setValue, onChange }: TextInputProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!setValue) return
     setValue(e.target.value)
   }
 
   return (
     <input
-      placeholder="First Name"
+      placeholder={name}
       className={`${
         value ? "font-bold" : "font-light"
       } bg-green-200 border-green-200 border-2 rounded-full h-14 w-full px-4 text-blue-900
         focus:outline-none hover:border-gray-400 focus:border-blue-500`}
-      onChange={handleChange}
+      onChange={onChange || handleChange}
       value={value}
     />
   )
 }
 
-export default FirstNameInput
+export default TextInput
