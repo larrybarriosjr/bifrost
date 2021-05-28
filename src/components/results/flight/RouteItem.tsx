@@ -72,6 +72,7 @@ const RouteItem = ({ item }: RouteItemProps) => {
       <Col w="2/12">
         <FlightPrice item={item} currency={currency} />
         <Link
+          tabIndex={-1}
           to={{ pathname: BifrostRoute.BOOKING, state: { flight: flightData } }}
         >
           <Button text="Book Now" className="h-10 w-full" />
