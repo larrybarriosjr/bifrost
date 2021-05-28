@@ -1,9 +1,9 @@
+import Button from "components/Button"
 import CurrencyDropdown from "components/form/search/CurrencyDropdown"
 import FlightTypeRadio from "components/form/search/FlightTypeRadio"
 import PassengerInput from "components/form/search/PassengerInput"
 import PlaceDropdown from "components/form/search/PlaceDropdown"
 import RangeDatePicker from "components/form/search/RangeDatePicker"
-import SearchButton from "components/form/search/SearchButton"
 import SingleDatePicker from "components/form/search/SingleDatePicker"
 import Row from "containers/Row"
 import Section from "containers/Section"
@@ -84,7 +84,9 @@ const FlightForm = () => {
             setTo={setReturnDate}
           />
         )}
-        <SearchButton
+        <Button
+          text="Search"
+          className="w-1/4"
           disabled={searchButtonDisabled}
           onClick={handleFlightSearch}
         />

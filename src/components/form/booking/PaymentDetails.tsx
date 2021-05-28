@@ -1,4 +1,5 @@
 import { CardElement } from "@stripe/react-stripe-js"
+import Button from "components/Button"
 import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
@@ -8,7 +9,6 @@ import { FlightData } from "types/app"
 import { monetize } from "utils/number"
 import { pluralize } from "utils/string"
 import CardSampleModal from "./CardSampleModal"
-import ConfirmBookingButton from "./ConfirmBookingButton"
 
 type TotalPriceProps = {
   data: FlightData
@@ -66,7 +66,12 @@ const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
           </p>
         </Col>
         <Col w="1/2">
-          <ConfirmBookingButton disabled={disabled} onSubmit={onSubmit} />
+          <Button
+            text="Confirm Booking"
+            className="h-full"
+            disabled={disabled}
+            onClick={onSubmit}
+          />
         </Col>
       </Row>
     </Section>

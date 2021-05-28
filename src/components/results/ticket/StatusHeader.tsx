@@ -1,3 +1,4 @@
+import Button from "components/Button"
 import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
@@ -36,15 +37,11 @@ const StatusHeader = ({ reference }: StatusHeaderProps) => {
             alt="Booking barcode"
             className="w-80 mt-2 self-center hidden print:block"
           />
-          <button
-            type="button"
+          <Button
+            text="Print"
             onClick={handlePrint}
-            className="flex justify-center items-center h-10 w-40 mx-auto my-2
-              font-bold bg-blue-900 text-gray-50 border-2 border-blue-900 rounded-full
-              focus:outline-none focus:border-blue-500 hover:border-gray-400 print:hidden"
-          >
-            Print
-          </button>
+            className="h-10 w-40 mx-auto my-2"
+          />
           <p className="text-xs print:hidden">
             You can also download this ticket by clicking this button.
           </p>

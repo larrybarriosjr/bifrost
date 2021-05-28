@@ -1,10 +1,12 @@
+import Button from "components/Button"
 import Col from "containers/Col"
+import { BifrostRoute } from "defaults/route"
 import { usePassengers } from "hooks/usePassengers"
 import { useResults } from "hooks/useResults"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { FlightData } from "types/app"
 import { Carrier, Currency, Place, Quote } from "types/skyscanner"
-import BookNowButton from "./BookNowButton"
 import FlightCarrier from "./FlightCarrier"
 import FlightPrice from "./FlightPrice"
 import FlightRoute from "./FlightRoute"
@@ -69,7 +71,11 @@ const RouteItem = ({ item }: RouteItemProps) => {
       </Col>
       <Col w="2/12">
         <FlightPrice item={item} currency={currency} />
-        <BookNowButton data={flightData} />
+        <Link
+          to={{ pathname: BifrostRoute.BOOKING, state: { flight: flightData } }}
+        >
+          <Button text="Book Now" className="h-10 w-full" />
+        </Link>
       </Col>
     </div>
   )
