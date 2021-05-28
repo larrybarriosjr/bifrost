@@ -4,7 +4,6 @@ import { Color } from "defaults/style"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"
 import debounce from "lodash.debounce"
-import { Dispatch, SetStateAction } from "react"
 import AsyncSelect from "react-select/async"
 import { ActionMeta } from "react-select/src/types"
 import { getPlaces } from "services/skyscanner"
@@ -13,7 +12,7 @@ import { QueryPlace } from "types/skyscanner"
 
 type PlaceDropdownProps = {
   placeholder: string
-  setValue: Dispatch<SetStateAction<string>>
+  setValue: React.Dispatch<React.SetStateAction<string>>
 }
 
 const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {

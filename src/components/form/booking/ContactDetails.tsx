@@ -1,7 +1,7 @@
 import SectionTitle from "components/SectionTitle"
+import TextInput from "components/TextInput"
 import Row from "containers/Row"
 import Section from "containers/Section"
-import TextInput from "../../TextInput"
 
 type ContactDetailsProps = {
   booker: string

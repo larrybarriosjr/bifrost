@@ -1,11 +1,14 @@
+import DropdownInput from "components/DropdownInput"
 import SectionTitle from "components/SectionTitle"
 import TextInput from "components/TextInput"
 import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
+import { AgeGroup, Honorific } from "defaults/passenger"
+import { useAgeGroups } from "hooks/useAgeGroups"
+import { useHonorifics } from "hooks/useHonorifics"
+import { OptionTypeBase } from "react-select"
 import { PassengerData } from "types/app"
-import AgeGroupDropdown from "./AgeGroupDropdown"
-import HonorificDropdown from "./HonorificDropdown"
 
 type BookingFormProps = {
   id: number
@@ -14,15 +17,27 @@ type BookingFormProps = {
 }
 
 const BookingForm = ({ id, data, setData }: BookingFormProps) => {
+  const ageGroups = useAgeGroups()
+  const honorifics = useHonorifics()
+
   const otherData = (arr: PassengerData[]) => arr.filter(p => p.id !== id)
   const thisData = (arr: PassengerData[]) => arr.filter(p => p.id === id)[0]
 
-  const handleChange =
+  const handleTextChange =
     (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       setData(prev => [
         ...otherData(prev),
         { ...thisData(prev), [key]: e.target.value }
       ])
+    }
+
+  const handleDropdownChange =
+    (key: string) => (value: OptionTypeBase | null) => {
+      if (value)
+        setData(prev => [
+          ...otherData(prev),
+          { ...thisData(prev), [key]: value.value }
+        ])
     }
 
   if (!data) return null
@@ -33,23 +48,27 @@ const BookingForm = ({ id, data, setData }: BookingFormProps) => {
         <SectionTitle text={`Booking Form for Passenger #${id}`} />
       </Row>
       <Row>
-        <HonorificDropdown
-          id={id}
-          honorific={data.honorific}
-          setHonorific={setData}
-        />
+        <Col w="2/12">
+          <DropdownInput<Honorific>
+            options={honorifics}
+            value={data.honorific}
+            onChange={handleDropdownChange("honorific")}
+          />
+        </Col>
         <Col w="7/12">
           <TextInput
             name="Full Name"
             value={data.fullName}
-            onChange={handleChange("fullName")}
+            onChange={handleTextChange("fullName")}
           />
         </Col>
-        <AgeGroupDropdown
-          id={id}
-          ageGroup={data.ageGroup}
-          setAgeGroup={setData}
-        />
+        <Col w="3/12">
+          <DropdownInput<AgeGroup>
+            options={ageGroups}
+            value={data.ageGroup}
+            onChange={handleDropdownChange("ageGroup")}
+          />
+        </Col>
       </Row>
     </Section>
   )
