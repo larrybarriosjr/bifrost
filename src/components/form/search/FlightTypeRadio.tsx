@@ -18,8 +18,32 @@ const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
     setType(value)
   }
 
+  const handleArrowKeys = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    switch (e.key) {
+      case "ArrowUp":
+      case "ArrowDown":
+      case "ArrowLeft":
+      case "ArrowRight":
+        setType(
+          type === FlightType.ONE_WAY
+            ? FlightType.ROUND_TRIP
+            : FlightType.ONE_WAY
+        )
+        break
+      default:
+        break
+    }
+  }
+
   return (
-    <div className="flex gap-1 p-1 w-2/4 bg-green-200 rounded-full">
+    <div
+      className="flex gap-1 p-0.5 w-2/4 bg-green-200 rounded-full border-2 border-green-200
+        focus:outline-none focus:border-blue-500"
+      aria-labelledby="flight_type"
+      role="radiogroup"
+      onKeyDown={handleArrowKeys}
+      tabIndex={0}
+    >
       {flightTypes.map((item, idx) => (
         <div
           key={idx}
@@ -29,6 +53,8 @@ const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
             item.value === type ? "bg-green-100 font-bold" : ""
           } transition-colors`}
           onClick={() => handleClick(item.value)}
+          aria-checked={item.value === type}
+          role="radio"
         >
           <label htmlFor={item.value}>{item.label}</label>
           <input
