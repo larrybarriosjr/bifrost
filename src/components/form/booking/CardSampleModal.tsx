@@ -30,9 +30,11 @@ const CardSampleModal = ({ show, onClose }: CardSampleModalProps) => {
             Sample Card Details
           </p>
           <button
+            autoFocus
             type="button"
             onClick={onClose}
-            className="text-3xl font-semibold text-gray-400 pb-2"
+            className="text-3xl leading-none font-semibold text-gray-400 pb-1 px-2 mb-1
+              focus:outline-none border-2 border-transparent focus:border-blue-500 rounded-full"
           >
             ×
           </button>

@@ -1,4 +1,4 @@
-import { CardElement } from "@stripe/react-stripe-js"
+import { CardElement, useElements } from "@stripe/react-stripe-js"
 import Button from "components/Button"
 import SectionTitle from "components/SectionTitle"
 import Col from "containers/Col"
@@ -18,6 +18,7 @@ type TotalPriceProps = {
 }
 
 const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
+  const elements = useElements()
   const { item, passengers, currency } = data
 
   const [modalDisplay, setModalDisplay] = useState<boolean>(false)
@@ -28,6 +29,7 @@ const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
 
   const handleCloseModal = () => {
     setModalDisplay(false)
+    elements?.getElement(CardElement)?.focus()
   }
 
   return (
@@ -38,7 +40,8 @@ const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
         <button
           type="button"
           onClick={handleOpenModal}
-          className="text-xs underline text-blue-400 focus:outline-none"
+          className="text-xs underline text-blue-400 border-2 border-transparent
+            focus:outline-none focus:border-blue-500 rounded-full px-2"
         >
           Card number for testing
         </button>
