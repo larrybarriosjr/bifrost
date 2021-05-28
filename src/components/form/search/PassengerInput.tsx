@@ -15,7 +15,6 @@ const PassengerInput = () => {
   const [inputDisplay, setInputDisplay] = useState(false)
 
   const handleShowInput = () => {
-    setInputValue(passengers)
     setInputDisplay(true)
   }
 
@@ -35,6 +34,7 @@ const PassengerInput = () => {
   const handleInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === ".") e.preventDefault()
     if (e.key === "0" && inputValue === 0) e.preventDefault()
+    if (e.key === "Enter") handleSetValue()
   }
 
   const handleSetValue = () => {
@@ -47,6 +47,7 @@ const PassengerInput = () => {
       className="flex flex-col items-center w-1/4"
       onMouseDown={() => setIgnoreBlur(true)}
       onMouseUp={() => setIgnoreBlur(false)}
+      onFocus={handleShowInput}
       onBlur={handleHideInput}
     >
       <button
@@ -65,12 +66,14 @@ const PassengerInput = () => {
             value={inputValue.toString()}
             onChange={handleChange}
             onKeyDown={handleInput}
+            autoFocus={inputDisplay}
             min="1"
           />
           <button
             type="button"
             onClick={handleSetValue}
-            className="rounded-r w-12 font-bold text-gray-50 bg-blue-900 border-2 focus:outline-none hover:border-gray-400 focus:border-blue-500"
+            className="rounded-r w-12 font-bold text-gray-50 bg-blue-900 border-2
+              focus:outline-none hover:border-gray-400 focus:border-blue-500"
           >
             ✓
           </button>
