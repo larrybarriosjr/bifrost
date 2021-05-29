@@ -28,6 +28,7 @@ const CurrencyDropdown = ({ currency, setCurrency }: CurrencyDropdownProps) => {
 
   return (
     <Select
+      aria-label="Currency"
       options={currencies}
       onChange={handleChange}
       formatOptionLabel={formatOptionLabel}

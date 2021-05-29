@@ -19,7 +19,13 @@ const Logo = ({ ...props }: LogoProps) => {
       onClick={handleClick}
       className="bg-white shadow rounded-full py-4 px-8 focus:outline-none"
     >
-      <img src={logo} alt="Bifrost Flight Booking System" {...props} />
+      <img
+        src={logo}
+        alt="Bifrost Flight Booking System"
+        width="200"
+        height="40"
+        {...props}
+      />
     </button>
   )
 }

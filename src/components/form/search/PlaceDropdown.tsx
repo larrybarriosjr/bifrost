@@ -11,12 +11,14 @@ import { ReactSelectCallback, ReactSelectReturn } from "types/app"
 import { QueryPlace } from "types/skyscanner"
 
 type PlaceDropdownProps = {
+  label: string
   autoFocus?: boolean
   placeholder: string
   setValue: React.Dispatch<React.SetStateAction<string>>
 }
 
 const PlaceDropdown = ({
+  label,
   autoFocus,
   placeholder,
   setValue
@@ -59,6 +61,7 @@ const PlaceDropdown = ({
 
   return (
     <AsyncSelect
+      aria-label={label}
       autoFocus={autoFocus}
       loadOptions={fetchOptions}
       formatOptionLabel={formatOptionLabel}

@@ -60,11 +60,13 @@ const FlightForm = () => {
     <Section>
       <Row>
         <PlaceDropdown
+          label="Origin"
           placeholder={PlaceholderText.ORIGIN}
           setValue={setOrigin}
           autoFocus
         />
         <PlaceDropdown
+          label="Destination"
           placeholder={PlaceholderText.DESTINATION}
           setValue={setDestination}
         />
