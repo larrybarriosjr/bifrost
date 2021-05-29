@@ -11,11 +11,16 @@ import { ReactSelectCallback, ReactSelectReturn } from "types/app"
 import { QueryPlace } from "types/skyscanner"
 
 type PlaceDropdownProps = {
+  autoFocus?: boolean
   placeholder: string
   setValue: React.Dispatch<React.SetStateAction<string>>
 }
 
-const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {
+const PlaceDropdown = ({
+  autoFocus,
+  placeholder,
+  setValue
+}: PlaceDropdownProps) => {
   const country = useCountryCode()
   const [currency] = useCurrencyCode()
 
@@ -54,6 +59,7 @@ const PlaceDropdown = ({ placeholder, setValue }: PlaceDropdownProps) => {
 
   return (
     <AsyncSelect
+      autoFocus={autoFocus}
       loadOptions={fetchOptions}
       formatOptionLabel={formatOptionLabel}
       loadingMessage={loadingMessage}

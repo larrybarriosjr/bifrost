@@ -41,6 +41,7 @@ const StatusHeader = ({ reference }: StatusHeaderProps) => {
             text="Print"
             onClick={handlePrint}
             className="h-10 w-40 mx-auto my-2"
+            autoFocus
           />
           <p className="text-xs print:hidden">
             You can also download this ticket by clicking this button.

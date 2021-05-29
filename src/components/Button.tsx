@@ -3,9 +3,16 @@ type ButtonProps = {
   disabled?: boolean
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   className?: string
+  autoFocus?: boolean
 }
 
-const Button = ({ text, disabled, onClick, className }: ButtonProps) => {
+const Button = ({
+  text,
+  disabled,
+  onClick,
+  className,
+  autoFocus
+}: ButtonProps) => {
   return (
     <button
       type="button"
@@ -18,6 +25,7 @@ const Button = ({ text, disabled, onClick, className }: ButtonProps) => {
       }`}
       disabled={disabled}
       onClick={onClick}
+      autoFocus={autoFocus}
     >
       {text}
     </button>

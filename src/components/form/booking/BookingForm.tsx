@@ -53,6 +53,7 @@ const BookingForm = ({ id, data, setData }: BookingFormProps) => {
             options={honorifics}
             value={data.honorific}
             onChange={handleDropdownChange("honorific")}
+            autoFocus={id === 1}
           />
         </Col>
         <Col w="7/12">

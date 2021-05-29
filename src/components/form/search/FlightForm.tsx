@@ -62,6 +62,7 @@ const FlightForm = () => {
         <PlaceDropdown
           placeholder={PlaceholderText.ORIGIN}
           setValue={setOrigin}
+          autoFocus
         />
         <PlaceDropdown
           placeholder={PlaceholderText.DESTINATION}
