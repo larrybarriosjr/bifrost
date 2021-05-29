@@ -3,6 +3,7 @@ import Select, { ActionMeta, OptionTypeBase } from "react-select"
 import { InputValue } from "types/app"
 
 type DropdownInputProps<T> = {
+  label: string
   autoFocus?: boolean
   options: InputValue<T>[]
   value: T
@@ -13,6 +14,7 @@ type DropdownInputProps<T> = {
 }
 
 const DropdownInput = <T extends unknown>({
+  label,
   autoFocus,
   options,
   value,
@@ -20,6 +22,7 @@ const DropdownInput = <T extends unknown>({
 }: DropdownInputProps<T>) => {
   return (
     <Select
+      aria-label={label}
       autoFocus={autoFocus}
       options={options}
       onChange={onChange}

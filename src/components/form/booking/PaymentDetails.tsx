@@ -40,7 +40,7 @@ const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
         <button
           type="button"
           onClick={handleOpenModal}
-          className="text-xs underline text-blue-400 border-2 border-transparent
+          className="text-xs underline text-blue-600 border-2 border-transparent
             focus:outline-none focus:border-blue-500 rounded-full px-2"
         >
           Card number for testing

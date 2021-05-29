@@ -50,6 +50,7 @@ const BookingForm = ({ id, data, setData }: BookingFormProps) => {
       <Row>
         <Col w="2/12">
           <DropdownInput<Honorific>
+            label="Honorific"
             options={honorifics}
             value={data.honorific}
             onChange={handleDropdownChange("honorific")}
@@ -65,6 +66,7 @@ const BookingForm = ({ id, data, setData }: BookingFormProps) => {
         </Col>
         <Col w="3/12">
           <DropdownInput<AgeGroup>
+            label="Age group"
             options={ageGroups}
             value={data.ageGroup}
             onChange={handleDropdownChange("ageGroup")}
