@@ -93,7 +93,7 @@ const FlightForm = () => {
             <SingleDatePicker date={flightDate} setDate={setFlightDate} />
           </Col>
         ) : (
-          <Col w="2/3">
+          <Col w="3/4">
             <RangeDatePicker
               from={outwardDate}
               to={returnDate}

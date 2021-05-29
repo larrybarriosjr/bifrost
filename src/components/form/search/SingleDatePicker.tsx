@@ -1,9 +1,10 @@
-import dateFnsFormat from "date-fns/format"
-import dateFnsParse from "date-fns/parse"
+import TextInput from "components/TextInput"
+import { format } from "date-fns"
 import { DateFormat, PlaceholderText } from "defaults/flight"
 import { Color } from "defaults/style"
-import { DateUtils } from "react-day-picker"
-import DayPickerInput from "react-day-picker/DayPickerInput"
+import { useEffect, useRef, useState } from "react"
+import { DayModifiers } from "react-day-picker"
+import DayPicker from "react-day-picker/DayPicker"
 
 type SingleDatePickerProps = {
   date: string
@@ -13,23 +14,8 @@ type SingleDatePickerProps = {
 const SingleDatePicker = ({ date, setDate }: SingleDatePickerProps) => {
   const dateNow = new Date()
 
-  const handleDayChange = (day: Date) => {
-    if (day instanceof Date) {
-      const formattedDate = dateFnsFormat(day, DateFormat.META)
-      setDate(formattedDate)
-    }
-  }
-
-  const formatDate = (date: Date, format: string) => {
-    return dateFnsFormat(date, format)
-  }
-
-  const parseDate = (str: string, format: string) => {
-    const parsedDate = dateFnsParse(str, format, dateNow)
-    if (DateUtils.isDate(parsedDate)) {
-      return parsedDate
-    }
-  }
+  const datePickerRef = useRef<DayPicker>(null)
+  const [datePickerDisplay, setDatePickerDisplay] = useState(false)
 
   const modifiers = {
     days: { before: dateNow, after: dateNow }
@@ -42,24 +28,51 @@ const SingleDatePicker = ({ date, setDate }: SingleDatePickerProps) => {
     disabled: { color: Color.GRAY_400 }
   }
 
+  const handleShowDatePicker = () => {
+    setDatePickerDisplay(true)
+  }
+
+  const handleSelectDay = (
+    day: Date,
+    _modifiers: DayModifiers,
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    const attributes = e.currentTarget.attributes
+    const ariaDisabled = attributes.getNamedItem("aria-disabled")
+    const ariaDisabledValue = ariaDisabled?.value
+
+    if (ariaDisabledValue === "true") return
+    setDate(format(day, DateFormat.META))
+    setDatePickerDisplay(false)
+  }
+
+  useEffect(() => {
+    if (!datePickerDisplay) return
+    datePickerRef?.current?.focus()
+  }, [datePickerDisplay])
+
   return (
-    <DayPickerInput
-      placeholder={PlaceholderText.DEPARTURE}
-      onDayChange={handleDayChange}
-      format={DateFormat.DISPLAY}
-      formatDate={formatDate}
-      parseDate={parseDate}
-      inputProps={{
-        readOnly: true,
-        className: date ? "font-bold" : ""
-      }}
-      dayPickerProps={{
-        modifiers,
-        modifiersStyles,
-        fromMonth: dateNow,
-        disabledDays: { before: dateNow }
-      }}
-    />
+    <div className="flex flex-col relative">
+      <TextInput
+        name={PlaceholderText.DEPARTURE}
+        className="text-center"
+        onFocus={handleShowDatePicker}
+        value={date ? format(new Date(date), DateFormat.DISPLAY) : ""}
+        readOnly
+      />
+      {datePickerDisplay ? (
+        <DayPicker
+          ref={datePickerRef}
+          onDayClick={handleSelectDay}
+          modifiers={modifiers}
+          modifiersStyles={modifiersStyles}
+          fromMonth={dateNow}
+          disabledDays={{ before: dateNow }}
+          selectedDays={new Date(date)}
+          className="absolute top-16 bg-blue-900 text-center border-2 rounded-3xl text-gray-50"
+        />
+      ) : null}
+    </div>
   )
 }
 
