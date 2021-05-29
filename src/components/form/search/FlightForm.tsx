@@ -5,6 +5,7 @@ import PassengerInput from "components/form/search/PassengerInput"
 import PlaceDropdown from "components/form/search/PlaceDropdown"
 import RangeDatePicker from "components/form/search/RangeDatePicker"
 import SingleDatePicker from "components/form/search/SingleDatePicker"
+import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
 import { FlightType, InitialFlightData, PlaceholderText } from "defaults/flight"
@@ -59,40 +60,56 @@ const FlightForm = () => {
   return (
     <Section>
       <Row>
-        <PlaceDropdown
-          label="Origin"
-          placeholder={PlaceholderText.ORIGIN}
-          setValue={setOrigin}
-          autoFocus
-        />
-        <PlaceDropdown
-          label="Destination"
-          placeholder={PlaceholderText.DESTINATION}
-          setValue={setDestination}
-        />
+        <Col w="1/2">
+          <PlaceDropdown
+            label="Origin"
+            placeholder={PlaceholderText.ORIGIN}
+            setValue={setOrigin}
+            autoFocus
+          />
+        </Col>
+        <Col w="1/2">
+          <PlaceDropdown
+            label="Destination"
+            placeholder={PlaceholderText.DESTINATION}
+            setValue={setDestination}
+          />
+        </Col>
       </Row>
       <Row>
-        <FlightTypeRadio type={flightType} setType={setFlightType} />
-        <CurrencyDropdown currency={currency} setCurrency={setCurrency} />
-        <PassengerInput />
+        <Col w="2/4">
+          <FlightTypeRadio type={flightType} setType={setFlightType} />
+        </Col>
+        <Col w="1/4">
+          <CurrencyDropdown currency={currency} setCurrency={setCurrency} />
+        </Col>
+        <Col w="1/4">
+          <PassengerInput />
+        </Col>
       </Row>
       <Row>
         {flightType === FlightType.ONE_WAY ? (
-          <SingleDatePicker date={flightDate} setDate={setFlightDate} />
+          <Col w="1/3">
+            <SingleDatePicker date={flightDate} setDate={setFlightDate} />
+          </Col>
         ) : (
-          <RangeDatePicker
-            from={outwardDate}
-            to={returnDate}
-            setFrom={setOutwardDate}
-            setTo={setReturnDate}
-          />
+          <Col w="2/3">
+            <RangeDatePicker
+              from={outwardDate}
+              to={returnDate}
+              setFrom={setOutwardDate}
+              setTo={setReturnDate}
+            />
+          </Col>
         )}
-        <Button
-          text="Search"
-          className="w-1/4"
-          disabled={searchButtonDisabled}
-          onClick={handleFlightSearch}
-        />
+        <Col w="1/4">
+          <Button
+            text="Search"
+            disabled={searchButtonDisabled}
+            onClick={handleFlightSearch}
+            className="h-full"
+          />
+        </Col>
       </Row>
     </Section>
   )

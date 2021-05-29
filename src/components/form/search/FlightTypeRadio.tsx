@@ -37,7 +37,7 @@ const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
 
   return (
     <div
-      className="flex gap-1 p-0.5 w-2/4 bg-green-200 rounded-full border-2 border-green-200
+      className="flex gap-1 p-0.5 bg-green-200 rounded-full border-2 border-green-200
         focus:outline-none focus:border-blue-500"
       aria-label="Flight type"
       role="radiogroup"

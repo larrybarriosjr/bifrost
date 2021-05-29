@@ -34,7 +34,6 @@ const CurrencyDropdown = ({ currency, setCurrency }: CurrencyDropdownProps) => {
       formatOptionLabel={formatOptionLabel}
       getOptionValue={value => value.Code}
       value={currencies?.find(c => c.Code === currency)}
-      className="w-1/4"
       styles={{
         control: base => ({
           ...base,

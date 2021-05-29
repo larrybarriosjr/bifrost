@@ -72,7 +72,8 @@ const PlaceDropdown = ({
       styles={{
         container: base => ({
           ...base,
-          width: "100%"
+          width: "100%",
+          textAlign: "left"
         }),
         control: base => ({
           ...base,

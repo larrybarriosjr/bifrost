@@ -44,7 +44,7 @@ const PassengerInput = () => {
 
   return (
     <div
-      className="flex flex-col items-center w-1/4"
+      className="flex flex-col items-center"
       onMouseDown={() => setIgnoreBlur(true)}
       onMouseUp={() => setIgnoreBlur(false)}
       onFocus={handleShowInput}
