@@ -14,10 +14,11 @@ import CardSampleModal from "./CardSampleModal"
 type TotalPriceProps = {
   data: FlightData
   disabled?: boolean
+  loading?: boolean
   onSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
+const TotalPrice = ({ data, disabled, loading, onSubmit }: TotalPriceProps) => {
   const elements = useElements()
   const { item, passengers, currency } = data
 
@@ -74,6 +75,7 @@ const TotalPrice = ({ data, disabled, onSubmit }: TotalPriceProps) => {
             text="Confirm Booking"
             className="h-full"
             disabled={disabled}
+            loading={loading}
             onClick={onSubmit}
           />
         </Col>

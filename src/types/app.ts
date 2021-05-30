@@ -1,3 +1,4 @@
+import { PaymentMethod } from "@stripe/stripe-js"
 import { FlightType } from "defaults/flight"
 import { AgeGroup, Honorific } from "defaults/passenger"
 import { GroupTypeBase } from "react-select"
@@ -8,6 +9,29 @@ export type BookingData = FlightData & {
   booker: string
   passengerData: PassengerData[]
   reference: string
+  paymentMethod: PaymentMethod
+}
+
+export type EmailFormData = {
+  booker: string
+  carrier_name: string
+  currency_code: string
+  destination_code: string
+  destination_location: string
+  destination_terminal: string
+  email: string
+  flight_date: string
+  flight_type: string
+  origin_code: string
+  origin_location: string
+  origin_terminal: string
+  passenger_count: number
+  passenger_list: string
+  payment_method: string
+  quote_datetime: string
+  reference_code: string
+  ticket_price: string
+  total_price: string
 }
 
 export type FlightData = {

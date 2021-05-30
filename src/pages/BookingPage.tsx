@@ -3,14 +3,21 @@ import BookingForm from "components/form/booking/BookingForm"
 import ContactDetails from "components/form/booking/ContactDetails"
 import FlightDetails from "components/form/booking/FlightDetails"
 import PaymentDetails from "components/form/booking/PaymentDetails"
+import {
+  EMAILJS_SERVICE_ID,
+  EMAILJS_TEMPLATE_ID,
+  EMAILJS_USER_ID
+} from "defaults/env"
 import { InitialPassengerData } from "defaults/passenger"
 import { BifrostRoute } from "defaults/route"
 import { validate } from "email-validator"
+import { send } from "emailjs-com"
 import { useReferenceCode } from "hooks/useReferenceCode"
 import { times } from "lodash"
 import { Fragment, useEffect, useState } from "react"
 import { useHistory, useLocation } from "react-router"
-import { PassengerData, ReactRouterState } from "types/app"
+import { EmailFormData, PassengerData, ReactRouterState } from "types/app"
+import { transformToEmailForm } from "utils/serializer"
 
 const BookingPage = () => {
   const stripe = useStripe()
@@ -22,6 +29,7 @@ const BookingPage = () => {
 
   const [email, setEmail] = useState<string>("")
   const [booker, setBooker] = useState<string>("")
+  const [loading, setLoading] = useState<boolean>(false)
   const [passengerData, setPassengerData] = useState<PassengerData[]>([])
 
   useEffect(() => {
@@ -54,9 +62,33 @@ const BookingPage = () => {
     }
 
     if (paymentMethod?.created) {
-      history.replace(BifrostRoute.TICKET, {
-        booking: { ...flight, email, booker, passengerData, reference }
-      })
+      const bookingForm = {
+        ...flight,
+        email,
+        booker,
+        passengerData,
+        reference,
+        paymentMethod
+      }
+      const form: EmailFormData = transformToEmailForm(bookingForm)
+
+      setLoading(true)
+
+      const { status, text } = await send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        form,
+        EMAILJS_USER_ID
+      )
+
+      if (status === 400) {
+        setLoading(false)
+        console.log("Error: ", text)
+      }
+      if (status === 200) {
+        setLoading(false)
+        history.replace(BifrostRoute.TICKET, { booking: bookingForm })
+      }
     }
   }
 
@@ -85,6 +117,7 @@ const BookingPage = () => {
         <PaymentDetails
           data={flight}
           disabled={disableButton}
+          loading={loading}
           onSubmit={handleSubmit}
         />
       </div>
