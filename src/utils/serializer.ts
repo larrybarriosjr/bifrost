@@ -47,7 +47,7 @@ export const transformToEmailForm = (form: BookingData): EmailFormData => {
       )}`
 
   const passengerList = `<ol>${passengerData
-    .map(p => `<li>${p.id}. ${p.honorific}. ${p.fullName} (${p.ageGroup})</li>`)
+    .map(p => `<li>${p.honorific}. ${p.fullName} (${p.ageGroup})</li>`)
     .join("")}</ol>`
 
   return {
