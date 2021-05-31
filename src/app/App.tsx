@@ -26,8 +26,8 @@ function App() {
         h-full w-full min-h-screen print:bg-blue-200"
     >
       <main
-        className="flex flex-col items-center m-6 p-8 gap-6 bg-blue-200
-          w-screen max-w-screen-lg lg:rounded-3xl print:pt-0"
+        className="flex flex-col items-center xl:m-6 p-8 gap-6 bg-blue-200
+          w-full max-w-screen-lg xl:rounded-3xl print:pt-0"
       >
         <Logo />
         <Switch>

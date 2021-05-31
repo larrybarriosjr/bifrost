@@ -107,8 +107,8 @@ const RangeDatePicker = ({
   }
 
   return (
-    <div className="flex w-full gap-4">
-      <div className="flex flex-col relative w-full">
+    <div className="flex flex-wrap md:flex-nowrap w-full gap-6">
+      <div className="flex flex-col relative w-full items-center">
         <TextInput
           name={PlaceholderText.DEPARTURE}
           className="text-center"
@@ -130,11 +130,11 @@ const RangeDatePicker = ({
               movingFrom || dateFrom,
               { from: movingFrom, to: dateTo }
             ]}
-            className="absolute top-16 w-full bg-blue-900 text-center border-2 rounded-3xl text-gray-50"
+            className="absolute z-10 top-16 w-full max-w-max md:w-auto bg-blue-900 text-center whitespace-nowrap border-2 rounded-3xl text-gray-50"
           />
         ) : null}
       </div>
-      <div className="flex flex-col relative w-full">
+      <div className="flex flex-col relative w-full items-center">
         <TextInput
           name={PlaceholderText.RETURN}
           className="text-center"
@@ -156,7 +156,7 @@ const RangeDatePicker = ({
               dateFrom,
               { from: dateFrom, to: movingTo || dateTo }
             ]}
-            className="absolute top-16 w-full bg-blue-900 text-center border-2 rounded-3xl text-gray-50"
+            className="absolute z-10 top-16 w-full max-w-max md:w-auto bg-blue-900 text-center whitespace-nowrap border-2 rounded-3xl text-gray-50"
           />
         ) : null}
       </div>

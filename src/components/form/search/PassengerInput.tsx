@@ -44,7 +44,7 @@ const PassengerInput = () => {
 
   return (
     <div
-      className="flex flex-col items-center"
+      className="flex flex-col items-center relative"
       onMouseDown={() => setIgnoreBlur(true)}
       onMouseUp={() => setIgnoreBlur(false)}
       onFocus={handleShowInput}
@@ -59,9 +59,9 @@ const PassengerInput = () => {
         {passengers} {pluralize("Passenger", passengers)}
       </button>
       {inputDisplay ? (
-        <div className="absolute flex flex-row mt-16 bg-white rounded shadow-md border border-gray-300">
+        <div className="absolute z-10 flex flex-row mt-16 bg-white rounded shadow-md border border-gray-300">
           <input
-            className="w-36 bg-transparent pl-4 py-3"
+            className="w-full bg-transparent pl-4 py-3"
             type="number"
             value={inputValue.toString()}
             onChange={handleChange}

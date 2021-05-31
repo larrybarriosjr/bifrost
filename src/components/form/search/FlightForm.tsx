@@ -60,7 +60,7 @@ const FlightForm = () => {
   return (
     <Section>
       <Row>
-        <Col className="w-1/2">
+        <Col className="w-full">
           <PlaceDropdown
             label="Origin"
             placeholder={PlaceholderText.ORIGIN}
@@ -68,7 +68,7 @@ const FlightForm = () => {
             autoFocus
           />
         </Col>
-        <Col className="w-1/2">
+        <Col className="w-full">
           <PlaceDropdown
             label="Destination"
             placeholder={PlaceholderText.DESTINATION}
@@ -77,23 +77,23 @@ const FlightForm = () => {
         </Col>
       </Row>
       <Row>
-        <Col className="w-2/4">
+        <Col className="w-full sm:w-2/5">
           <FlightTypeRadio type={flightType} setType={setFlightType} />
         </Col>
-        <Col className="w-1/4">
+        <Col className="flex-1 sm:w-2/5">
           <CurrencyDropdown currency={currency} setCurrency={setCurrency} />
         </Col>
-        <Col className="w-1/4">
+        <Col className="flex-1 sm:w-1/5">
           <PassengerInput />
         </Col>
       </Row>
       <Row>
         {flightType === FlightType.ONE_WAY ? (
-          <Col className="w-1/3">
+          <Col className="w-full md:w-2/5 lg:w-1/3">
             <SingleDatePicker date={flightDate} setDate={setFlightDate} />
           </Col>
         ) : (
-          <Col className="w-3/4">
+          <Col className="w-full md:w-4/5 lg:w-3/4">
             <RangeDatePicker
               from={outwardDate}
               to={returnDate}
@@ -102,12 +102,12 @@ const FlightForm = () => {
             />
           </Col>
         )}
-        <Col className="w-1/4">
+        <Col className="w-full md:w-1/5 lg:w-1/4">
           <Button
             text="Search"
             disabled={searchButtonDisabled}
             onClick={handleFlightSearch}
-            className="h-full"
+            className="h-14"
           />
         </Col>
       </Row>

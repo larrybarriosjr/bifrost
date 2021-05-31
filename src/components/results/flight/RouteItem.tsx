@@ -57,25 +57,28 @@ const RouteItem = ({ item }: RouteItemProps) => {
 
   return (
     <div
-      className="flex justify-between items-center p-4 m-6 rounded-3xl
+      className="flex flex-wrap justify-between items-center p-4 m-6 rounded-3xl
         shadow border border-green-200 bg-green-50 text-blue-900"
     >
-      <Col className="w-4/12">
+      <Col className="w-full sm:w-4/12">
         <FlightRoute route={origin} />
       </Col>
-      <Col className="w-2/12">
+      <Col className="w-full my-4 sm:w-2/12 sm:my-0">
         <FlightCarrier item={item} carrier={carrier} />
       </Col>
-      <Col className="w-4/12">
+      <Col className="w-full sm:w-4/12">
         <FlightRoute route={destination} />
       </Col>
-      <Col className="w-2/12">
+      <Col className="w-full mt-4 sm:mt-0 sm:w-2/12">
         <FlightPrice item={item} currency={currency} />
         <Link
           tabIndex={-1}
           to={{ pathname: BifrostRoute.BOOKING, state: { flight: flightData } }}
         >
-          <Button text="Book Now" className="h-10 w-full" />
+          <Button
+            text="Book Now"
+            className="h-10 w-full mt-4 whitespace-nowrap sm:mt-0 sm:text-xs md:text-sm md:mt-2"
+          />
         </Link>
       </Col>
     </div>

@@ -52,7 +52,7 @@ const SingleDatePicker = ({ date, setDate }: SingleDatePickerProps) => {
   }, [datePickerDisplay])
 
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col relative w-full items-center">
       <TextInput
         name={PlaceholderText.DEPARTURE}
         className="text-center"
@@ -69,7 +69,7 @@ const SingleDatePicker = ({ date, setDate }: SingleDatePickerProps) => {
           fromMonth={dateNow}
           disabledDays={{ before: dateNow }}
           selectedDays={new Date(date)}
-          className="absolute top-16 bg-blue-900 text-center border-2 rounded-3xl text-gray-50"
+          className="absolute z-10 top-16 w-full max-w-max md:w-auto bg-blue-900 text-center whitespace-nowrap border-2 rounded-3xl text-gray-50"
         />
       ) : null}
     </div>
