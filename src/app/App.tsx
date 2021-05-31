@@ -29,7 +29,7 @@ function App() {
         className="flex flex-col items-center m-6 p-8 gap-6 bg-blue-200
           w-screen max-w-screen-lg lg:rounded-3xl print:pt-0"
       >
-        <Logo className="h-10" />
+        <Logo />
         <Switch>
           <Route exact path={BifrostRoute.HOME} component={HomePage} />
           <Route exact path={BifrostRoute.BOOKING} component={BookingPage} />

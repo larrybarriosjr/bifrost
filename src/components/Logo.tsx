@@ -3,9 +3,7 @@ import { BifrostRoute } from "defaults/route"
 import { useResults } from "hooks/useResults"
 import { useHistory } from "react-router-dom"
 
-type LogoProps = React.ComponentPropsWithoutRef<"img">
-
-const Logo = ({ ...props }: LogoProps) => {
+const Logo = () => {
   const { remove } = useResults()
   const { replace } = useHistory()
 
@@ -23,8 +21,7 @@ const Logo = ({ ...props }: LogoProps) => {
         src={logo}
         alt="Bifrost Flight Booking System"
         width="200"
-        height="40"
-        {...props}
+        height="35"
       />
     </button>
   )
