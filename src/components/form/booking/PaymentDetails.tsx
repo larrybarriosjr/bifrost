@@ -60,7 +60,7 @@ const TotalPrice = ({ data, disabled, loading, onSubmit }: TotalPriceProps) => {
         />
       </Row>
       <Row>
-        <Col w="1/2">
+        <Col className="w-1/2">
           <p className="text-blue-900 text-sm self-start -mt-2 mb-1">
             {monetize(item.MinPrice, currency) + " × " + passengers}{" "}
             {pluralize("passenger", passengers)}
@@ -70,7 +70,7 @@ const TotalPrice = ({ data, disabled, loading, onSubmit }: TotalPriceProps) => {
             {monetize(item.MinPrice * passengers, currency)}
           </p>
         </Col>
-        <Col w="1/2">
+        <Col className="w-1/2">
           <Button
             text="Confirm Booking"
             className="h-full"

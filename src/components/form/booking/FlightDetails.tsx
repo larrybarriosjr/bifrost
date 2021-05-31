@@ -45,7 +45,7 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
           shadow border border-green-200 bg-green-50 text-blue-900"
       >
         {ticket ? (
-          <Col w="3/12">
+          <Col className="w-3/12">
             <p>
               <span className="font-bold print:block">Departure: </span>
               {format(departureDate, DateFormat.DISPLAY)}
@@ -58,7 +58,7 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
             ) : null}
           </Col>
         ) : null}
-        <Col w="4/12">
+        <Col className="w-4/12">
           <FlightRoute route={origin} />
           {ticket ? (
             <p>
@@ -66,10 +66,10 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
             </p>
           ) : null}
         </Col>
-        <Col w="2/12">
+        <Col className="w-2/12">
           <FlightCarrier item={item} carrier={carrier} />
         </Col>
-        <Col w="4/12">
+        <Col className="w-4/12">
           <FlightRoute route={destination} />
           {ticket ? (
             <p>
@@ -78,7 +78,7 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
           ) : null}
         </Col>
         {!ticket ? (
-          <Col w="2/12">
+          <Col className="w-2/12">
             <FlightPrice item={item} currency={currency} booking />
           </Col>
         ) : null}

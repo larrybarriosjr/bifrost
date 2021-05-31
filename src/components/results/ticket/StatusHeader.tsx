@@ -21,7 +21,7 @@ const StatusHeader = ({ reference }: StatusHeaderProps) => {
   return (
     <Section>
       <Row>
-        <Col w="full">
+        <Col className="w-full">
           <p className="font-semibold text-green-600 text-4xl mb-2">
             Booking Successful!
           </p>

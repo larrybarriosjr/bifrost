@@ -60,16 +60,16 @@ const RouteItem = ({ item }: RouteItemProps) => {
       className="flex justify-between items-center p-4 m-6 rounded-3xl
         shadow border border-green-200 bg-green-50 text-blue-900"
     >
-      <Col w="4/12">
+      <Col className="w-4/12">
         <FlightRoute route={origin} />
       </Col>
-      <Col w="2/12">
+      <Col className="w-2/12">
         <FlightCarrier item={item} carrier={carrier} />
       </Col>
-      <Col w="4/12">
+      <Col className="w-4/12">
         <FlightRoute route={destination} />
       </Col>
-      <Col w="2/12">
+      <Col className="w-2/12">
         <FlightPrice item={item} currency={currency} />
         <Link
           tabIndex={-1}

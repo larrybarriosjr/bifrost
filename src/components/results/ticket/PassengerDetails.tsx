@@ -18,14 +18,14 @@ const PassengerDetails = ({ passengers }: PassengerDetailsProps) => {
         <ol className="w-full">
           {passengers.map(item => (
             <li key={item.id} className="flex justify-between mb-2">
-              <Col w="max">
+              <Col className="w-max">
                 <p>
                   <span className="font-mono mr-4">{item.id}.</span>{" "}
                   {item.honorific}. {item.fullName.toUpperCase()} (
                   {item.ageGroup})
                 </p>
               </Col>
-              <Col w="max">
+              <Col className="w-max">
                 <p>
                   <span className="font-bold text-blue-900">Seat:</span> Upon
                   Check-In
