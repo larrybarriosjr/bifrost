@@ -24,6 +24,12 @@ const TotalPrice = ({ data, disabled, loading, onSubmit }: TotalPriceProps) => {
   const { item, passengers, currency } = data
 
   const [modalDisplay, setModalDisplay] = useState<boolean>(false)
+  const [stripeReady, setStripeReady] = useState(false)
+
+  elements?.getElement(CardElement)?.on("change", e => {
+    if (!e.complete) return setStripeReady(false)
+    setStripeReady(true)
+  })
 
   const handleOpenModal = () => {
     setModalDisplay(true)
@@ -79,7 +85,7 @@ const TotalPrice = ({ data, disabled, loading, onSubmit }: TotalPriceProps) => {
           <Button
             text="Confirm Booking"
             className="h-14"
-            disabled={disabled}
+            disabled={disabled || !stripeReady}
             loading={loading}
             onClick={onSubmit}
           />
