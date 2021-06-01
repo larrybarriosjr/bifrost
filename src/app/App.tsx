@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import Logo from "components/Logo"
+import Logo from "components/common/Logo"
 import { BifrostRoute } from "defaults/route"
 import { useCountryCode } from "hooks/useCountryCode"
 import { useCurrencyCode } from "hooks/useCurrencyCode"

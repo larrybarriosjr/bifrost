@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import TextInput from "components/TextInput"
+import TextInput from "components/common/TextInput"
 import { format } from "date-fns"
 import { DateFormat, PlaceholderText } from "defaults/flight"
 import { Color } from "defaults/style"

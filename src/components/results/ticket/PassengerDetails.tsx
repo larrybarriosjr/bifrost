@@ -1,4 +1,4 @@
-import SectionTitle from "components/SectionTitle"
+import SectionTitle from "components/common/SectionTitle"
 import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"

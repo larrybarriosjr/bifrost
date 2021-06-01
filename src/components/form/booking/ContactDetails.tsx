@@ -1,5 +1,5 @@
-import SectionTitle from "components/SectionTitle"
-import TextInput from "components/TextInput"
+import SectionTitle from "components/common/SectionTitle"
+import TextInput from "components/common/TextInput"
 import Row from "containers/Row"
 import Section from "containers/Section"
 

@@ -1,4 +1,4 @@
-import Button from "components/Button"
+import Button from "components/common/Button"
 import CurrencyDropdown from "components/form/search/CurrencyDropdown"
 import FlightTypeRadio from "components/form/search/FlightTypeRadio"
 import PassengerInput from "components/form/search/PassengerInput"

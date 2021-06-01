@@ -1,4 +1,4 @@
-import SectionTitle from "components/SectionTitle"
+import SectionTitle from "components/common/SectionTitle"
 import Row from "containers/Row"
 import Section from "containers/Section"
 import { LoadingText, PlaceholderText } from "defaults/flight"

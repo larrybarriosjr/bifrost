@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import Button from "components/Button"
+import Button from "components/common/Button"
 import Col from "containers/Col"
 import { BifrostRoute } from "defaults/route"
 import { usePassengers } from "hooks/usePassengers"

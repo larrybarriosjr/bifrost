@@ -1,4 +1,4 @@
-import Button from "components/Button"
+import Button from "components/common/Button"
 import Col from "containers/Col"
 import Row from "containers/Row"
 import Section from "containers/Section"
