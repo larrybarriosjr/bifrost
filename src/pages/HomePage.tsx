@@ -5,6 +5,9 @@ import { Fragment } from "react"
 const HomePage = () => {
   return (
     <Fragment>
+      <p className="text-xs italic font-bold text-blue-900 uppercase">
+        (For testing purposes only)
+      </p>
       <FlightForm />
       <FlightResults />
     </Fragment>
