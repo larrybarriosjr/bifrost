@@ -1,4 +1,5 @@
 import { CardElement, useElements } from "@stripe/react-stripe-js"
+import clsx from "clsx"
 import Button from "components/Button"
 import SectionTitle from "components/SectionTitle"
 import Col from "containers/Col"
@@ -41,16 +42,20 @@ const TotalPrice = ({ data, disabled, loading, onSubmit }: TotalPriceProps) => {
         <button
           type="button"
           onClick={handleOpenModal}
-          className="text-xs underline text-blue-600 border-2 border-transparent
-            focus:outline-none focus:border-blue-500 rounded-full px-2"
+          className={clsx(
+            "px-2 text-xs text-blue-600 underline border-2 border-transparent rounded-full",
+            "focus:outline-none focus:border-blue-500"
+          )}
         >
           Card number for testing
         </button>
       </Row>
       <Row>
         <CardElement
-          className="bg-green-200 border-green-200 border-2 rounded-full h-14 w-full p-4
-            focus:outline-none hover:border-gray-400 focus:border-blue-500"
+          className={clsx(
+            "w-full p-4 bg-green-200 border-2 border-green-200 rounded-full h-14",
+            "focus:outline-none hover:border-gray-400 focus:border-blue-500"
+          )}
           options={{
             style: {
               base: { color: Color.BLUE_900, fontWeight: "bold" },
@@ -61,11 +66,11 @@ const TotalPrice = ({ data, disabled, loading, onSubmit }: TotalPriceProps) => {
       </Row>
       <Row>
         <Col className="w-1/2">
-          <p className="text-blue-900 text-sm self-start -mt-2 mb-1">
+          <p className="self-start mb-1 -mt-2 text-sm text-blue-900">
             {monetize(item.MinPrice, currency) + " × " + passengers}{" "}
             {pluralize("passenger", passengers)}
           </p>
-          <p className="text-blue-900 font-bold text-4xl whitespace-nowrap self-start">
+          <p className="self-start text-4xl font-bold text-blue-900 whitespace-nowrap">
             <span className="text-sm align-middle">Total:</span>{" "}
             {monetize(item.MinPrice * passengers, currency)}
           </p>

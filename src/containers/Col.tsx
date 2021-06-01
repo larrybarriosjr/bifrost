@@ -1,3 +1,5 @@
+import clsx from "clsx"
+
 type ColProps = {
   className: string
   children: React.ReactNode
@@ -5,7 +7,9 @@ type ColProps = {
 
 const Col = ({ className, children }: ColProps) => {
   return (
-    <div className={`flex flex-col text-center ${className}`}>{children}</div>
+    <div className={clsx("flex flex-col text-center", className)}>
+      {children}
+    </div>
   )
 }
 

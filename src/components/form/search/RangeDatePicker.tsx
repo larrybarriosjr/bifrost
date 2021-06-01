@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import TextInput from "components/TextInput"
 import { format } from "date-fns"
 import { DateFormat, PlaceholderText } from "defaults/flight"
@@ -107,8 +108,8 @@ const RangeDatePicker = ({
   }
 
   return (
-    <div className="flex flex-wrap md:flex-nowrap w-full gap-6">
-      <div className="flex flex-col relative w-full items-center">
+    <div className="flex flex-wrap w-full gap-6 md:flex-nowrap">
+      <div className="relative flex flex-col items-center w-full">
         <TextInput
           name={PlaceholderText.DEPARTURE}
           className="text-center"
@@ -130,11 +131,14 @@ const RangeDatePicker = ({
               movingFrom || dateFrom,
               { from: movingFrom, to: dateTo }
             ]}
-            className="absolute z-10 top-16 w-full max-w-max md:w-auto bg-blue-900 text-center whitespace-nowrap border-2 rounded-3xl text-gray-50"
+            className={clsx(
+              "absolute z-10 w-full text-center bg-blue-900 border-2 top-16",
+              "max-w-max md:w-auto whitespace-nowrap rounded-3xl text-gray-50"
+            )}
           />
         ) : null}
       </div>
-      <div className="flex flex-col relative w-full items-center">
+      <div className="relative flex flex-col items-center w-full">
         <TextInput
           name={PlaceholderText.RETURN}
           className="text-center"
@@ -156,7 +160,10 @@ const RangeDatePicker = ({
               dateFrom,
               { from: dateFrom, to: movingTo || dateTo }
             ]}
-            className="absolute z-10 top-16 w-full max-w-max md:w-auto bg-blue-900 text-center whitespace-nowrap border-2 rounded-3xl text-gray-50"
+            className={clsx(
+              "absolute z-10 w-full text-center bg-blue-900 border-2 top-16",
+              "max-w-max md:w-auto whitespace-nowrap rounded-3xl text-gray-50"
+            )}
           />
         ) : null}
       </div>

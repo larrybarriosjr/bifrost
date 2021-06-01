@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import Logo from "components/Logo"
 import { BifrostRoute } from "defaults/route"
 import { useCountryCode } from "hooks/useCountryCode"
@@ -21,13 +22,12 @@ function App() {
   if (!reference) return null
 
   return (
-    <div
-      className="flex flex-col items-center bg-gray-100
-        h-full w-full min-h-screen print:bg-blue-200"
-    >
+    <div className="flex flex-col items-center w-full h-full min-h-screen bg-gray-100 print:bg-blue-200">
       <main
-        className="flex flex-col items-center xl:m-6 p-8 gap-6 bg-blue-200
-          w-full max-w-screen-lg xl:rounded-3xl print:pt-0"
+        className={clsx(
+          "flex flex-col items-center w-full max-w-screen-lg gap-6 p-8 bg-blue-200",
+          "xl:m-6 xl:rounded-3xl print:pt-0"
+        )}
       >
         <Logo />
         <Switch>

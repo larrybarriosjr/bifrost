@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import Button from "components/Button"
 import Col from "containers/Col"
 import { BifrostRoute } from "defaults/route"
@@ -57,8 +58,10 @@ const RouteItem = ({ item }: RouteItemProps) => {
 
   return (
     <div
-      className="flex flex-wrap justify-between items-center p-4 m-6 rounded-3xl
-        shadow border border-green-200 bg-green-50 text-blue-900"
+      className={clsx(
+        "flex flex-wrap items-center justify-between p-4 m-6 text-blue-900",
+        "border border-green-200 shadow rounded-3xl bg-green-50"
+      )}
     >
       <Col className="w-full sm:w-4/12">
         <FlightRoute route={origin} />
@@ -77,7 +80,7 @@ const RouteItem = ({ item }: RouteItemProps) => {
         >
           <Button
             text="Book Now"
-            className="h-10 w-full mt-4 whitespace-nowrap sm:mt-0 sm:text-xs md:text-sm md:mt-2"
+            className="w-full h-10 mt-4 whitespace-nowrap sm:mt-0 sm:text-xs md:text-sm md:mt-2"
           />
         </Link>
       </Col>

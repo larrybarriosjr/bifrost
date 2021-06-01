@@ -20,7 +20,7 @@ const PassengerDetails = ({ passengers }: PassengerDetailsProps) => {
             <li key={item.id} className="flex justify-between mb-2">
               <Col className="w-max">
                 <p>
-                  <span className="font-mono mr-4">{item.id}.</span>{" "}
+                  <span className="mr-4 font-mono">{item.id}.</span>{" "}
                   {item.honorific}. {item.fullName.toUpperCase()} (
                   {item.ageGroup})
                 </p>

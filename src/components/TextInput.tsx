@@ -1,3 +1,5 @@
+import clsx from "clsx"
+
 type TextInputProps = {
   name: string
   value: string
@@ -25,10 +27,13 @@ const TextInput = ({
   return (
     <input
       placeholder={name}
-      className={`${className} ${
-        value ? "font-bold" : "font-light"
-      } bg-green-200 border-green-200 border-2 rounded-full h-14 w-full px-4 text-blue-900
-        focus:outline-none hover:border-gray-400 focus:border-blue-500`}
+      className={clsx(
+        "w-full px-4 text-blue-900 bg-green-200",
+        "border-2 border-green-200 rounded-full h-14",
+        "focus:outline-none hover:border-gray-400 focus:border-blue-500",
+        value ? "font-bold" : "font-light",
+        className
+      )}
       onChange={onChange || handleChange}
       onFocus={onFocus}
       value={value}

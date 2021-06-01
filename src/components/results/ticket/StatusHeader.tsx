@@ -22,10 +22,10 @@ const StatusHeader = ({ reference }: StatusHeaderProps) => {
     <Section>
       <Row>
         <Col className="w-full">
-          <p className="font-semibold text-green-600 text-4xl mb-2">
+          <p className="mb-2 text-4xl font-semibold text-green-600">
             Booking Successful!
           </p>
-          <p className="mb-1 text-md font-mono print:hidden">
+          <p className="mb-1 font-mono text-md print:hidden">
             REFERENCE CODE: {reference}
           </p>
           <p className="text-lg">Thanks for booking with BIFROST.</p>
@@ -35,12 +35,12 @@ const StatusHeader = ({ reference }: StatusHeaderProps) => {
           <img
             ref={inputRef}
             alt="Booking barcode"
-            className="w-80 mt-2 self-center hidden print:block"
+            className="self-center hidden mt-2 w-80 print:block"
           />
           <Button
             text="Print"
             onClick={handlePrint}
-            className="h-10 w-40 mx-auto my-2"
+            className="w-40 h-10 mx-auto my-2"
             autoFocus
           />
           <p className="text-xs print:hidden">

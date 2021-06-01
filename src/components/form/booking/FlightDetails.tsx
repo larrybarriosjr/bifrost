@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import FlightCarrier from "components/results/flight/FlightCarrier"
 import FlightPrice from "components/results/flight/FlightPrice"
 import FlightRoute from "components/results/flight/FlightRoute"
@@ -41,8 +42,10 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
         />
       </Row>
       <div
-        className="flex justify-between items-center p-4 m-6 rounded-3xl
-          shadow border border-green-200 bg-green-50 text-blue-900"
+        className={clsx(
+          "flex items-center justify-between p-4 m-6 text-blue-900",
+          "border border-green-200 shadow rounded-3xl bg-green-50"
+        )}
       >
         {ticket ? (
           <Col className="w-3/12">
@@ -52,7 +55,7 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
             </p>
             {returnDate ? (
               <p>
-                <span className="font-bold mt-2 print:block">Return: </span>
+                <span className="mt-2 font-bold print:block">Return: </span>
                 {format(returnDate, DateFormat.DISPLAY)}
               </p>
             ) : null}

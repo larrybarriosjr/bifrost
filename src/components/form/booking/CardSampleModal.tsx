@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import Row from "containers/Row"
 import { useEffect } from "react"
 import { createPortal } from "react-dom"
@@ -20,21 +21,28 @@ const CardSampleModal = ({ show, onClose }: CardSampleModalProps) => {
   if (!show) return null
 
   return createPortal(
-    <div className="flex items-center fixed overflow-hidden top-0 w-screen h-screen backdrop-filter backdrop-blur-sm">
+    <div
+      className={clsx(
+        "fixed top-0 flex items-center w-screen h-screen",
+        "overflow-hidden backdrop-filter backdrop-blur-sm"
+      )}
+    >
       <dialog
         open
-        className="w-full max-w-xs p-0 rounded-3xl shadow border border-green-200 bg-green-50 text-blue-900"
+        className="w-full max-w-xs p-0 text-blue-900 border border-green-200 shadow rounded-3xl bg-green-50"
       >
         <Row>
-          <p className="font-bold text-blue-900 self-center">
+          <p className="self-center font-bold text-blue-900">
             Sample Card Details
           </p>
           <button
             autoFocus
             type="button"
             onClick={onClose}
-            className="text-3xl leading-none font-semibold text-gray-400 pb-1 px-2 mb-1
-              focus:outline-none border-2 border-transparent focus:border-blue-500 rounded-full"
+            className={clsx(
+              "px-2 pb-1 mb-1 text-3xl font-semibold leading-none text-gray-400",
+              "border-2 border-transparent rounded-full focus:outline-none focus:border-blue-500"
+            )}
           >
             ×
           </button>

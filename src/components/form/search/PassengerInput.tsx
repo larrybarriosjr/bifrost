@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import { InitialFlightData } from "defaults/flight"
 import { LocalStorageKey } from "defaults/web"
 import { useLocalStorage } from "hooks/useLocalStorage"
@@ -44,7 +45,7 @@ const PassengerInput = () => {
 
   return (
     <div
-      className="flex flex-col items-center relative"
+      className="relative flex flex-col items-center"
       onMouseDown={() => setIgnoreBlur(true)}
       onMouseUp={() => setIgnoreBlur(false)}
       onFocus={handleShowInput}
@@ -53,15 +54,17 @@ const PassengerInput = () => {
       <button
         type="button"
         onClick={handleShowInput}
-        className="bg-green-200 border-green-200 border-2 rounded-full h-14 w-full text-blue-900
-          focus:outline-none hover:border-gray-400 focus:border-blue-500 font-bold"
+        className={clsx(
+          "w-full font-bold text-blue-900 bg-green-200 border-2 border-green-200 rounded-full h-14",
+          "focus:outline-none hover:border-gray-400 focus:border-blue-500"
+        )}
       >
         {passengers} {pluralize("Passenger", passengers)}
       </button>
       {inputDisplay ? (
-        <div className="absolute z-10 flex flex-row mt-16 bg-white rounded shadow-md border border-gray-300">
+        <div className="absolute z-10 flex flex-row mt-16 bg-white border border-gray-300 rounded shadow-md">
           <input
-            className="w-full bg-transparent pl-4 py-3"
+            className="w-full py-3 pl-4 bg-transparent"
             type="number"
             value={inputValue.toString()}
             onChange={handleChange}
@@ -72,8 +75,10 @@ const PassengerInput = () => {
           <button
             type="button"
             onClick={handleSetValue}
-            className="rounded-r w-12 font-bold text-gray-50 bg-blue-900 border-2
-              focus:outline-none hover:border-gray-400 focus:border-blue-500"
+            className={clsx(
+              "w-12 font-bold bg-blue-900 border-2 rounded-r text-gray-50",
+              "focus:outline-none hover:border-gray-400 focus:border-blue-500"
+            )}
           >
             ✓
           </button>

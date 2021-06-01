@@ -15,7 +15,7 @@ const Logo = () => {
   return (
     <button
       onClick={handleClick}
-      className="bg-white shadow rounded-full py-4 px-8 focus:outline-none"
+      className="px-8 py-4 bg-white rounded-full shadow focus:outline-none"
     >
       <img
         src={logo}

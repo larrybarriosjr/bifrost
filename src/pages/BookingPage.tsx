@@ -107,7 +107,7 @@ const BookingPage = () => {
             setData={setPassengerData}
           />
         ))}
-      <div className="flex gap-6 w-full">
+      <div className="flex w-full gap-6">
         <ContactDetails
           email={email}
           setEmail={setEmail}

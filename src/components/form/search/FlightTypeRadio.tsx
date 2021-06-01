@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import { FlightType } from "defaults/flight"
 import { useFlightTypes } from "hooks/useFlightTypes"
 import { useEffect } from "react"
@@ -37,8 +38,7 @@ const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
 
   return (
     <div
-      className="flex gap-1 p-0.5 bg-green-200 rounded-full border-2 border-green-200
-        focus:outline-none focus:border-blue-500"
+      className="flex gap-1 p-0.5 bg-green-200 border-2 border-green-200 rounded-full focus:outline-none focus:border-blue-500"
       aria-label="Flight type"
       role="radiogroup"
       onKeyDown={handleArrowKeys}
@@ -47,11 +47,11 @@ const FlightTypeRadio = ({ type, setType }: FlightTypeRadioProps) => {
       {flightTypes.map((item, idx) => (
         <div
           key={idx}
-          className={`flex items-center justify-center text-blue-900 ${
-            item.value !== type ? "hover:bg-blue-200" : ""
-          } cursor-pointer rounded-full h-12 w-1/2 ${
-            item.value === type ? "bg-green-100 font-bold" : ""
-          } transition-colors`}
+          className={clsx(
+            "flex items-center justify-center w-1/2 h-12 text-blue-900",
+            "transition-colors rounded-full cursor-pointer",
+            item.value === type ? "bg-green-100 font-bold" : "hover:bg-blue-200"
+          )}
           onClick={() => handleClick(item.value)}
           aria-checked={item.value === type}
           role="radio"
