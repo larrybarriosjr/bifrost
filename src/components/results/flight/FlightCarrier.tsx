@@ -14,7 +14,7 @@ const FlightCarrier = ({ item, carrier }: FlightCarrierProps) => {
   return (
     <Fragment>
       <p className="text-xs">{"Thru".toUpperCase()}</p>
-      <p className="text-lg font-bold">{carrier.Name}</p>
+      <p className="font-bold md:text-lg print:text-lg">{carrier.Name}</p>
       <p className="text-xs">
         {isOneWay(item)
           ? FlightType.ONE_WAY.toUpperCase()

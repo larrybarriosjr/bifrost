@@ -22,11 +22,11 @@ function App() {
   if (!reference) return null
 
   return (
-    <div className="flex flex-col items-center w-full h-full min-h-screen bg-gray-100 print:bg-blue-200">
+    <div className="flex flex-col items-center w-full h-full min-h-screen bg-blue-200 xl:bg-gray-100">
       <main
         className={clsx(
           "flex flex-col items-center w-full max-w-screen-lg gap-6 p-8 bg-blue-200",
-          "xl:m-6 xl:rounded-3xl print:pt-0"
+          "xl:m-6 xl:rounded-3xl print:pt-0 print:m-6"
         )}
       >
         <Logo />

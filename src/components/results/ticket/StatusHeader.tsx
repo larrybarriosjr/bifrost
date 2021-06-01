@@ -40,7 +40,7 @@ const StatusHeader = ({ reference }: StatusHeaderProps) => {
           <Button
             text="Print"
             onClick={handlePrint}
-            className="w-40 h-10 mx-auto my-2"
+            className="w-40 h-10 mx-auto my-2 print:hidden"
             autoFocus
           />
           <p className="text-xs print:hidden">
