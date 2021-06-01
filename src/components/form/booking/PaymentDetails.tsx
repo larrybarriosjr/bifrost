@@ -43,8 +43,8 @@ const TotalPrice = ({ data, disabled, loading, onSubmit }: TotalPriceProps) => {
           type="button"
           onClick={handleOpenModal}
           className={clsx(
-            "px-2 text-xs text-blue-600 underline border-2 border-transparent rounded-full",
-            "focus:outline-none focus:border-blue-500"
+            "text-xs text-blue-600 underline border-2 border-transparent rounded-full",
+            "whitespace-nowrap sm:px-2 focus:outline-none focus:border-blue-500"
           )}
         >
           Card number for testing
@@ -65,20 +65,20 @@ const TotalPrice = ({ data, disabled, loading, onSubmit }: TotalPriceProps) => {
         />
       </Row>
       <Row>
-        <Col className="w-1/2">
-          <p className="self-start mb-1 -mt-2 text-sm text-blue-900">
+        <Col className="w-full sm:w-1/2">
+          <p className="mb-1 -mt-2 text-sm text-blue-900 sm:self-start">
             {monetize(item.MinPrice, currency) + " × " + passengers}{" "}
             {pluralize("passenger", passengers)}
           </p>
-          <p className="self-start text-4xl font-bold text-blue-900 whitespace-nowrap">
+          <p className="text-4xl font-bold text-blue-900 sm:self-start whitespace-nowrap">
             <span className="text-sm align-middle">Total:</span>{" "}
             {monetize(item.MinPrice * passengers, currency)}
           </p>
         </Col>
-        <Col className="w-1/2">
+        <Col className="w-full sm:w-1/2">
           <Button
             text="Confirm Booking"
-            className="h-full"
+            className="h-14"
             disabled={disabled}
             loading={loading}
             onClick={onSubmit}

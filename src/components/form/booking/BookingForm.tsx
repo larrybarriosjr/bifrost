@@ -48,7 +48,15 @@ const BookingForm = ({ id, data, setData }: BookingFormProps) => {
         <SectionTitle text={`Booking Form for Passenger #${id}`} />
       </Row>
       <Row>
-        <Col className="w-2/12">
+        <Col className="flex-1 md:w-3/12">
+          <DropdownInput<AgeGroup>
+            label="Age group"
+            options={ageGroups}
+            value={data.ageGroup}
+            onChange={handleDropdownChange("ageGroup")}
+          />
+        </Col>
+        <Col className="flex-1 md:w-2/12">
           <DropdownInput<Honorific>
             label="Honorific"
             options={honorifics}
@@ -57,19 +65,11 @@ const BookingForm = ({ id, data, setData }: BookingFormProps) => {
             autoFocus={id === 1}
           />
         </Col>
-        <Col className="w-7/12">
+        <Col className="w-full md:w-7/12">
           <TextInput
             name="Full Name"
             value={data.fullName}
             onChange={handleTextChange("fullName")}
-          />
-        </Col>
-        <Col className="w-3/12">
-          <DropdownInput<AgeGroup>
-            label="Age group"
-            options={ageGroups}
-            value={data.ageGroup}
-            onChange={handleDropdownChange("ageGroup")}
           />
         </Col>
       </Row>

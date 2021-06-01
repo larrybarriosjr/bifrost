@@ -5,9 +5,13 @@ type SectionTitleProps = {
 
 const SectionTitle = ({ text, subtext }: SectionTitleProps) => {
   return (
-    <p className="font-bold text-blue-900">
+    <p className="font-bold text-blue-900 whitespace-nowrap">
       {text}
-      {subtext ? <span className="font-normal"> ({subtext})</span> : ""}
+      {subtext ? (
+        <span className="font-normal whitespace-normal"> ({subtext})</span>
+      ) : (
+        ""
+      )}
     </p>
   )
 }

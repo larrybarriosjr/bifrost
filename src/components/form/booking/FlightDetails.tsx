@@ -43,12 +43,12 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
       </Row>
       <div
         className={clsx(
-          "flex items-center justify-between p-4 m-6 text-blue-900",
+          "flex flex-wrap items-center justify-between p-4 m-6 text-blue-900",
           "border border-green-200 shadow rounded-3xl bg-green-50"
         )}
       >
         {ticket ? (
-          <Col className="w-3/12">
+          <Col className="w-full sm:w-3/12">
             <p>
               <span className="font-bold print:block">Departure: </span>
               {format(departureDate, DateFormat.DISPLAY)}
@@ -61,7 +61,7 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
             ) : null}
           </Col>
         ) : null}
-        <Col className="w-4/12">
+        <Col className="w-full sm:w-4/12">
           <FlightRoute route={origin} />
           {ticket ? (
             <p>
@@ -69,10 +69,10 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
             </p>
           ) : null}
         </Col>
-        <Col className="w-2/12">
+        <Col className="w-full my-4 sm:w-2/12 sm:my-0">
           <FlightCarrier item={item} carrier={carrier} />
         </Col>
-        <Col className="w-4/12">
+        <Col className="w-full sm:w-4/12">
           <FlightRoute route={destination} />
           {ticket ? (
             <p>
@@ -81,7 +81,7 @@ const FlightDetails = ({ data, ticket }: FlightDetailsProps) => {
           ) : null}
         </Col>
         {!ticket ? (
-          <Col className="w-2/12">
+          <Col className="w-full mt-4 sm:w-2/12 sm:mt-0">
             <FlightPrice item={item} currency={currency} booking />
           </Col>
         ) : null}
