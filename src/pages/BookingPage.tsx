@@ -58,6 +58,7 @@ const BookingPage = () => {
     })
 
     if (error) {
+      setLoading(false)
       console.log(error)
     }
 
@@ -85,7 +86,7 @@ const BookingPage = () => {
         setLoading(false)
         console.log("Error: ", text)
       }
-      if (text === "OK") {
+      if (status === 200) {
         setLoading(false)
         history.replace(BifrostRoute.TICKET, { booking: bookingForm })
       }
