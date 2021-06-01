@@ -52,8 +52,6 @@ const RangeDatePicker = ({
     if (ariaDisabledValue === "true") return
     setFrom(format(day, DateFormat.META))
     setFromPickerDisplay(false)
-    setToPickerDisplay(true)
-    toRef?.current?.focus()
   }
 
   const handleToChange = (

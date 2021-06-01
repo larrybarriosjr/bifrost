@@ -22,9 +22,9 @@ export enum LoadingText {
 
 export enum PlaceholderText {
   DEPARTURE = "Departure Date",
-  DESTINATION = "Select Destination...",
+  DESTINATION = "Search Destination...",
   NO_RESULT = "There is no flight available. Please try different settings.",
-  ORIGIN = "Select Origin...",
+  ORIGIN = "Search Origin...",
   RESULTS = "Please fill in the inputs and search for a flight.",
   RETURN = "Return Date"
 }

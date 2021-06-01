@@ -54,6 +54,7 @@ const BookingForm = ({ id, data, setData }: BookingFormProps) => {
             options={ageGroups}
             value={data.ageGroup}
             onChange={handleDropdownChange("ageGroup")}
+            autoFocus={id === 1}
           />
         </Col>
         <Col className="flex-1 md:w-2/12">
@@ -62,7 +63,6 @@ const BookingForm = ({ id, data, setData }: BookingFormProps) => {
             options={honorifics}
             value={data.honorific}
             onChange={handleDropdownChange("honorific")}
-            autoFocus={id === 1}
           />
         </Col>
         <Col className="w-full md:w-7/12">
